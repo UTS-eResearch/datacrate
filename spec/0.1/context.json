@@ -1,5 +1,6 @@
 {
-   
+    "Publisher": "schema:publisher",
+    "DatePublished": "schema:datePublished",
     "HasPart": "schema:hasPart",
     "ID": "schema:identifier",
     "Identifier": "schema:identifier",
@@ -45,6 +46,7 @@
     "CreativeWork": "schema:CreativeWork",
     "MediaObject": "schema:MediaObject",
     "Project": "vivo:Project",
+    "Equipment": "vivo:Equipment",
     "ScholarlyArticle": "schema:ScholarlyArticle",
     "SoftwareApplication": "schema:SoftwareApplication",
     "Format": "formats:Format",
