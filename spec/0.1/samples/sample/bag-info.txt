@@ -1,7 +1,9 @@
 Bag-Software-Agent: bagit.py <http://github.com/libraryofcongress/bagit-python>
-Bagging-Date: 2017-07-26
+BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
+Bagging-Date: 2017-07-27
 Contact-Name: Peter Sefton
 Contact-Telephone: 
 Contact-email: pt@ptsefton.com
-External-Description: This is a simple dataset for demonstration purposes it contains just one image.
-Payload-Oxum: 162660.207
+DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_specification_v0.1.md
+External-Description: This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.
+Payload-Oxum: 162547.207

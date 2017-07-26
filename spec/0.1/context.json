@@ -24,7 +24,7 @@
     "SpatialCoverage": "schema:spatialCoverage",
     "ContentLocation": "schema:contentLocation",
     "Keywords": "schema:keywords",
-    "Subject": "schema:subject",
+    "Subject": "schema:about",
     "GivenName":  "schema:givenName",
     "FamilyName": "schema:familyName",
     "HasFile": "pcdm:hasFile",

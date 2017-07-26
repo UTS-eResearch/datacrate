@@ -70,8 +70,8 @@
       "Contact": {
         "@id": "http://orcid.org/0000-0002-3545-944X",
         "@type": [
-          "CreativeWork",
-          "Person"
+          "Person",
+          "CreativeWork"
         ],
         "Affiliation": {
           "@id": "http://uts.edu.au",
@@ -104,26 +104,24 @@
       "Contributor": {
         "@id": "https://github.com/UTS-eResearch/datacrate",
         "@type": [
-          "CreativeWork",
-          "Project"
+          "Project",
+          "CreativeWork"
         ],
         "Funder": "UTS",
         "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
         "ID": "https://github.com/UTS-eResearch/datacrate",
         "Name": "DataCrate"
       },
-      "Description": "This is a simple dataset for demonstration purposes it contains just one image.",
+      "Description": "This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.",
       "HasPart": [
         {
-          "@id": "https://github.com/UTS-eResearch/datacrate",
-          "@type": [
-            "CreativeWork",
-            "Project"
-          ],
-          "Funder": "UTS",
-          "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
-          "ID": "https://github.com/UTS-eResearch/datacrate",
-          "Name": "DataCrate"
+          "@id": "data/lots_of_little_files",
+          "@type": "CreativeWork",
+          "Description": "This directory contains many small files, that we\u2019re not going to describe in detail.",
+          "Name": "Too many files"
+        },
+        {
+          "@id": "http://orcid.org/0000-0002-3545-944X"
         },
         {
           "@id": "data/pics",
@@ -132,41 +130,40 @@
           "HasPart": {
             "@id": "data/pics/19093074_10155469333581584_5707039334816454031_o.jpg",
             "@type": [
-              "CreativeWork",
-              "MediaObject"
+              "MediaObject",
+              "CreativeWork"
             ],
             "schema:contentSize": "132765",
             "Creator": {
-              "@id": "http://orcid.org/0000-0002-3545-944X"
+              "@id": "http://orcid.org/0000-0002-3545-944X",
+              "@type": [
+                "Person",
+                "CreativeWork"
+              ],
+              "Affiliation": {
+                "@id": "http://uts.edu.au"
+              },
+              "Email": "pt@ptsefton.com",
+              "ID": "http://orcid.org/0000-0002-3545-944X",
+              "Name": "Peter Sefton",
+              "Phone": ""
             },
             "Description": "This is a photo of a dog, and a fence.",
             "encodingFormat": [
-              "JFIF 1.02",
-              "JPEG File Interchange Format"
+              "JPEG File Interchange Format",
+              "JFIF 1.02"
             ],
             "fileFormat": [
-              "image/jpeg",
               {
                 "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/44"
-              }
+              },
+              "image/jpeg"
             ],
             "License": {
               "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
             }
           },
           "Name": "Pictures"
-        },
-        {
-          "@id": "#10.1000/123456",
-          "@type": "CreativeWork",
-          "ID": "10.1000/123456",
-          "Name": "This is an example publication with a dodgy DOI"
-        },
-        {
-          "@id": "data/lots_of_little_files",
-          "@type": "CreativeWork",
-          "Description": "This directory contains many small files, that we\u2019re not going to describe in detail.",
-          "Name": "Too many files"
         },
         {
           "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
@@ -176,32 +173,15 @@
           "Name": "CC BY-NC-SA 3.0 AU"
         },
         {
-          "@id": "http://uts.edu.au"
-        },
-        {
-          "@id": "http://orcid.org/0000-0002-3545-944X",
+          "@id": "https://github.com/UTS-eResearch/datacrate",
           "@type": [
-            "CreativeWork",
-            "Person"
+            "Project",
+            "CreativeWork"
           ],
-          "Affiliation": {
-            "@id": "http://uts.edu.au",
-            "@type": "CreativeWork",
-            "Description": "",
-            "ID": "http://uts.edu.au",
-            "Name": "University of Technology Sydney"
-          },
-          "Email": "pt@ptsefton.com",
-          "ID": "http://orcid.org/0000-0002-3545-944X",
-          "Name": "Peter Sefton",
-          "Phone": ""
-        },
-        {
-          "@id": "#EPL1",
-          "@type": "CreativeWork",
-          "Description": "Olympus camera with Panasonic 20mm lens",
-          "ID": "EPL1",
-          "Name": "EPL1 Camera"
+          "Funder": "UTS",
+          "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
+          "ID": "https://github.com/UTS-eResearch/datacrate",
+          "Name": "DataCrate"
         },
         {
           "@id": "http://www.geonames.org/8152662/catalina-park.html",
@@ -218,6 +198,26 @@
           },
           "ID": "http://www.geonames.org/8152662/catalina-park.html",
           "Name": "Catalina Park"
+        },
+        {
+          "@id": "#10.1000/123456",
+          "@type": "CreativeWork",
+          "ID": "10.1000/123456",
+          "Name": "This is an example publication with a dodgy DOI"
+        },
+        {
+          "@id": "#EPL1",
+          "@type": "CreativeWork",
+          "Description": "Olympus camera with Panasonic 20mm lens",
+          "ID": "EPL1",
+          "Name": "EPL1 Camera"
+        },
+        {
+          "@id": "http://uts.edu.au",
+          "@type": "CreativeWork",
+          "Description": "",
+          "ID": "http://uts.edu.au",
+          "Name": "University of Technology Sydney"
         }
       ],
       "Related": null

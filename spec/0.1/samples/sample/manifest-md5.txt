@@ -1,5 +1,5 @@
-ab5cc11c9c49e53d4be238e15a20315e  data/.~lock.CATALOG_sample.xlsx#
-f067f6ac44a10338240e0df15ccd8259  data/CATALOG_sample.xlsx
+eb5f42a42473459f55f487b35745fcfb  data/.~lock.CATALOG_sample.xlsx#
+e33b7d9bd19ada891eef2ce01cb26160  data/CATALOG_sample.xlsx
 5efbfb1e448e34abb30759306adf0cb3  data/lots_of_little_files/.~lock.CATALOG_lots_of_little_files.xlsx#
 7ce5dd7355de3c7bd20bbca62b6b773c  data/lots_of_little_files/CATALOG_lots_of_little_files.xlsx
 cfcd208495d565ef66e7dff9f98764da  data/lots_of_little_files/file_0.txt
