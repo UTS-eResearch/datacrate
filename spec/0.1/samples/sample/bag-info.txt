@@ -1,0 +1,7 @@
+Bag-Software-Agent: bagit.py <http://github.com/libraryofcongress/bagit-python>
+Bagging-Date: 2017-07-26
+Contact-Name: Peter Sefton
+Contact-Telephone: 
+Contact-email: pt@ptsefton.com
+External-Description: This is a simple dataset for demonstration purposes it contains just one image.
+Payload-Oxum: 162660.207

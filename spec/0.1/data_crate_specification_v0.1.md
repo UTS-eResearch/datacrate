@@ -62,15 +62,19 @@ has been framed using [this JSON-LD frame](./frame.json).
 
 ## Conventions
 
-Different forms of RDF terms and URIS are used in different places.
+Different forms of RDF terms and URIs are used in different places.
 
 Throughout this specification, terms will be referred to using [Qnames], eg the
-*property schema:name* or the *schema:name property*. The prefix of the Qname is
-defined in the *DataCrate Context*.
+*property schema:name* or the *schema:name property*. The prefix of each Qname
+is defined in the *DataCrate Context*.
 
 In the CATALOG.json document, terms are used using their JSON-LD names as
 defined in the [DataCrate context].
 
+In this document RDFa types and properties in CATALOG.html are be expressed as
+full URIs. That is, use typeof='http://schema.org/Dataset' rather than
+typeof='schema:Dataset' or typeof='Dataset' to enable snippets of DataCrate
+markup to be copied an pasted without losing context.
 
 ## Core metadata standard for DataCrate: Schema.org
 
@@ -283,11 +287,6 @@ applies to all the examples below.
        ...    
     </div>
 ```
-
-RDFa types and properties in CATALOG.html MUST be expressed as full URIs. That
-is, use typeof='http://schema.org/Dataset' rather than typeof='schema:Dataset'
-or typeof='Dataset' to enable snippets of DataCrate markup to be copied an
-pasted without losing context.
 
 This corresponds to to the following JSON-LD, with the DataCrate context. The
 context MUST be included as below (ordering is not meaningful) and MAY contain
