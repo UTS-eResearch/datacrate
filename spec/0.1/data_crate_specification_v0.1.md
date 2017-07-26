@@ -175,7 +175,8 @@ The Bagit file-system structure is as follows.
 The bag-info.txt for version 0.1 of a DataCrate MUST contain the following
 metadata:
 
-``` BagIt-Profile-Identifier:
+``` 
+BagIt-Profile-Identifier:
 https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
 DataCrate-Specification-Identifier:
 https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_specification_v0.1.md
@@ -623,16 +624,17 @@ identifier.  The following is the minimum recommended way of representing a
 
 This uses the preferred type ID for researchers, an ORCID, to unambiguously
 identify an author. However, it does not provide very much information about the
-author in the DataCrate so CATALOG.HTML SHOULD have an entry for each person who
-contributed to the data or publications mentioned in the crate, and for the the
-organizations concerned. Creators SHOULD be represented by DataCrate
-Microdocuments with two types: [schema:CreativeWork] and schema:Person.
+author in the DataCrate so CATALOG.html SHOULD have a DataCrate Microdocument
+for each person who contributed to the data or publications mentioned in the
+crate, and for the the organizations concerned. Creators SHOULD be represented
+by DataCrate Microdocuments with two types: [schema:CreativeWork] and
+schema:Person.
 
 
 ### Organizations
 
-Organisations SHOULD be represented by DataCrate Microdocuments with two types:
-[schema:CreativeWork] and schema:Organization. For example:
+An Organisation SHOULD be represented by a DataCrate microdocument with two types:
+[schema:CreativeWork] and [schema:Organization]. For example:
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
@@ -648,7 +650,7 @@ Organisations SHOULD be represented by DataCrate Microdocuments with two types:
 
 <tr href='http://uts.edu.au'
     id='http://uts.edu.au'  
-    typeof='[schema:CreativeWork] http://schema.org/Organization'
+    typeof='schema:CreativeWork http://schema.org/Organization'
     property='schema:hasPart'>    
     <td><div  property='http://schema.org/identifier'><a href='http://uts.edu.au'>http://uts.edu.au</a></div>
 </td>
@@ -659,7 +661,7 @@ Organisations SHOULD be represented by DataCrate Microdocuments with two types:
 
 </tr>
 
-<tr href='http://shu.edu.cn/' id='http://shu.edu.cn/'  typeof='[schema:CreativeWork] http://schema.org/Organization' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://shu.edu.cn/'>http://shu.edu.cn/</a></div>
+<tr href='http://shu.edu.cn/' id='http://shu.edu.cn/'  typeof='schema:CreativeWork http://schema.org/Organization' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://shu.edu.cn/'>http://shu.edu.cn/</a></div>
 </td>
     <td><div  property='http://schema.org/name'>Shanghai University</div>
 </td>
@@ -699,7 +701,7 @@ with the [schema:creator] property.
 
 <tr href='http://dx.doi.org/10.1109/TCYB.2014.2386282'
     id='http://dx.doi.org/10.1109/TCYB.2014.2386282'  
-    typeof='[schema:CreativeWork] http://schema.org/ScholarlyArticle'
+    typeof='schema:CreativeWork http://schema.org/ScholarlyArticle'
     property='schema:hasPart'>    
   <td>
   <div  property='http://schema.org/identifier'>
@@ -942,7 +944,7 @@ vivo:Equipment.  This example shows how to associate equipment with an ID of
 ```
 <tr href='./data/wcc02_arch_traj2.ply'
     id='./data/wcc02_arch_traj2.ply'  
-    typeof='[schema:CreativeWork] schema:MediaObject'
+    typeof='schema:CreativeWork schema:MediaObject'
     property='schema:hasPart'>    
 ...
 <td>
@@ -962,7 +964,7 @@ vivo:Equipment.  This example shows how to associate equipment with an ID of
 
 <tr href='https://confluence.csiro.au/display/ASL/Hovermap'
     id='https://confluence.csiro.au/display/ASL/Hovermap'  
-    typeof='[schema:CreativeWork] http://vivoweb.org/ontology/core#Equipment'
+    typeof='schema:CreativeWork http://vivoweb.org/ontology/core#Equipment'
     property='schema:hasPart'>    
     <td>
       <div  property='http://schema.org/identifier'>
@@ -1154,3 +1156,4 @@ vocabularies and ontologies when this is not possible.
 [schema:Person]: https://schema.org/Person
 [schema:Dataset]: https://schema.org/Dataset
 [schema:CreativeWork]: https://schema.org/CreativeWork
+[schema:encodingFormat]: https://schema.org/encodingFormat
