@@ -1,11 +1,13 @@
 # DataCrate Specification version pre 0.1
 
 This is a draft work in progress, any and all details of this spec could change,
-including its very existence. The samples and examples here have not been
+including its very existence.
+
+The samples and examples here have not been
 verified.
 
 While this file is still on the develop branch on
-Githhub it will change frequently.
+Github it will change frequently.
 
 
 
@@ -17,7 +19,7 @@ with additional metadata in a human-and-machine-readable format based on
 
 A DataCrate:
 
-*  Is a BagIt bag conforming to the DataCrate [BagIt profile] [https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json],   
+*  Is a BagIt bag conforming to the [DataCrate BagIt profile],   
 
 *  With a CATALOG.html tag file in the bag directory which describes the files
    and directories in the BagIt payload (/data) directory. The CATALOG.html file
@@ -46,7 +48,7 @@ data lifecycle there is a very minimal mandated minimum set of metadata, the
 only compulsory metadata is:
 *  a creation date
 *  a contact person (which could be done by role) and a
-* description of the data. 
+* description of the data.
 
 Future versions of this specification will allow for
 profiles to be specified that are appropriate to a range of services.
@@ -175,7 +177,7 @@ The Bagit file-system structure is as follows.
 The bag-info.txt for version 0.1 of a DataCrate MUST contain the following
 metadata:
 
-``` 
+```
 BagIt-Profile-Identifier:
 https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
 DataCrate-Specification-Identifier:
@@ -395,12 +397,9 @@ structural convention that each file, and each other entity (Person,
 Organization, item of equipment etc) is represented by a *DataCrate
 Microdocument* of type [schema:CreativeWork] (examples follow below).
 
-Note that the version of schema.org current at the time of
-writing (version 3.2) doesn't natively support nested datasets or have a
-mechanism to bundle data about files and associated entities.
-
-If there are files in the root of the payload (/data) directory the file MAY be
-described by a [schema:CreativeWork] micro-document related to the data.
+If there are files in the root of the payload (/data) directory each file MAY be
+described by a [schema:CreativeWork] DataCrate Microdocument related to the
+schema:Dataset with a property [schema:hasPart].
 
 NOTE: Every file in the payload directory MUST be in the BagiIt Manifest.
 Describing every file in the payload directory is possible with DataCrate, but
@@ -435,7 +434,8 @@ An entry describing a file as a table row would begin:
     property='pdcm:hasMember'>
 ```
 
-The first cell.
+The first cell:
+
 ```
 <td>
   <div property='http://pcdm.org/models#hasFile' typeof='http://pcdm.org/models#File' href='./wcr03_victoria_arch_3cm_shape.ply'>
@@ -445,7 +445,7 @@ The first cell.
 </td>
 ```
 
-Within the div describing the file above, technical metadata about the file
+Within the div element describing the file above, technical metadata about the file
 MAY be included, for example:
 
 ```
@@ -488,7 +488,7 @@ The second cell in a row:
 ```
 
 The corresponding JSON-LD for the above would be:
-
+```
 "@graph": [
   {
     "@id": "data",
@@ -501,6 +501,7 @@ The corresponding JSON-LD for the above would be:
         "@type": "CreativeWork",
         "Description": "Victoria Arch centre, bentwing trajectory data",
       },
+```
 
 The ID data/datawcc08_archencentre2_traj.txt is a path URI, which references a file
 relative to CATALOG.html in the root directory.
@@ -532,14 +533,8 @@ An example of a file description follows:
 </td>
 <td><div  property='http://schema.org/description'>Victoria Arch point file data, sampled to 3cm resolution.</div>
 </td>
-<td></td>
-<td><a href='#bentwing'>bentwing</a></td>
-<td><div href='#Robert%20Zlot' property='http://schema.org/creator'><a href='#Robert%20Zlot'>Robert Zlot</a></div>
-</td>
-<td><div href='#Lukas%20Kaul' property='http://schema.org/contributor'><a href='#Lukas%20Kaul'>Lukas Kaul</a></div>
-</td>
-<td><div  property='http://schema.org/license'>CSIRO: available for research and academic purposes.</div>
-</td>
+
+...
 
 </tr>
 
@@ -558,14 +553,8 @@ The corresponding DataCrate JSON-LD is:
         "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/831"
       }
     ],
-    "fileFormat": "None"
 
-  "Contributor": {
-    "@id": "#Lukas%20Kaul"
-  },
-  "Creator": {
-    "@id": "#Robert%20Zlot"
-  },
+
   "Description": "Victoria Arch point file data, sampled to 3cm resolution.",
   "License": "CSIRO: available for research and academic purposes."
 },
@@ -576,7 +565,7 @@ The corresponding DataCrate JSON-LD is:
 
 To describe a directory without listing all the files in it, DataCrate SHOULD
 have a description of the directory. This DataCrate Microdocument, describes the
-directory "data/lots_of_little_files".
+directory 'data/lots_of_little_files'.
 
 ```
 <div>
@@ -611,9 +600,9 @@ directory "data/lots_of_little_files".
 ### Contacts, Creators and contributors: People
 
 A core principle of Linked data is to use URIs as to identify things such as
-people  Using linked data, in Schema.org we could use an ORCID
-identifier.  The following is the minimum recommended way of representing a
-[schema:creator] in a data crate. This property MAY be applied in the context of a [schema:Dataset] or to a file (schema:MediaObject).
+people.  The following is the minimum recommended way of representing a
+[schema:creator] in a data crate. This property MAY be applied in the context of
+a [schema:Dataset] or to a file (schema:MediaObject).
 
 ```
 <a href='http://orcid.org/0000-0002-8367-6908'    
@@ -628,7 +617,7 @@ author in the DataCrate so CATALOG.html SHOULD have a DataCrate Microdocument
 for each person who contributed to the data or publications mentioned in the
 crate, and for the the organizations concerned. Creators SHOULD be represented
 by DataCrate Microdocuments with two types: [schema:CreativeWork] and
-schema:Person.
+[schema:Person].
 
 
 ### Organizations
@@ -711,22 +700,22 @@ with the [schema:creator] property.
        <div  property='http://schema.org/name'>Topic Model for Graph Mining</div>
     </td>
     <td>
-       <div href='http://orcid.org/0000-0002-8367-6908' 
+       <div href='http://orcid.org/0000-0002-8367-6908'
              property='http://schema.org/creator'>
           <a href='#http://orcid.org/0000-0002-8367-6908'>J. Xuan</a>
        </div>
 
-       <div href='http://orcid.org/0000-0003-0690-4732' 
+       <div href='http://orcid.org/0000-0003-0690-4732'
             property='http://schema.org/creator'>
            <a href='#http://orcid.org/0000-0003-0690-4732'>J. Lu</a>
        </div>
 
-       <div href='http://orcid.org/0000-0003-3960-0583' 
+       <div href='http://orcid.org/0000-0003-3960-0583'
             property='http://schema.org/creator'>
          <a href='#http://orcid.org/0000-0003-3960-0583'>G. Zhang</a>
         </div>
 
-      <div href='https://orcid.org/0000-0002-6953-3986' 
+      <div href='https://orcid.org/0000-0002-6953-3986'
            property='http://schema.org/creator'>
          <a href='#https://orcid.org/0000-0002-6953-3986'>X. Luo</a>
       </div>
@@ -934,6 +923,8 @@ Use the [schema:datePublised] property with a date in ISO 8601 date format.
 ### Licensing
 
 
+TODO:  example
+
 ### Equipment
 
 To associate a piece of equipment with a file, directory or dataset CATALOG.html
@@ -1014,8 +1005,10 @@ This results in the following DataCrate-Framed JSON-LD:
 
 ### Places
 
-To associate a Dataset, or a file or directory with a geographical location or
-region, use a property of [schema:contentLocation] referring to a schema:Place.
+To associate an entity such as a Dataset, or a file or directory with a
+geographical location or region, the DataCrate microdocument describing the
+entity SHOUD have a property of [schema:contentLocation] referring to a
+schema:Place.
 
 For example, define a place, using a geonames ID.
 
@@ -1077,8 +1070,9 @@ For example, define a place, using a geonames ID.
 
 ```
 
-Use any of the resources available in http://schema.org/geo to describe
-places. Future profiles of DataCrate may mandate the use of a subset of these.
+The DataCrate microdocument for a Place may use any of the resources available
+in http://schema.org/geo to describe places. Future profiles of DataCrate may
+mandate the use of a subset of these.
 
 ### Time
 
@@ -1088,7 +1082,7 @@ TODO: Add a section on locating data in time.
 ### Subjects & Keywords
 
 Subject properties (equivalent to a Dublin Core Subject) on DataCrate
-Microdocuments describing  MUST use the [schema:about] property.
+Microdocuments  MUST use the [schema:about] property.
 
 Keyword properties MUST use [schema:Keyword].
 
@@ -1113,11 +1107,12 @@ A DataCrate MUST have a root [schema:Dataset] with ID of "data" with:
 ### Recommended IDs
 
 Users of DataCrate SHOULD use the following IDs where possible:
-*  For a DataCrate, a [schema:identifier] which SHOULD be a DOI URL.
+*  For a DataCrate, a [schema:identifier] property which SHOULD be a DOI URL.
 *  For People participating the research projects: ORCID identifiers.
 *  For organizations including funders, pending a global identifier scheme for
    use the homepage URL for research organizations.
 *  For items of type schema:Place: a geonames URI.
+*  For file formats, use Pronom URLs, for example http://www.nationalarchives.gov.uk/PRONOM/fmt/831.
 
 In the absence of the above, DataCrates SHOULD contain stable persistent URIs to
 identify all entities wherever possible.
@@ -1153,7 +1148,13 @@ vocabularies and ontologies when this is not possible.
 [Qnames]: https://en.wikipedia.org/wiki/QName
 [schema:keyword]: https://schema.org/keyword
 [schema:about]: https://schema.org/about
+[schema:creator]: https://schema.org/creator
 [schema:Person]: https://schema.org/Person
+[schema:relatedItem]: https://schema.org/relatedItem
+[schema:Organization]: https://schema.org/Organization
 [schema:Dataset]: https://schema.org/Dataset
+[schema:MediaObject]: https://schema.org/MediaObject
 [schema:CreativeWork]: https://schema.org/CreativeWork
+[schema:hasPart]: https://schema.org/hasPart
 [schema:encodingFormat]: https://schema.org/encodingFormat
+[DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
