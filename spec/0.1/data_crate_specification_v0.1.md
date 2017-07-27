@@ -82,7 +82,6 @@ or any other *thing* that forms part of the metadata for a DataCrate.
 *DataCrate Context*: The JSON-LD context which is used for this standard,
 available [here](./context.json).
 
-
 *DataCrate-Framed JSON-LD*: a JSON-LD document containing DataCrate metadata,
 which has been framed using [JSON-LD Framing 1.1] and [The DataCrate JSON-LD frame].
 
@@ -138,9 +137,9 @@ This specification has guidelines for ways to represent:
 
 ## Compromises / limitations of schema.org
 
-One crucial *metadata entity* is a research project. Schema.org has no class for a
-project, although it does have a [schema:Funder] property. DataCrate uses an
-entity with at least two types, [schema:Organisation] AND [vivo:Project],  to
+One crucial *metadata entity* is a research project. Schema.org has no class for
+a project, although it does have a [schema:Funder] property. DataCrate uses an
+entity with at least two types, [schema:organization] AND [vivo:Project],  to
 represent a research project, which MAY have a [schema:funder] property or
 properties.
 
@@ -201,8 +200,8 @@ https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_spec
 
 ## CATALOG.html and CATALOG.json
 
-CATALOG.html must be an RDFa document. CATALOG.json MUST be a *DataCrate-framed
-JSON-LD* document which has the same information as CATALOG.html via the
+CATALOG.html MUST be an RDFa document. CATALOG.json MUST be a *DataCrate-framed
+JSON-LD* document which has the same RDF content as CATALOG.html via the
 following process.
 
 * Parse CATALOG.html using an RDFa parser.
@@ -306,9 +305,9 @@ following process.
 ## About CATALOG.html
 
 CATALOG.html MUST contain an RDFa element which wraps metadata about the whole
-data set creating a DataCrate microdocument. The div element is used in this example, but any
-HTML5 element MAY be used as long as it is expressed in well-formed HTML, this
-applies to all the examples below.
+data set creating a DataCrate microdocument. The div element is used in this
+example, but any HTML5 element MAY be used as long as it is expressed in
+well-formed HTML. This applies to all the examples below.
 
 ```
     <div typeof='http://schema.org/Dataset'
@@ -643,7 +642,7 @@ by DataCrate Microdocuments with two types: [schema:CreativeWork] and
 
 ### Organizations
 
-An Organisation SHOULD be represented by a DataCrate microdocument with two types:
+An organization SHOULD be represented by a DataCrate microdocument with two types:
 [schema:CreativeWork] and [schema:Organization]. For example:
 
 ```
@@ -1129,10 +1128,33 @@ A DataCrate MUST have a root [schema:Dataset] with ID of "data" with:
 
  *  A contact person (or role) expressed via a property schema:accountablePerson
     on the [schema:Dataset] of with a value of type [schema:Person], with  at least
-    one of the following properties:
-    *  [schema:email] (text)
+    one of the following properties.
+    *  [schema:email] (text) 
     *  [schema:phone] (text)
-    *  [schema:affiliation] - with a text value or a schema:Organisation.
+    *  [schema:affiliation] - with a text value or a schema:organization.
+
+### BagIt metadata
+
+BagIt metadata should be included in bag-info.txt where it is available as
+follows in the Dataset object at the root of '@graph' in *DataCrate-framed JSON-LD*.
+
+TODO: add to samples
+
+Source-Organization:   ['Publisher']['Name']
+Organization-Address:  ['Contact']['Publisher']['Name']
+Contact-Name: ['Contact']['Name']
+Contact-Phone: ['Contact']['Phone']
+Contact-Email:  ['Contact']['Email']
+External-Description: ['Description']
+Bagging-Date:  To be entered by the software tool used to create the DataCrate
+External-Identifier:  ['ID']
+Bag-Size:  To be entered by the software tool used to create the DataCrate
+Payload-Oxum:  TTo be entered by the software tool used to create the DataCrate
+
+Bag-Group-Identifier: N/A
+Bag-Count:  N/A
+Internal-Sender-Identifier: N/A
+Internal-Sender-Description: N/A
 
 
 ### Recommended IDs
