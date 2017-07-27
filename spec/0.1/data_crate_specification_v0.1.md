@@ -210,94 +210,94 @@ following process.
 
 ```
 {
-  "@explicit": true,
-  "Related": {
-    "@type": "ScholarlyArticle",
-    "@embed": "@always"
-  },
   "@context": {
-    "License": "schema:license",
-    "fileOf": "pcdm:fileOf",
-    "Subject": "schema:about",
-    "Related": "schema:relatedLink",
+    "Publisher": "schema:publisher",
     "DatePublished": "schema:datePublished",
-    "dct": "http://purl.org/dc/terms/",
-    "Person": "schema:Person",
-    "Creator": "schema:creator",
-    "Interviewee": "bibo:interviewee",
-    "MediaObject": "schema:MediaObject",
-    "Funder": "schema:Funder",
-    "Title": "schema:name",
-    "Equipment": "vivo:Equipment",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "Box": "schema:Box",
-    "formats": "http://www.w3.org/ns/formats/",
-    "ScholarlyArticle": "schema:ScholarlyArticle",
-    "SoftwareApplication": "schema:SoftwareApplication",
-    "Object": "pcdm:Object",
-    "Email": "schema:email",
-    "Longitude": "schema:longitude",
-    "GeoCoordinates": "schema:GeoCoordinates",
-    "cc": "http://creativecommons.org/ns#",
-    "MemberOf": "pcdm:memberOf",
-    "Contributor": "schema:contributor",
-    "ContentLocation": "schema:contentLocation",
+    "HasPart": "schema:hasPart",
+    "ID": "schema:identifier",
     "Identifier": "schema:identifier",
-    "encodingFormat": "schema:encodingFormat",
-    "geo": "schema:geo",
-    "pcdm": "http://pcdm.org/models#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "SpatialCoverage": "schema:spatialCoverage",
-    "Translator": "schema:translator",
-    "TemporalCoverage": "schema:TemporalCoverage",
-    "Affiliation": "schema:affiliation",
     "Description": "schema:description",
+    "License": "schema:license",
+    "Title": "schema:name",
+    "Name": "schema:name",
+    "Creator": "schema:creator",
+    "Contributor": "schema:contributor",
+    "Related": "schema:relatedLink",
+    "Translator": "schema:translator",
+    "Funder": "schema:Funder",
+    "Person": "schema:Person",
+    "Contact": "schema:accountablePerson",
+    "Email": "schema:email",
+    "Phone": "schema:telephone",
     "Dataset": "schema:Dataset",
     "fileFormat": "schema:fileFormat",
-    "Latitude": "schema:latitude",
-    "FamilyName": "schema:familyName",
-    "Phone": "schema:telephone",
-    "Publisher": "schema:publisher",
-    "Organization": "schema:Organization",
-    "Project": "vivo:Project",
-    "GeoShape": "schema:GeoShape",
-    "Format": "formats:Format",
-    "GivenName": "schema:givenName",
-    "Place": "schema:Place",
-    "Contact": "schema:accountablePerson",
-    "Name": "schema:name",
-    "schema": "http://schema.org/",
-    "HasPart": "schema:hasPart",
-    "CreativeWork": "schema:CreativeWork",
-    "bibo": "http://purl.org/ontology/bibo/",
-    "HasFile": "pcdm:hasFile",
-    "Collection": "pcdm:Collection",
-    "vivo": "http://vivoweb.org/ontology/core#",
-    "ID": "schema:identifier",
-    "HasMember": "pcdm:hasMember",
+    "encodingFormat": "schema:encodingFormat",
+    "TemporalCoverage": "schema:TemporalCoverage",
+    "SpatialCoverage": "schema:spatialCoverage",
+    "ContentLocation": "schema:contentLocation",
     "Keywords": "schema:keywords",
-    "rdfa": "http://www.w3.org/ns/rdfa#"
+    "Subject": "schema:subject",
+    "GivenName": "schema:givenName",
+    "FamilyName": "schema:familyName",
+    "HasFile": "pcdm:hasFile",
+    "fileOf": "pcdm:fileOf",
+    "MemberOf": "pcdm:memberOf",
+    "HasMember": "pcdm:hasMember",
+    "Object": "pcdm:Object",
+    "Collection": "pcdm:Collection",
+    "Place": "schema:Place",
+    "Organization": "schema:Organization",
+    "Affiliation": "schema:affiliation",
+    "GeoShape": "schema:GeoShape",
+    "GeoCoordinates": "schema:GeoCoordinates",
+    "geo": "schema:geo",
+    "Latitude": "schema:latitude",
+    "Longitude": "schema:longitude",
+    "Box": "schema:Box",
+    "CreativeWork": "schema:CreativeWork",
+    "MediaObject": "schema:MediaObject",
+    "Project": "vivo:Project",
+    "Equipment": "vivo:Equipment",
+    "ScholarlyArticle": "schema:ScholarlyArticle",
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "Format": "formats:Format",
+    "formats": "http://www.w3.org/ns/formats/",
+    "Interviewee": "bibo:interviewee",
+    "bibo": "http://purl.org/ontology/bibo/",
+    "cc": "http://creativecommons.org/ns#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "pcdm": "http://pcdm.org/models#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfa": "http://www.w3.org/ns/rdfa#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "vivo": "http://vivoweb.org/ontology/core#"
+  },
+  "@type": "Dataset",
+  "@explicit": true,
+  "ContentLocation": {
+    "@type": "Place",
+    "@embed": "@always"
   },
   "Contact": {
     "@type": "Person",
     "@embed": "@always"
   },
-  "ContentLocation": {
-    "@type": "Place",
-    "@embed": "@always"
-  },
-  "HasPart": {
-    "@embed": "@last"
-  },
   "Contributor": {
     "@type": "Project",
     "@embed": "@always"
   },
-  "@type": "Dataset",
   "Description": {
-    "@embed": "@always",
-    "@id": "CATALOG.html"
+    "@id": "CATALOG.html",
+    "@embed": "@always"
+  },
+  "Related": {
+    "@type": "ScholarlyArticle",
+    "@embed": "@always"
+  },
+  "HasPart": {
+    "@embed": "@last"
   }
 }
 ```
@@ -1038,7 +1038,7 @@ To associate a *data entity* with a metadata entity representing a
 entity SHOUD have a property of [schema:contentLocation] with a value of
 [schema:Place].
 
-This example shows how to define a place, using a geonames ID:
+This example shows how to define a place, using a [geonames] ID:
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
@@ -1215,3 +1215,4 @@ vocabularies and ontologies when this is not possible.
 [DataCrate JSON-LD Context]: ./context.json
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
 [The DataCrate JSON-LD frame]: ./frame.json
+[geonames]: http://www.geonames.org
