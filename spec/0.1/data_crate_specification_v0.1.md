@@ -17,14 +17,16 @@ This document specifies a method of packaging research data based on [BagIt]
 with additional metadata in a human-and-machine-readable format based on
 [schema.org] linked-data.
 
-A DataCrate:
+A DataCrate is a dataset a set of files contained in a single directory:
 
-*  Is a BagIt bag conforming to the [DataCrate BagIt profile],   
+*  Which is a [BagIt] bag conforming to the [DataCrate BagIt profile],   
 
-*  With a CATALOG.html tag file in the bag directory which describes the files
-   and directories in the BagIt payload (/data) directory. The CATALOG.html file
-   has  with information about individual files and directories, such as their
-   title, license, authorship or other provenance information, in RDFa format.
+*  With a CATALOG.html tag file in the root bag directory which describes the
+   files and directories in the BagIt payload (/data) directory. The
+   CATALOG.html has metadata about the dataset as a whole, and may have
+   information about individual files and directories, such as their title,
+   license, authorship or other provenance information. Metadata is expressed in
+   RDFa format.
 
 *  If there is enough metadata, and the dataset has a DOI, a DataCite metadata
    file and a human-readable citation in CATALOG.html (TODO: need to work on the
@@ -36,28 +38,32 @@ hand-authoring, it is optimized for maximum convenience for data consumers via
 the use of HTML, for users to read, and JSON-LD for programmers to write code
 to process DataCrates.
 
-DataCrate aims to ensure that packages are as self documenting as possible. The
-CATALOG.html files are in [RDFa] format with (mostly) schema.org based metadata
-and thus are readable by both humans and machines. Anyone with a Data Crate zip
-file can unzip it, notice that there is a CATALOG.html file in the root
-directory, open that in a web browser, and find out about the data; where it
-came from, who to contact about it, if it has a homepage and so on.
+The DataCrate specification aims to ensure that packages are as self documenting
+as possible. The CATALOG.html files are in [RDFa] format with (mostly)
+schema.org based metadata and thus are readable by both humans and machines.
+Anyone with a Data Crate zip file can unzip it, notice that there is a
+CATALOG.html file in the root directory, open that in a web browser, and find
+out about the data; where it came from, who to contact about it, if it has a
+homepage and so on. This is an improvement over simple zipping or bagging of
+files or using XML-based metadata formats.
 
 Because DataCrates could be created at many different stages in the research
 data lifecycle there is a very minimal mandated minimum set of metadata, the
 only compulsory metadata is:
 *  a creation date
 *  a contact person (which could be done by role) and a
-* description of the data.
+*  description of the data.
 
-Future versions of this specification will allow for
-profiles to be specified that are appropriate to a range of services.
+Future versions of this specification will allow for profiles to be specified
+that are appropriate to a range of services such as repositories, registries.
+and research software applications.
 
 There are a number of existing metadata and packaging standards in this area but
 no single standard joining packaging with linked-data-ready metadata that covers
 the range of common concerns for research data in an academic context, where it
 is important to be able to associate data with funded research projects and
-publications.
+publications, and desirable to be able to describe the *contents* of a data
+package, not just the data in aggregate.
 
 ## Examples
 
@@ -65,15 +71,24 @@ There are examples of DataCrates in the [samples] directory.
 
 ## Defintions
 
+*Data entity*: A dataset, directory or file.
+
+*Metadata entity*: A Person, Organization, Project, item of equipment, license
+or any other *thing* that forms part of the metadata for a DataCrate.
+
+*DataCrate Microdocument*: a fragment of [RDFa] used to describe a *data entity*
+*or a metadata entity* such as a person, organization, project or grant.
+
 *DataCrate Context*: The JSON-LD context which is used for this standard,
 available [here](./context.json).
 
-*DataCrate Microdocument*: a fragment of [RDFa] used to describe an
-entity such as a person, organization, project or grant.
 
-*DataCrate-Framed JSON-LD": a JSON-LD document with DataCrate metadata, which
-has been framed using [this JSON-LD frame](./frame.json).
+*DataCrate-Framed JSON-LD*: a JSON-LD document containing DataCrate metadata,
+which has been framed using [JSON-LD Framing 1.1] and [The DataCrate JSON-LD frame].
 
+*DataCrate JSON-LD Context*: A JSON-LD context that provides human-readable
+labels for datacrate metadata. These labels are used in CATALOG.json which
+contains *DataCrate-Framed JSON-LD*.
 
 ## Conventions
 
@@ -81,21 +96,21 @@ Different forms of RDF terms and URIs are used in different places.
 
 Throughout this specification, terms will be referred to using [Qnames], eg the
 *property schema:name* or the *[schema:name] property*. The prefix of each Qname
-is defined in the *DataCrate Context*.
+is defined in the [DataCrate JSON-LD Context].
 
 In the CATALOG.json document, terms are used using their DataCrate JSON-LD names as
 defined in the [DataCrate context].
 
 In this document RDFa types and properties in CATALOG.html are be expressed as
-full URIs. That is, use typeof='http://schema.org/Dataset' rather than
-typeof='schema:Dataset' or typeof='Dataset' to enable snippets of DataCrate
+full URIs. That is, we use ```typeof='http://schema.org/Dataset'``` rather than
+```typeof='schema:Dataset'``` or ```typeof='Dataset'``` to enable snippets of DataCrate
 markup to be copied an pasted without losing context.
 
 ## Core metadata standard for DataCrate: Schema.org
 
-Schema.org is the base metadata standard for DataCrate with a few additions
-where there are gaps its ability to represent needed metadata.  Future versions
-of this spec may be based on other metadata standards.
+Schema.org is the base metadata standard for DataCrate with a few additions to
+supplement there are gaps in schema.org's ability to represent needed metadata.
+Future versions of this spec may be based on other metadata standards.
 
 Additional metadata can be drawn from any RDF vocabulary to allow open-ended
 extensibility.
@@ -123,11 +138,11 @@ This specification has guidelines for ways to represent:
 
 ## Compromises / limitations of schema.org
 
-One useful item of metadata for research data is associating it with a research
-project, but Schema.org has no class for a project, although it does have a
-[schema:Funder] property. DataCrate uses a an entity with at least two types,
-[schema:Organisation] AND [vivo:Project],  to represent a research project, which
-MAY have a [schema:funder] property or properties.
+One crucial *metadata entity* is a research project. Schema.org has no class for a
+project, although it does have a [schema:Funder] property. DataCrate uses an
+entity with at least two types, [schema:Organisation] AND [vivo:Project],  to
+represent a research project, which MAY have a [schema:funder] property or
+properties.
 
 Likewise, schema.org does not have a way to represent research equipment so
 DataCrate uses the [vivo:Equipment] class.
@@ -186,11 +201,13 @@ https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_spec
 
 ## CATALOG.html and CATALOG.json
 
-CATALOG.html must be an RDFa document. CATALOG.json MUST be a JSON document
-which has the same information as CATALOG.html via the following process.
+CATALOG.html must be an RDFa document. CATALOG.json MUST be a *DataCrate-framed
+JSON-LD* document which has the same information as CATALOG.html via the
+following process.
 
 * Parse CATALOG.html using an RDFa parser.
-* Use the following JSON-LD frame to organize the document.
+* Use the [DataCrate JSON-LD frame] to organize the document as a tree with the
+  DataSet at the root.
 
 ```
 {
@@ -289,8 +306,8 @@ which has the same information as CATALOG.html via the following process.
 ## About CATALOG.html
 
 CATALOG.html MUST contain an RDFa element which wraps metadata about the whole
-data set (schema:Dataset). The div element is used in this example, but any
-HTML5 element is allowed as long as it is expressed in well-formed HTML, this
+data set creating a DataCrate microdocument. The div element is used in this example, but any
+HTML5 element MAY be used as long as it is expressed in well-formed HTML, this
 applies to all the examples below.
 
 ```
@@ -303,9 +320,9 @@ applies to all the examples below.
     </div>
 ```
 
-This corresponds to to the following JSON-LD, in the [DataCrate context]. The
-context MUST be included as below (ordering is not meaningful) and MAY contain
-additional items.
+This corresponds to to the following *DataCrate-framed JSON-LD*. The [DataCrate
+JSON-LD Context] MUST be included inline as below (ordering is not meaningful)
+and MAY contain additional items.
 
 From now on the @context will be omitted from examples.
 
@@ -392,26 +409,30 @@ From now on the @context will be omitted from examples.
 ```
 
 
-DataCrate uses schema.org to indicate the structure of a dataset via a
-structural convention that each file, and each other entity (Person,
-Organization, item of equipment etc) is represented by a *DataCrate
-Microdocument* of type [schema:CreativeWork] (examples follow below).
+DataCrate uses schema.org to indicate the structure of a schema:Dataset via a
+structural convention that each *data entity* (Dataset, directory or file) and
+each  *Metadata entity* (Person, Organization, item of equipment etc) is
+represented by a *DataCrate Microdocument*. The root of the data structure MUST
+be a microdocument (eg an HTML ```div``` element) with type [schema:Dataset].
+Other *data entities* and *metadata entities* MUST be nested inside the
+DataCrate Dataset. All nested *DataCrate microdocuments* have at least one type:
+[schema:CreativeWork].  (examples follow below).
 
 If there are files in the root of the payload (/data) directory each file MAY be
-described by a [schema:CreativeWork] DataCrate Microdocument related to the
+described by a [schema:CreativeWork] *DataCrate microdocument* related to the
 schema:Dataset with a property [schema:hasPart].
 
-NOTE: Every file in the payload directory MUST be in the BagiIt Manifest.
-Describing every file in the payload directory is possible with DataCrate, but
-where there are too many files to describe it is not mandatory.
-Future version of this specification will allow for profiles - using which it
-will be possible to specify constraints such as "every file must have a
-schema:description".
+NOTE: As per the BagIt standard, every file in the payload directory MUST be in
+the BagIt Manifest.  Describing every file in the payload directory is possible
+with DataCrate, but where there are too many files to describe it is not
+mandatory.  Future versions of this specification will allow for profiles -
+using which it will be possible to specify constraints such as "every file must
+have a schema:description".
 
-A convenient way to represent a member file/CreativeWork in HTML is as a table
-row. In the context of the markup above this adds a member to the
-schema:Dataset. For example, in the context of the above [schema:Dataset] a table
-of files MAY begin with:
+A convenient way to represent a *DataCrate microdocument* for a *data entity*
+in HTML is as a table row. In the context of the markup above this adds a part
+to the schema:Dataset. For example, in the context of the above [schema:Dataset]
+a table of files MAY begin with:
 
 ```
 <table>
@@ -431,14 +452,14 @@ An entry describing a file as a table row would begin:
 ```
 <tr href='./data/wcc08_archencentre2_traj.txt'  
     typeof='http://schema.org/Creativework'
-    property='pdcm:hasMember'>
+    property='http:schema.org/hasPart'>
 ```
 
-The first cell:
+The first cell could be:
 
 ```
 <td>
-  <div property='http://pcdm.org/models#hasFile' typeof='http://pcdm.org/models#File' href='./wcr03_victoria_arch_3cm_shape.ply'>
+  <div property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' href='./wcr03_victoria_arch_3cm_shape.ply'>
    <a  href='./data/wcr03_victoria_arch_3cm_shape.ply'>wcr03_victoria_arch_3cm_shape.ply</a>
    <details> ... </details>
   </div>
@@ -510,7 +531,7 @@ relative to CATALOG.html in the root directory.
 An example of a file description follows:
 
 ```
-<tr href='./wcr03_victoria_arch_3cm_shape.ply'  typeof='http://pcdm.org/models#Object' property='pdcm:hasMember'><td><span property='http://pcdm.org/models#hasFile' typeof='http://pcdm.org/models#File' href='./wcr03_victoria_arch_3cm_shape.ply'>
+<tr href='./wcr03_victoria_arch_3cm_shape.ply'  typeof='http://schmea.org/MediaObject' property='pdcm:hasMember'><td><span property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' href='./wcr03_victoria_arch_3cm_shape.ply'>
  <a  href='./wcr03_victoria_arch_3cm_shape.ply'>wcr03_victoria_arch_3cm_shape.ply</a>
 <details><table><tr>
     <th>File format</th>
@@ -626,7 +647,7 @@ An Organisation SHOULD be represented by a DataCrate microdocument with two type
 [schema:CreativeWork] and [schema:Organization]. For example:
 
 ```
-<div typeof='http://schema.org/Dataset' about='./data'>
+<div typeof='http://schema.org/Dataset' about='data'>
 ...
 <h2>Organizations</h2>
 <table>
@@ -669,8 +690,8 @@ with type schema:ScholarlyArticle. In this example the ID of the document is a
 DOI URL (http://dx.doi.org/10.1109/TCYB.2014.2386282). IDs for publications
 SHOULD be DOI URLs where possible.
 
-This publication microdocument references people, described in an example above
-with the [schema:creator] property.
+This *DataCrate microdocument* about a publication references people, described
+in an example above with the [schema:creator] property.
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
@@ -741,6 +762,7 @@ http://dx.doi.org/10.1109/TCYB.2014.2386282 to could look like:
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
+...
 <tr>
   <th>Related</th>
   <td><div href='http://dx.doi.org/10.1109/TCYB.2014.2386282'
@@ -754,7 +776,7 @@ http://dx.doi.org/10.1109/TCYB.2014.2386282 to could look like:
 ```
 
 Putting together the examples for People, Organizations and Publications we get
-the following DataCrate RDFa.
+the following *DataCrate-framed JSON-LD*.
 
 ```
 "@graph": [
@@ -853,6 +875,8 @@ To associate a research project (with or without funding) to a [schema:Dataset],
 use the Contributor property to reference an item of type [vivo:Project].
 
 ```
+<div typeof='http://schema.org/Dataset' about='./data'>
+...
 <tr>
   <th>Contributor</th>
   <td><div href='https://github.com/UTS-eResearch/datacrate'
@@ -918,23 +942,28 @@ Which yields this DataCrate-framed JSON-LD:
 Use the [schema:Publisher] property, referencing a schema:Organization.
 
 ### Date of publication
-Use the [schema:datePublised] property with a date in ISO 8601 date format.
+Use the [schema:datePublished] property with a date in ISO 8601 date format.
 
 ### Licensing
 
-
-TODO:  example
+To attach a license to a *data entity* the entity SHOULD have a
+[schema:license] property with a value of a DataCrate Microdocument that
+describes a license. If this is not possible a URL MAY be used as the value.
 
 ### Equipment
 
-To associate a piece of equipment with a file, directory or dataset CATALOG.html
-SHOULD use a [schema:contributor] property, referencing a microdocument of type
-vivo:Equipment.  This example shows how to associate equipment with an ID of
+To specify which equipment was used to create or contribute to a *data entity*,
+the *DataCrate microdocument* for the entity SHOULD have a [schema:contributor]
+property, with a value of a microdocument of type [vivo:Equipment].  This example
+shows how to associate equipment with an ID of
 "https://confluence.csiro.au/display/ASL/Hovermap" with a file
+"data/wcc02_arch_traj2.ply":
 
 ```
-<tr href='./data/wcc02_arch_traj2.ply'
-    id='./data/wcc02_arch_traj2.ply'  
+<div typeof='http://schema.org/Dataset' about='./data'>
+...
+<tr href='data/wcc02_arch_traj2.ply'
+    id='data/wcc02_arch_traj2.ply'  
     typeof='schema:CreativeWork schema:MediaObject'
     property='schema:hasPart'>    
 ...
@@ -1005,14 +1034,16 @@ This results in the following DataCrate-Framed JSON-LD:
 
 ### Places
 
-To associate an entity such as a Dataset, or a file or directory with a
-geographical location or region, the DataCrate microdocument describing the
-entity SHOUD have a property of [schema:contentLocation] referring to a
-schema:Place.
+To associate a *data entity* with a metadata entity representing a
+*geographical location or region* the DataCrate microdocument describing the
+entity SHOUD have a property of [schema:contentLocation] with a value of
+[schema:Place].
 
-For example, define a place, using a geonames ID.
+This example shows how to define a place, using a geonames ID:
 
 ```
+<div typeof='http://schema.org/Dataset' about='./data'>
+...
 <h2>Places</h2>
 <table>
 <tr>
@@ -1121,7 +1152,7 @@ identify all entities wherever possible.
 ## Datacite citations
 
 If there is sufficient metadata in a DataCrate, it should contain a DataCite
-citation DataCite.xml, in the bag directory compliant with the [DataCite Schema
+citation DataCite.xml in the root of the bag directory compliant with the [DataCite Schema
 v4.0]:
 
 To generate DataCite.xml a DataCrate MUST have the following at the  DataSet
@@ -1134,14 +1165,13 @@ level:
 
 The mandatory DataCite resource type MUST be set to "DataCrate-v0.1".
 
-
 ## Extending DataCrate
 
 To extend DataCrate implementers SHOULD try to use schema-valid schema.org
 properties and classes and MAY use terms form other widely-used and supported
 vocabularies and ontologies when this is not possible.
 
-
+[BagIt]: https://en.wikipedia.org/wiki/BagIt
 [samples]: ./samples
 [DataCite Schema v4.0]: https://schema.datacite.org/meta/kernel-4.0/metadata.xsd
 [BagIt profile]: https://github.com/ruebot/bagit-profiles
@@ -1150,6 +1180,7 @@ vocabularies and ontologies when this is not possible.
 [schema:about]: https://schema.org/about
 [schema:creator]: https://schema.org/creator
 [schema:Person]: https://schema.org/Person
+[schema:identifier]: https://schema.org/identifier
 [schema:relatedItem]: https://schema.org/relatedItem
 [schema:Organization]: https://schema.org/Organization
 [schema:Dataset]: https://schema.org/Dataset
@@ -1157,4 +1188,8 @@ vocabularies and ontologies when this is not possible.
 [schema:CreativeWork]: https://schema.org/CreativeWork
 [schema:hasPart]: https://schema.org/hasPart
 [schema:encodingFormat]: https://schema.org/encodingFormat
+[schema:contentSize]: https://schema.org/schema:encodingFormat
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
+[DataCrate JSON-LD Context]: ./context.json
+[JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
+[The DataCrate JSON-LD frame]: ./frame.json
