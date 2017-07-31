@@ -1129,7 +1129,7 @@ A DataCrate MUST have a root [schema:Dataset] with ID of "data" with:
  *  A contact person (or role) expressed via a property schema:accountablePerson
     on the [schema:Dataset] of with a value of type [schema:Person], with  at least
     one of the following properties.
-    *  [schema:email] (text) 
+    *  [schema:email] (text)
     *  [schema:phone] (text)
     *  [schema:affiliation] - with a text value or a schema:organization.
 
@@ -1140,6 +1140,7 @@ follows in the Dataset object at the root of '@graph' in *DataCrate-framed JSON-
 
 TODO: add to samples
 
+```
 Source-Organization:   ['Publisher']['Name']
 Organization-Address:  ['Contact']['Publisher']['Name']
 Contact-Name: ['Contact']['Name']
@@ -1155,7 +1156,7 @@ Bag-Group-Identifier: N/A
 Bag-Count:  N/A
 Internal-Sender-Identifier: N/A
 Internal-Sender-Description: N/A
-
+```
 
 ### Recommended IDs
 
