@@ -19,24 +19,26 @@ with additional metadata in a human-and-machine-readable format based on
 
 A DataCrate is a dataset a set of files contained in a single directory:
 
-*  Which is a [BagIt] bag conforming to the [DataCrate BagIt profile],   
+*  A DataCrate is a [BagIt] bag conforming to the [DataCrate BagIt profile],   
 
-*  With a CATALOG.html tag file in the root bag directory which describes the
-   files and directories in the BagIt payload (/data) directory. The
-   CATALOG.html has metadata about the dataset as a whole, and may have
+*  A DataCrate has a CATALOG.html tag file in the root bag directory which
+   describes the files and directories in the BagIt payload (/data) directory.
+   The CATALOG.html has metadata about the dataset as a whole, and may have
    information about individual files and directories, such as their title,
    license, authorship or other provenance information. Metadata is expressed in
    RDFa format.
 
-*  If there is enough metadata, and the dataset has a DOI, a DataCite metadata
-   file and a human-readable citation in CATALOG.html (TODO: need to work on the
-   markup for this).
+*  If there is enough metadata, and the dataset has a DOI, a DataCrate has a
+   DataCite metadata file and a human-readable citation in CATALOG.html (TODO:
+   need to work on the markup for this).
 
 This specification is a practical guide for software authors to create tools for
 generating and consuming research packages. The format is not optimized for
 hand-authoring, it is optimized for maximum convenience for data consumers via
-the use of HTML, for users to read, and JSON-LD for programmers to write code
-to process DataCrates.
+the use of HTML, for users to read, and JSON-LD for programmers to write code to
+process DataCrates. A disadvantage is that it is verbose, because RDFa is
+verbose, but on eht other hand using RDFa allows for a human-readable manifest
+of contents.
 
 The DataCrate specification aims to ensure that packages are as self documenting
 as possible. The CATALOG.html files are in [RDFa] format with (mostly)
@@ -44,12 +46,12 @@ schema.org based metadata and thus are readable by both humans and machines.
 Anyone with a Data Crate zip file can unzip it, notice that there is a
 CATALOG.html file in the root directory, open that in a web browser, and find
 out about the data; where it came from, who to contact about it, if it has a
-homepage and so on. This is an improvement over simple zipping or bagging of
+homepage and so on, which is more usable than simple zipping or bagging of
 files or using XML-based metadata formats.
 
 Because DataCrates could be created at many different stages in the research
-data lifecycle there is a very minimal mandated minimum set of metadata, the
-only compulsory metadata is:
+data lifecycle there is a very minimal mandated minimum set of metadata. The
+only mandadtory metadata is:
 *  a creation date
 *  a contact person (which could be done by role) and a
 *  description of the data.
@@ -67,7 +69,8 @@ package, not just the data in aggregate.
 
 ## Examples
 
-There are examples of DataCrates in the [samples] directory.
+There are examples of DataCrates in the [samples] directory. (TODO: Make more
+samples)
 
 ## Defintions
 
@@ -93,9 +96,10 @@ contains *DataCrate-Framed JSON-LD*.
 
 Different forms of RDF terms and URIs are used in different places.
 
-Throughout this specification, terms will be referred to using [Qnames], eg the
-*property schema:name* or the *[schema:name] property*. The prefix of each Qname
-is defined in the [DataCrate JSON-LD Context].
+Throughout this specification, terms will be referred to using [Qnames] (TODO:
+Check if this is the correct terminology), eg the *property schema:name* or the
+*[schema:name] property*. The prefix of each Qname is defined in the [DataCrate
+JSON-LD Context].
 
 In the CATALOG.json document, terms are used using their DataCrate JSON-LD names as
 defined in the [DataCrate context].
@@ -133,7 +137,6 @@ This specification has guidelines for ways to represent:
   set and individual files within it.
 
 * If there is enough metadata, to a DataCite citation for the crate.
-
 
 ## Compromises / limitations of schema.org
 
@@ -303,7 +306,7 @@ following process.
 ## About CATALOG.html
 
 CATALOG.html MUST contain an RDFa element which wraps metadata about the whole
-data set creating a DataCrate microdocument. The div element is used in this
+data set, that is a DataCrate microdocument. The div element is used in this
 example, but any HTML5 element MAY be used as long as it is expressed in
 well-formed HTML. This applies to all the examples below.
 
@@ -943,9 +946,12 @@ Use the [schema:datePublished] property with a date in ISO 8601 date format.
 
 ### Licensing
 
-To attach a license to a *data entity* the entity SHOULD have a
-[schema:license] property with a value of a DataCrate Microdocument that
-describes a license. If this is not possible a URL MAY be used as the value.
+If a *data entity* has a license the entity SHOULD have a [schema:license]
+property with a value of a DataCrate Microdocument that describes the license,
+the ID of the license should be it's URL (eg a Creative Commons License URL). If
+this is not possible a URL MAY be used as the value.
+
+TODO: Example
 
 ### Equipment
 
