@@ -17,16 +17,21 @@ This document specifies a method of packaging research data based on [BagIt]
 with additional metadata in a human-and-machine-readable format based on
 [schema.org] linked-data.
 
-A DataCrate is a dataset a set of files contained in a single directory:
+A DataCrate is a dataset a set of files contained in a single directory.
 
 *  A DataCrate is a [BagIt] bag conforming to the [DataCrate BagIt profile],   
 
-*  A DataCrate has a CATALOG.html tag file in the root bag directory which
+*  A DataCrate has a CATALOG.html tag file in the root directory which
    describes the files and directories in the BagIt payload (/data) directory.
    The CATALOG.html has metadata about the dataset as a whole, and may have
    information about individual files and directories, such as their title,
    license, authorship or other provenance information. Metadata is expressed in
    RDFa format.
+   
+*  A DataCrate has a CATALOG.json file in the root bag directory with a JSON-LD
+   version of the RDFa Metadata in CATALOG.HTML, the metadata in this file is
+   organized in a particular way via a JSON-LD frame, for easy processing. The
+   metadata is redundant with the metadata in CATALOG.html.
 
 *  If there is enough metadata, and the dataset has a DOI, a DataCrate has a
    DataCite metadata file and a human-readable citation in CATALOG.html (TODO:
