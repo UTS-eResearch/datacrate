@@ -138,7 +138,7 @@ This specification has guidelines for ways to represent:
 ## Compromises / limitations of schema.org
 
 One crucial *metadata entity* is a research project. Schema.org has no class for
-a project, although it does have a [schema:Funder] property. DataCrate uses an
+a project, although it does have a [schema:funder] property. DataCrate uses an
 entity with at least two types, [schema:organization] AND [vivo:Project],  to
 represent a research project, which MAY have a [schema:funder] property or
 properties.
@@ -192,10 +192,8 @@ The bag-info.txt for version 0.1 of a DataCrate MUST contain the following
 metadata:
 
 ```
-BagIt-Profile-Identifier:
-https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
-DataCrate-Specification-Identifier:
-https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_specification_v0.1.md
+BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
+DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.1/data_crate_specification_v0.1.md
 ```
 
 ## CATALOG.html and CATALOG.json
@@ -1178,9 +1176,9 @@ If there is sufficient metadata in a DataCrate, it should contain a DataCite
 citation DataCite.xml in the root of the bag directory compliant with the [DataCite Schema
 v4.0]:
 
-To generate DataCite.xml a DataCrate MUST have the following at the  DataSet
+To generate DataCite.xml a DataCrate MUST have the following at the  schema:Dataset
 level:
-*  A [schema:identifier] for the dataset which is a DOI URL.
+*  A [schema:identifier] for the DataCrate which is a DOI URL.
 *  At least one [schema:Creator] with a [schema:givenName] and [schema:familyName].
 *  At least one [schema:Name] (which maps to a DataCite title).
 *  A least one [schema:publisher] property which SHOULD be an organization but may be a String
@@ -1210,6 +1208,7 @@ vocabularies and ontologies when this is not possible.
 [schema:MediaObject]: https://schema.org/MediaObject
 [schema:CreativeWork]: https://schema.org/CreativeWork
 [schema:hasPart]: https://schema.org/hasPart
+[schema:funder]: https://schema.org/funder
 [schema:encodingFormat]: https://schema.org/encodingFormat
 [schema:contentSize]: https://schema.org/schema:encodingFormat
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
@@ -1217,3 +1216,5 @@ vocabularies and ontologies when this is not possible.
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
 [The DataCrate JSON-LD frame]: ./frame.json
 [geonames]: http://www.geonames.org
+[RDFa]: https://en.wikipedia.org/wiki/RDFa
+[schema.org]: http://schema.org
