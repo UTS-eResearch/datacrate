@@ -40,10 +40,10 @@ A DataCrate is a dataset a set of files contained in a single directory.
 This specification is a practical guide for software authors to create tools for
 generating and consuming research packages. The format is not optimized for
 hand-authoring, it is optimized for maximum convenience for data consumers via
-the use of HTML, for users to read, and JSON-LD for programmers to write code to
-process DataCrates. A disadvantage is that it is verbose, because RDFa is
-verbose, but on eht other hand using RDFa allows for a human-readable manifest
-of contents.
+the use of HTML for users to read, and JSON-LD for programmers to write code in
+order to process DataCrates. A disadvantage is that it is verbose, because RDFa
+is verbose, but on the other hand using RDFa allows for a human-readable
+manifest of contents.
 
 The DataCrate specification aims to ensure that packages are as self documenting
 as possible. The CATALOG.html files are in [RDFa] format with (mostly)
@@ -87,11 +87,8 @@ or any other *thing* that forms part of the metadata for a DataCrate.
 *DataCrate Microdocument*: a fragment of [RDFa] used to describe a *data entity*
 *or a metadata entity* such as a person, organization, project or grant.
 
-*DataCrate Context*: The JSON-LD context which is used for this standard,
-available [here](./context.json).
-
 *DataCrate-Framed JSON-LD*: a JSON-LD document containing DataCrate metadata,
-which has been framed using [JSON-LD Framing 1.1] and [The DataCrate JSON-LD frame].
+which has been framed using [JSON-LD Framing 1.1] and the [DataCrate JSON-LD frame].
 
 *DataCrate JSON-LD Context*: A JSON-LD context that provides human-readable
 labels for datacrate metadata. These labels are used in CATALOG.json which
@@ -101,13 +98,12 @@ contains *DataCrate-Framed JSON-LD*.
 
 Different forms of RDF terms and URIs are used in different places.
 
-Throughout this specification, terms will be referred to using [Qnames] (TODO:
-Check if this is the correct terminology), eg the *property schema:name* or the
-*[schema:name] property*. The prefix of each Qname is defined in the [DataCrate
-JSON-LD Context].
+Throughout this specification, terms will be referred to using [CURIE]s eg the
+*property schema:name* or the *[schema:name] property*. The prefix of each CURIE
+is defined in the [DataCrate JSON-LD Context].
 
 In the CATALOG.json document, terms are used using their DataCrate JSON-LD names as
-defined in the [DataCrate context].
+defined in the [DataCrate JSON-LD context].
 
 In this document RDFa types and properties in CATALOG.html are be expressed as
 full URIs. That is, we use ```typeof='http://schema.org/Dataset'``` rather than
@@ -1190,8 +1186,8 @@ v4.0]:
 To generate DataCite.xml a DataCrate MUST have the following at the  schema:Dataset
 level:
 *  A [schema:identifier] for the DataCrate which is a DOI URL.
-*  At least one [schema:Creator] with a [schema:givenName] and [schema:familyName].
-*  At least one [schema:Name] (which maps to a DataCite title).
+*  At least one [schema:creator] with a [schema:givenName] and [schema:familyName].
+*  At least one [schema:name] (which maps to a DataCite title).
 *  A least one [schema:publisher] property which SHOULD be an organization but may be a String
    value.
 
@@ -1207,9 +1203,10 @@ vocabularies and ontologies when this is not possible.
 [samples]: ./samples
 [DataCite Schema v4.0]: https://schema.datacite.org/meta/kernel-4.0/metadata.xsd
 [BagIt profile]: https://github.com/ruebot/bagit-profiles
-[Qnames]: https://en.wikipedia.org/wiki/QName
+[CURIE]: https://www.w3.org/TR/curie/
 [schema:keyword]: https://schema.org/keyword
 [schema:about]: https://schema.org/about
+[schema:name]: https://schema.org/name
 [schema:creator]: https://schema.org/creator
 [schema:Person]: https://schema.org/Person
 [schema:identifier]: https://schema.org/identifier
@@ -1221,11 +1218,26 @@ vocabularies and ontologies when this is not possible.
 [schema:hasPart]: https://schema.org/hasPart
 [schema:funder]: https://schema.org/funder
 [schema:encodingFormat]: https://schema.org/encodingFormat
-[schema:contentSize]: https://schema.org/schema:encodingFormat
+[schema:accountablePerson]: https://schema.org/accountablePerson
+[schema:datePublished]: https://schema.org/datePublished
+[schema:license]: https://schema.org/license
+[schema:accountablePerson]: https://schema.org/accountablePerson
+[schema:contributor]: https://schema.org/contributor
+[schema:contentLocation]: https://schema.org/contentLocation
+[schema:Place]: https://schema.org/Place
+[schema:description]: https://schema.org/description
+[schema:email]: https://schema.org/email
+[schema:phone]: https://schema.org/phone
+[schema:affiliation]: https://schema.org/affiliation
+[schema:givenName]: htts://schema.org/givenName
+[schema:familyName]: https://schema.org/familyName
+[schema:publisher]: https://schema.org/publisher
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
 [DataCrate JSON-LD Context]: ./context.json
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
-[The DataCrate JSON-LD frame]: ./frame.json
+[DataCrate JSON-LD frame]: ./frame.json
 [geonames]: http://www.geonames.org
 [RDFa]: https://en.wikipedia.org/wiki/RDFa
 [schema.org]: http://schema.org
+[vivo:Project]: http://vivoweb.org/ontology/core#Project
+[vivo:Equipment]: http://vivoweb.org/ontology/core#Equipment
