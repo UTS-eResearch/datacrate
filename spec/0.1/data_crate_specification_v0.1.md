@@ -23,7 +23,7 @@ A DataCrate is a dataset a set of files contained in a single directory.
 
 *  A DataCrate has a CATALOG.html tag file in the root directory which
    describes the files and directories in the BagIt payload (/data) directory.
-   The CATALOG.html has metadata about the dataset as a whole, and may have
+   The CATALOG.html has metadata about the dataset as a whole, and MAY have
    information about individual files and directories, such as their title,
    license, authorship or other provenance information. Metadata is expressed in
    RDFa format.
@@ -113,7 +113,7 @@ markup to be copied an pasted without losing context.
 ## Core metadata standard for DataCrate: Schema.org
 
 Schema.org is the base metadata standard for DataCrate with a few additions to
-supplement there are gaps in schema.org's ability to represent needed metadata.
+supplement gaps in schema.org's ability to represent needed metadata.
 Future versions of this spec may be based on other metadata standards.
 
 Additional metadata can be drawn from any RDF vocabulary to allow open-ended
@@ -156,6 +156,7 @@ https://www.w3.org/ns/formats/vocab-data/Format.
 A [schema:Dataset] has no contactPoint property, unlike DCAT. DataCrate uses
 [schema:accountablePerson] for a contact point, similar to the concept
 "Corresponding Author" in academic publishing.
+[#7](https://github.com/UTS-eResearch/datacrate/issues/7)
 
 
 # Structure / DataCrate by example
@@ -873,7 +874,7 @@ the following *DataCrate-framed JSON-LD*.
 ### Funding and grants
 
 To associate a research project (with or without funding) to a [schema:Dataset],
-use the Contributor property to reference an item of type [vivo:Project].
+use the schema:contributor property to reference an item of type [vivo:Project].
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
@@ -921,7 +922,7 @@ use the Contributor property to reference an item of type [vivo:Project].
 
 ```
 
-Which yields this DataCrate-framed JSON-LD:
+Which yields this *DataCrate-framed JSON-LD*:
 
 ```
 "@graph": [
@@ -940,7 +941,7 @@ Which yields this DataCrate-framed JSON-LD:
 ```
 
 ### Publisher
-Use the [schema:Publisher] property, referencing a schema:Organization.
+Use the [schema:publisher] property, referencing a [schema:Organization].
 
 ### Date of publication
 Use the [schema:datePublished] property with a date in ISO 8601 date format.
