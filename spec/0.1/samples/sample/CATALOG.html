@@ -1,42 +1,69 @@
 <html>
 <head>
-<meta charset='utf-8'/>
+
+                       <link rel="stylesheet"
+                              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                              crossorigin="anonymous"/>
+
+                        <meta charset='utf-8'/>
+                        
 <style>
+
+
 table {
-    background-color: lightgray;
     width: 90%;
     text-align: left;
     vertical-align: top;
     margin-bottom: 2em;
 }
+td {
+    margin-right: 2em;
 
-body {
-    background-color: white;
+    max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis; // This is where the magic happens
 }
 
-h1 {
-    color: maroon;
+td:hover {
+    white-space: normal;
+    word-break: break-all;
 }
+
 
 div.collection {
     margin-left: +1em;
 }
 </style>
-<link rel="stylesheet" type="text/css" media="screen" href="CATALOG.css" />
-</head>
-<body><h1>Data Set</h1><ul><li><a href='#data/lots_of_little_files'>lots_of_little_files</a>
 
-</li><li><a href='#data/pics'>pics</a>
+                        </head>
+
+                        <body>
+
+
+
+                        <div class="container">
+                         <div class="jumbotron">
+                           <h2>Cite this data:</h2>Peter Sefton (2017) Sample dataset for DataCrate v0.1. University of Technology Sydney. Datacrate. http://dx.doi.org/10.1000/654321
+                         </div>
+                        <p>This catalog file describes a dataset.
+                           It uses the draft DataCrate format.</p>
+                        <h1>Sample dataset for DataCrate v0.1</h1><ul><li><a href='#data/lots_of_little_files'>Too many files</a>
+
+</li><li><a href='#data/pics'>Pictures</a>
 
 </li>
 </ul>
 
-<div><h2 >Directory: .</h2>
-<p><a href='data/.'>data/.</a></p>
-<div>Collection metadata:
-<div><div typeof='http://schema.org/Dataset' about='data/.'><table><tr>
+<div id = 'data/.'><p><a href='data/.'>data/.</a></p>
+<div><div typeof='http://schema.org/Dataset' about='data/.'><table  class='table'><tr>
   <th>Title</th>
-  <td><div  property='http://schema.org/name'>Sample dataset for DataCrate v.01</div>
+  <td><div  property='http://schema.org/name'>Sample dataset for DataCrate v0.1</div>
+</td>
+</tr>
+<tr>
+  <th>ID</th>
+  <td><div  property='http://schema.org/identifier'><a href='http://dx.doi.org/10.1000/654321'>http://dx.doi.org/10.1000/654321</a></div>
 </td>
 </tr>
 <tr>
@@ -66,12 +93,7 @@ div.collection {
 </tr>
 <tr>
   <th>RelatedLink</th>
-  <td><div><a href='#http://dx.doi.org/10.1000/654321'>Sample dataset for DataCrate v.01</a></div></td>
-</tr>
-<tr>
-  <th>ID</th>
-  <td><div  property='http://schema.org/identifier'><a href='http://dx.doi.org/10.1000/654321'>http://dx.doi.org/10.1000/654321</a></div>
-</td>
+  <td><div><a href='#http://dx.doi.org/10.1000/123456'>This is an example publication with a dodgy DOI</a></div></td>
 </tr>
 <tr>
   <th>Publisher</th>
@@ -88,19 +110,52 @@ div.collection {
   <td><div  property='http://schema.org/keywords'>Dogs, Fences, The Gully</div>
 </td>
 </tr>
-</table><h2>Files</h2>
-<table>
 <tr>
+  <th>TemporalCoverage</th>
+  <td><div  property='http://schema.org/temporalCoverage'>2017</div>
+</td>
+</tr>
+</table><div style='margin-left: 5%'><h2>Files</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>Filename</th>
     <th>Description</th>
     <th>Creator</th>
     <th>License</th>
+</tr></thead>
+
+<tbody class='table-striped'><tr href='./data/./DATACITE.xml' id='data/./DATACITE.xml'  typeof='CreativeWork schema:MediaObject' property='schema:hasPart'>    <td> <a  href='./DATACITE.xml'>DATACITE.xml</a>
+<details><table class='table'><tr>
+    <th>File format</th>
+    <td property='http://schema.org/encodingFormat'>INTERLIS Transfer File</td>
+</tr>
+<tr>
+    <th>Format version</th>
+    <td property='http://schema.org/encodingFormat'><a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/1011'>External</a><span property='http://schema.org/fileFormat' href='http://www.nationalarchives.gov.uk/PRONOM/fmt/1011' /></td>
+</tr>
+<tr>
+    <th>Mime</th>
+    <td property='http://schema.org/fileFormat'>None</td>
+</tr>
+<tr>
+    <th>Size</th>
+    <td property='http://schema.org/contentSize'>782</td>
+</tr>
+</table></details>
+</td>
+    <td><div  property='http://schema.org/description'></div>
+</td>
+    <td><div  property='http://schema.org/creator'></div>
+</td>
+    <td><div  property='http://schema.org/license'></div>
+</td>
+
 </tr>
 
-</table>
-<h2>People</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>People</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Name</th>
     <th>Given Name</th>
@@ -109,9 +164,9 @@ div.collection {
     <th>Phone</th>
     <th>Affiliation</th>
     <th>TYPE:</th>
-</tr>
+</tr></thead>
 
-<tr href='http://orcid.org/0000-0002-3545-944X' id='http://orcid.org/0000-0002-3545-944X'  typeof='CreativeWork http://schema.org/Person' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://orcid.org/0000-0002-3545-944X'>http://orcid.org/0000-0002-3545-944X</a></div>
+<tbody class='table-striped'><tr href='http://orcid.org/0000-0002-3545-944X' id='http://orcid.org/0000-0002-3545-944X'  typeof='CreativeWork http://schema.org/Person' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://orcid.org/0000-0002-3545-944X'>http://orcid.org/0000-0002-3545-944X</a></div>
 </td>
     <td><div  property='http://schema.org/name'>Peter Sefton</div>
 </td>
@@ -127,18 +182,18 @@ div.collection {
 
 </tr>
 
-</table>
-<h2>Equipment</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Equipment</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Name</th>
     <th>Description</th>
     <th>URL</th>
     <th>TYPE</th>
-</tr>
+</tr></thead>
 
-<tr href='#EPL1' id='EPL1'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'>EPL1</div>
+<tbody class='table-striped'><tr href='#EPL1' id='EPL1'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'>EPL1</div>
 </td>
     <td><div  property='http://schema.org/name'>EPL1 Camera</div>
 </td>
@@ -149,10 +204,10 @@ div.collection {
 
 </tr>
 
-</table>
-<h2>Places</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Places</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>URL</th>
     <th>Name</th>
@@ -160,9 +215,9 @@ div.collection {
     <th>TYPE:</th>
     <th>Address</th>
     <th>geo&gt;GeoCoordinates</th>
-</tr>
+</tr></thead>
 
-<tr href='http://www.geonames.org/8152662/catalina-park.html' id='http://www.geonames.org/8152662/catalina-park.html'  typeof='CreativeWork http://schema.org/Place' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://www.geonames.org/8152662/catalina-park.html'>http://www.geonames.org/8152662/catalina-park.html</a></div>
+<tbody class='table-striped'><tr href='http://www.geonames.org/8152662/catalina-park.html' id='http://www.geonames.org/8152662/catalina-park.html'  typeof='CreativeWork http://schema.org/Place' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://www.geonames.org/8152662/catalina-park.html'>http://www.geonames.org/8152662/catalina-park.html</a></div>
 </td>
     <td><div><a href='https://en.wikipedia.org/wiki/Catalina_Park'>https://en.wikipedia.org/wiki/Catalina_Park</a></div></td>
     <td><div  property='http://schema.org/name'>Catalina Park</div>
@@ -176,19 +231,19 @@ div.collection {
 
 </tr>
 
-</table>
-<h2>Organisations</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Organisations</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Name</th>
     <th>Description</th>
     <th>Address</th>
     <th>REL:Location</th>
     <th>TYPE:</th>
-</tr>
+</tr></thead>
 
-<tr href='http://uts.edu.au' id='http://uts.edu.au'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://uts.edu.au'>http://uts.edu.au</a></div>
+<tbody class='table-striped'><tr href='http://uts.edu.au' id='http://uts.edu.au'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://uts.edu.au'>http://uts.edu.au</a></div>
 </td>
     <td><div  property='http://schema.org/name'>University of Technology Sydney</div>
 </td>
@@ -200,16 +255,16 @@ div.collection {
 
 </tr>
 
-</table>
-<h2>Licenses</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Licenses</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Name</th>
     <th>Description</th>
-</tr>
+</tr></thead>
 
-<tr href='https://creativecommons.org/licenses/by-nc-sa/3.0/au/' id='https://creativecommons.org/licenses/by-nc-sa/3.0/au/'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='https://creativecommons.org/licenses/by-nc-sa/3.0/au/'>https://creativecommons.org/licenses/by-nc-sa/3.0/au/</a></div>
+<tbody class='table-striped'><tr href='https://creativecommons.org/licenses/by-nc-sa/3.0/au/' id='https://creativecommons.org/licenses/by-nc-sa/3.0/au/'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='https://creativecommons.org/licenses/by-nc-sa/3.0/au/'>https://creativecommons.org/licenses/by-nc-sa/3.0/au/</a></div>
 </td>
     <td><div  property='http://schema.org/name'>CC BY-NC-SA 3.0 AU</div>
 </td>
@@ -231,17 +286,17 @@ No additional restrictions — You may not apply legal terms or technological me
 
 </tr>
 
-</table>
-<h2>Publications</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Publications</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Title</th>
     <th>DC:CREATOR</th>
     <th>TYPE:</th>
-</tr>
+</tr></thead>
 
-<tr href='#10.1000/123456' id='10.1000/123456'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'>10.1000/123456</div>
+<tbody class='table-striped'><tr href='http://dx.doi.org/10.1000/123456' id='http://dx.doi.org/10.1000/123456'  typeof='CreativeWork' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://dx.doi.org/10.1000/123456'>http://dx.doi.org/10.1000/123456</a></div>
 </td>
     <td><div  property='http://schema.org/name'>This is an example publication with a dodgy DOI</div>
 </td>
@@ -250,18 +305,18 @@ No additional restrictions — You may not apply legal terms or technological me
 
 </tr>
 
-</table>
-<h2>Projects</h2>
-<table>
-<tr>
+</tbody></table></div>
+<div style='margin-left: 5%'><h2>Projects</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>ID</th>
     <th>Name</th>
     <th>Description</th>
     <th>Funder</th>
     <th>TYPE:</th>
-</tr>
+</tr></thead>
 
-<tr href='https://github.com/UTS-eResearch/datacrate' id='https://github.com/UTS-eResearch/datacrate'  typeof='CreativeWork http://vivoweb.org/ontology/core#Project' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='https://github.com/UTS-eResearch/datacrate'>https://github.com/UTS-eResearch/datacrate</a></div>
+<tbody class='table-striped'><tr href='https://github.com/UTS-eResearch/datacrate' id='https://github.com/UTS-eResearch/datacrate'  typeof='CreativeWork http://vivoweb.org/ontology/core#Project' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='https://github.com/UTS-eResearch/datacrate'>https://github.com/UTS-eResearch/datacrate</a></div>
 </td>
     <td><div  property='http://schema.org/name'>DataCrate</div>
 </td>
@@ -273,16 +328,15 @@ No additional restrictions — You may not apply legal terms or technological me
 
 </tr>
 
-</table>
-</div>
+</tbody></table></div>
+
 </div>
 </div>
 </div>
 
-<div><h2 >Directory: lots_of_little_files</h2>
+<div id = 'data/lots_of_little_files'><h2 >Directory: Too many files</h2>
 <p><a href='data/lots_of_little_files'>data/lots_of_little_files</a></p>
-<div>Collection metadata:
-<div><div typeof='http://schema.org/CreativeWork' about='data/lots_of_little_files'><table><span rev='schema:hasPart' href='data/.'></span><tr>
+<div><div typeof='http://schema.org/CreativeWork' about='data/lots_of_little_files'><table  class='table'><span rev='schema:hasPart' href='data/.'></span><tr>
   <th>Title</th>
   <td><div  property='http://schema.org/name'>Too many files</div>
 </td>
@@ -292,15 +346,14 @@ No additional restrictions — You may not apply legal terms or technological me
   <td><div  property='http://schema.org/description'>This directory contains many small files, that we’re not going to describe in detail.</div>
 </td>
 </tr>
-</table></div>
+</table>
 </div>
 </div>
 </div>
 
-<div><h2 >Directory: pics</h2>
+<div id = 'data/pics'><h2 >Directory: Pictures</h2>
 <p><a href='data/pics'>data/pics</a></p>
-<div>Collection metadata:
-<div><div typeof='http://schema.org/CreativeWork' about='data/pics'><table><span rev='schema:hasPart' href='data/.'></span><tr>
+<div><div typeof='http://schema.org/CreativeWork' about='data/pics'><table  class='table'><span rev='schema:hasPart' href='data/.'></span><tr>
   <th>Title</th>
   <td><div  property='http://schema.org/name'>Pictures</div>
 </td>
@@ -314,18 +367,18 @@ No additional restrictions — You may not apply legal terms or technological me
   <th>ContactPoint</th>
   <td><div></div></td>
 </tr>
-</table><h2>Files</h2>
-<table>
-<tr>
+</table><div style='margin-left: 5%'><h2>Files</h2>
+<table class='table table-striped'>
+<thead class='thead-inverse'><tr>
     <th>Filename</th>
     <th>Description</th>
     <th>Creator</th>
     <th>License</th>
     <th>Relation:Contributor</th>
-</tr>
+</tr></thead>
 
-<tr href='./data/pics/19093074_10155469333581584_5707039334816454031_o.jpg' id='data/pics/19093074_10155469333581584_5707039334816454031_o.jpg'  typeof='CreativeWork schema:MediaObject' property='schema:hasPart'>    <td> <a  href='pics/19093074_10155469333581584_5707039334816454031_o.jpg'>19093074_10155469333581584_5707039334816454031_o.jpg</a>
-<details><table><tr>
+<tbody class='table-striped'><tr href='./data/pics/19093074_10155469333581584_5707039334816454031_o.jpg' id='data/pics/19093074_10155469333581584_5707039334816454031_o.jpg'  typeof='CreativeWork schema:MediaObject' property='schema:hasPart'>    <td> <a  href='pics/19093074_10155469333581584_5707039334816454031_o.jpg'>19093074_10155469333581584_5707039334816454031_o.jpg</a>
+<details><table class='table'><tr>
     <th>File format</th>
     <td property='http://schema.org/encodingFormat'>JPEG File Interchange Format</td>
 </tr>
@@ -353,8 +406,8 @@ No additional restrictions — You may not apply legal terms or technological me
 
 </tr>
 
-</table>
-</div>
+</tbody></table></div>
+
 </div>
 </div>
 </div>
@@ -362,8 +415,9 @@ No additional restrictions — You may not apply legal terms or technological me
 
 
              <p>This file was made with
-                         Calcyte on 2017.07.27 at 08:46:30 P.
-                
+                         Calcyte on 2017.10.10 at 04:57:24 P.
+
               </p>
+              </div>
               </body>
 </html>

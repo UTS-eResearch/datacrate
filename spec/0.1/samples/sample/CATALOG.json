@@ -1,154 +1,153 @@
 {
   "@context": {
-    "Publisher": "schema:publisher",
-    "DatePublished": "schema:datePublished",
-    "HasPart": "schema:hasPart",
-    "ID": "schema:identifier",
-    "Identifier": "schema:identifier",
-    "Description": "schema:description",
-    "License": "schema:license",
-    "Title": "schema:name",
-    "Name": "schema:name",
     "Creator": "schema:creator",
-    "Contributor": "schema:contributor",
-    "Related": "schema:relatedLink",
-    "Translator": "schema:translator",
-    "Funder": "schema:Funder",
-    "Person": "schema:Person",
-    "Contact": "schema:accountablePerson",
-    "Email": "schema:email",
-    "Phone": "schema:telephone",
-    "Dataset": "schema:Dataset",
-    "fileFormat": "schema:fileFormat",
-    "encodingFormat": "schema:encodingFormat",
-    "TemporalCoverage": "schema:TemporalCoverage",
-    "SpatialCoverage": "schema:spatialCoverage",
-    "ContentLocation": "schema:contentLocation",
-    "Keywords": "schema:keywords",
-    "Subject": "schema:subject",
-    "GivenName": "schema:givenName",
-    "FamilyName": "schema:familyName",
-    "HasFile": "pcdm:hasFile",
-    "fileOf": "pcdm:fileOf",
-    "MemberOf": "pcdm:memberOf",
-    "HasMember": "pcdm:hasMember",
-    "Object": "pcdm:Object",
-    "Collection": "pcdm:Collection",
-    "Place": "schema:Place",
     "Organization": "schema:Organization",
-    "Affiliation": "schema:affiliation",
-    "GeoShape": "schema:GeoShape",
-    "GeoCoordinates": "schema:GeoCoordinates",
+    "GivenName": "schema:givenName",
     "geo": "schema:geo",
-    "Latitude": "schema:latitude",
-    "Longitude": "schema:longitude",
-    "Box": "schema:Box",
-    "CreativeWork": "schema:CreativeWork",
-    "MediaObject": "schema:MediaObject",
-    "Project": "vivo:Project",
-    "Equipment": "vivo:Equipment",
-    "ScholarlyArticle": "schema:ScholarlyArticle",
-    "SoftwareApplication": "schema:SoftwareApplication",
-    "Format": "formats:Format",
-    "formats": "http://www.w3.org/ns/formats/",
-    "Interviewee": "bibo:interviewee",
-    "bibo": "http://purl.org/ontology/bibo/",
-    "cc": "http://creativecommons.org/ns#",
-    "dct": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
+    "Contributor": "schema:contributor",
     "pcdm": "http://pcdm.org/models#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfa": "http://www.w3.org/ns/rdfa#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "CreativeWork": "schema:CreativeWork",
+    "Place": "schema:Place",
+    "Copyright": "schema:copyrightHolder",
     "schema": "http://schema.org/",
-    "vivo": "http://vivoweb.org/ontology/core#"
+    "DatePublished": "schema:datePublished",
+    "dct": "http://purl.org/dc/terms/",
+    "ContentLocation": "schema:contentLocation",
+    "Email": "schema:email",
+    "TranslationOf": "schema:translationOf",
+    "encodingFormat": "schema:encodingFormat",
+    "TemporalCoverage": "schema:temporalCoverage",
+    "Funder": "schema:Funder",
+    "HasPart": "schema:hasPart",
+    "Title": "schema:name",
+    "Dataset": "schema:Dataset",
+    "Publisher": "schema:publisher",
+    "Person": "schema:Person",
+    "ScholarlyArticle": "schema:ScholarlyArticle",
+    "MediaObject": "schema:MediaObject",
+    "Translator": "schema:translator",
+    "License": "schema:license",
+    "SpatialCoverage": "schema:spatialCoverage",
+    "Phone": "schema:telephone",
+    "Format": "formats:Format",
+    "Related": "schema:relatedLink",
+    "Object": "pcdm:Object",
+    "Subject": "schema:subject",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "fileOf": "pcdm:fileOf",
+    "fileFormat": "schema:fileFormat",
+    "GeoCoordinates": "schema:GeoCoordinates",
+    "Name": "schema:name",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "vivo": "http://vivoweb.org/ontology/core#",
+    "FamilyName": "schema:familyName",
+    "Contact": "schema:accountablePerson",
+    "Longitude": "schema:longitude",
+    "Collection": "pcdm:Collection",
+    "Equipment": "vivo:Equipment",
+    "HasFile": "pcdm:hasFile",
+    "ID": "schema:identifier",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "formats": "http://www.w3.org/ns/formats/",
+    "Box": "schema:Box",
+    "cc": "http://creativecommons.org/ns#",
+    "Interviewee": "bibo:interviewee",
+    "rdfa": "http://www.w3.org/ns/rdfa#",
+    "Latitude": "schema:latitude",
+    "Description": "schema:description",
+    "Affiliation": "schema:affiliation",
+    "Keywords": "schema:keywords",
+    "HasMember": "pcdm:hasMember",
+    "bibo": "http://purl.org/ontology/bibo/",
+    "GeoShape": "schema:GeoShape",
+    "Project": "vivo:Project",
+    "MemberOf": "pcdm:memberOf",
+    "SoftwareApplication": "schema:SoftwareApplication"
   },
   "@graph": [
     {
-      "@id": "data",
-      "@type": "Dataset",
-      "Contact": {
+      "Creator": {
+        "ID": "http://orcid.org/0000-0002-3545-944X",
         "@id": "http://orcid.org/0000-0002-3545-944X",
-        "@type": "Person",
+        "Name": "Peter Sefton",
+        "Email": "pt@ptsefton.com",
+        "Phone": "",
         "Affiliation": {
+          "ID": "http://uts.edu.au",
           "@id": "http://uts.edu.au",
           "Description": "",
-          "ID": "http://uts.edu.au",
           "Name": "University of Technology Sydney"
         },
-        "Email": "pt@ptsefton.com",
-        "ID": "http://orcid.org/0000-0002-3545-944X",
-        "Name": "Peter Sefton",
-        "Phone": ""
+        "@type": "Person"
       },
-      "ContentLocation": {
-        "@id": "http://www.geonames.org/8152662/catalina-park.html",
-        "@type": "Place",
-        "Description": "Catalina Park is a disused motor racing venue, located at Katoomba, in the Blue Mountains, New South Wales, Australia, and is recognised as an Aboriginal Place due to the long association of the local Gundungarra and Darug clans to the area.",
-        "geo": {
-          "@id": "_:b0",
-          "@type": "GeoCoordinates",
-          "Latitude": "-33.7152",
-          "Longitude": "150.30119"
-        },
-        "ID": "http://www.geonames.org/8152662/catalina-park.html",
-        "Name": "Catalina Park"
-      },
-      "Contributor": {
-        "@id": "https://github.com/UTS-eResearch/datacrate",
-        "@type": "Project",
-        "Funder": "UTS",
-        "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
-        "ID": "https://github.com/UTS-eResearch/datacrate",
-        "Name": "DataCrate"
-      },
-      "Description": "This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.",
+      "Related": null,
+      "ID": "http://dx.doi.org/10.1000/654321",
       "HasPart": [
         {
-          "@id": "#EPL1",
-          "Description": "Olympus camera with Panasonic 20mm lens",
-          "ID": "EPL1",
-          "Name": "EPL1 Camera"
+          "ID": "https://github.com/UTS-eResearch/datacrate",
+          "Funder": "UTS",
+          "Name": "DataCrate",
+          "@id": "https://github.com/UTS-eResearch/datacrate",
+          "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
+          "@type": "Project"
         },
         {
+          "ID": "http://www.geonames.org/8152662/catalina-park.html",
+          "Name": "Catalina Park",
+          "geo": {
+            "Latitude": "-33.7152",
+            "@id": "_:b0",
+            "Longitude": "150.30119",
+            "@type": "GeoCoordinates"
+          },
+          "@id": "http://www.geonames.org/8152662/catalina-park.html",
+          "Description": "Catalina Park is a disused motor racing venue, located at Katoomba, in the Blue Mountains, New South Wales, Australia, and is recognised as an Aboriginal Place due to the long association of the local Gundungarra and Darug clans to the area.",
+          "@type": "Place"
+        },
+        {
+          "Name": "Too many files",
           "@id": "data/lots_of_little_files",
-          "@type": "CreativeWork",
           "Description": "This directory contains many small files, that we\u2019re not going to describe in detail.",
-          "Name": "Too many files"
+          "@type": "CreativeWork"
+        },
+        {
+          "ID": "http://dx.doi.org/10.1000/123456",
+          "@id": "http://dx.doi.org/10.1000/123456",
+          "Name": "This is an example publication with a dodgy DOI"
+        },
+        {
+          "ID": "EPL1",
+          "@id": "#EPL1",
+          "Description": "Olympus camera with Panasonic 20mm lens",
+          "Name": "EPL1 Camera"
         },
         {
           "@id": "http://orcid.org/0000-0002-3545-944X"
         },
         {
-          "@id": "http://uts.edu.au"
+          "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         {
+          "Name": "Pictures",
           "@id": "data/pics",
-          "@type": "CreativeWork",
           "Description": "This directory contains the images for the research project",
           "HasPart": {
-            "@id": "data/pics/19093074_10155469333581584_5707039334816454031_o.jpg",
-            "@type": "MediaObject",
-            "schema:contentSize": "132765",
             "Creator": {
-              "@id": "http://orcid.org/0000-0002-3545-944X",
-              "@type": "Person",
-              "Affiliation": {
-                "@id": "http://uts.edu.au",
-                "Description": "",
-                "ID": "http://uts.edu.au",
-                "Name": "University of Technology Sydney"
-              },
-              "Email": "pt@ptsefton.com",
               "ID": "http://orcid.org/0000-0002-3545-944X",
+              "@id": "http://orcid.org/0000-0002-3545-944X",
               "Name": "Peter Sefton",
-              "Phone": ""
+              "Email": "pt@ptsefton.com",
+              "Phone": "",
+              "Affiliation": {
+                "@id": "http://uts.edu.au"
+              },
+              "@type": "Person"
             },
-            "Description": "This is a photo of a dog, and a fence.",
             "encodingFormat": [
-              "JPEG File Interchange Format",
-              "JFIF 1.02"
+              "JFIF 1.02",
+              "JPEG File Interchange Format"
             ],
+            "schema:contentSize": "132765",
             "fileFormat": [
               {
                 "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/44"
@@ -156,45 +155,85 @@
               "image/jpeg"
             ],
             "License": {
-              "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
-            }
+              "ID": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
+              "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
+              "Description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\n\nYou are free to:\n\nShare \u2014 copy and redistribute the material in any medium or format\nAdapt \u2014 remix, transform, and build upon the material\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\nUnder the following terms:\n\nAttribution \u2014 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNon-Commercial \u2014 You may not use the material for commercial purposes.\nShareAlike \u2014 If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions \u2014 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
+              "Name": "CC BY-NC-SA 3.0 AU"
+            },
+            "@id": "data/pics/19093074_10155469333581584_5707039334816454031_o.jpg",
+            "Description": "This is a photo of a dog, and a fence.",
+            "@type": "MediaObject"
           },
-          "Name": "Pictures"
+          "@type": "CreativeWork"
         },
         {
-          "@id": "#10.1000/123456",
-          "ID": "10.1000/123456",
-          "Name": "This is an example publication with a dodgy DOI"
+          "Creator": "",
+          "encodingFormat": [
+            "External",
+            "INTERLIS Transfer File"
+          ],
+          "schema:contentSize": "782",
+          "fileFormat": [
+            {
+              "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/1011"
+            },
+            "None"
+          ],
+          "License": "",
+          "@id": "data/DATACITE.xml",
+          "Description": "",
+          "@type": "MediaObject"
         },
         {
-          "@id": "https://github.com/UTS-eResearch/datacrate",
-          "@type": "Project",
-          "Funder": "UTS",
-          "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
-          "ID": "https://github.com/UTS-eResearch/datacrate",
-          "Name": "DataCrate"
-        },
-        {
-          "@id": "http://www.geonames.org/8152662/catalina-park.html",
-          "@type": "Place",
-          "Description": "Catalina Park is a disused motor racing venue, located at Katoomba, in the Blue Mountains, New South Wales, Australia, and is recognised as an Aboriginal Place due to the long association of the local Gundungarra and Darug clans to the area.",
-          "geo": {
-            "@id": "_:b0",
-            "@type": "GeoCoordinates",
-            "Latitude": "-33.7152",
-            "Longitude": "150.30119"
-          },
-          "ID": "http://www.geonames.org/8152662/catalina-park.html",
-          "Name": "Catalina Park"
-        },
-        {
-          "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
-          "Description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\n\nYou are free to:\n\nShare \u2014 copy and redistribute the material in any medium or format\nAdapt \u2014 remix, transform, and build upon the material\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\nUnder the following terms:\n\nAttribution \u2014 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNon-Commercial \u2014 You may not use the material for commercial purposes.\nShareAlike \u2014 If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions \u2014 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
-          "ID": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
-          "Name": "CC BY-NC-SA 3.0 AU"
+          "@id": "http://uts.edu.au"
         }
       ],
-      "Related": null
+      "@id": "data",
+      "Name": "Sample dataset for DataCrate v0.1",
+      "Contributor": {
+        "ID": "https://github.com/UTS-eResearch/datacrate",
+        "Funder": "UTS",
+        "Name": "DataCrate",
+        "@id": "https://github.com/UTS-eResearch/datacrate",
+        "Description": "The DataCrate project is to write the spec for DataCrate, of which this is an example.",
+        "@type": "Project"
+      },
+      "Description": "This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.",
+      "@type": "Dataset",
+      "Contact": {
+        "ID": "http://orcid.org/0000-0002-3545-944X",
+        "@id": "http://orcid.org/0000-0002-3545-944X",
+        "Name": "Peter Sefton",
+        "Email": "pt@ptsefton.com",
+        "Phone": "",
+        "Affiliation": {
+          "ID": "http://uts.edu.au",
+          "@id": "http://uts.edu.au",
+          "Description": "",
+          "Name": "University of Technology Sydney"
+        },
+        "@type": "Person"
+      },
+      "DatePublished": "2017-07-26 00:00:00",
+      "Publisher": {
+        "ID": "http://uts.edu.au",
+        "@id": "http://uts.edu.au",
+        "Description": "",
+        "Name": "University of Technology Sydney"
+      },
+      "ContentLocation": {
+        "ID": "http://www.geonames.org/8152662/catalina-park.html",
+        "Name": "Catalina Park",
+        "geo": {
+          "Latitude": "-33.7152",
+          "@id": "_:b0",
+          "Longitude": "150.30119",
+          "@type": "GeoCoordinates"
+        },
+        "@id": "http://www.geonames.org/8152662/catalina-park.html",
+        "Description": "Catalina Park is a disused motor racing venue, located at Katoomba, in the Blue Mountains, New South Wales, Australia, and is recognised as an Aboriginal Place due to the long association of the local Gundungarra and Darug clans to the area.",
+        "@type": "Place"
+      }
     }
   ]
 }
