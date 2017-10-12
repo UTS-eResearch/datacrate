@@ -1,5 +1,4 @@
-7fff79931ae2dd7e4c0b2eb0e5e225e2  data/CATALOG_sample.xlsx
-bb5ad5030c4d0985fca9d1664dedeab3  data/~$CATALOG_sample.xlsx
+bf4b7fb7b5096a78e66b8ebe70d12f09  data/CATALOG_sample.xlsx
 7ce5dd7355de3c7bd20bbca62b6b773c  data/lots_of_little_files/CATALOG_lots_of_little_files.xlsx
 cfcd208495d565ef66e7dff9f98764da  data/lots_of_little_files/file_0.txt
 c4ca4238a0b923820dcc509a6f75849b  data/lots_of_little_files/file_1.txt
@@ -201,6 +200,5 @@ f4b9ec30ad9f68f89b29639786cb62ef  data/lots_of_little_files/file_94.txt
 e2ef524fbf3d9fe611d5a8e90fefdc9c  data/lots_of_little_files/file_97.txt
 ed3d2c21991e3bef5e069713af9fa6ca  data/lots_of_little_files/file_98.txt
 ac627ab1ccbdb62ec96e702f07f6425b  data/lots_of_little_files/file_99.txt
-bb5ad5030c4d0985fca9d1664dedeab3  data/lots_of_little_files/~$CATALOG_lots_of_little_files.xlsx
 29c6b391180df181b54fe8651045db16  data/pics/19093074_10155469333581584_5707039334816454031_o.jpg
-8f865399305738915407ce4e45d12ace  data/pics/CATALOG_pics.xlsx
+5d53d75947d2e51a8d767885645d28e9  data/pics/CATALOG_pics.xlsx
