@@ -117,6 +117,12 @@
       "Description": "This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.",
       "HasPart": [
         {
+          "@id": "#data/./DATACITE.xml",
+          "Creator": "",
+          "Description": "",
+          "License": ""
+        },
+        {
           "@id": "https://github.com/UTS-eResearch/datacrate",
           "@type": "Project",
           "Funder": "UTS",
@@ -125,16 +131,59 @@
           "Name": "DataCrate"
         },
         {
+          "@id": "#EPL1",
+          "Description": "Olympus camera with Panasonic 20mm lens",
+          "ID": "EPL1",
+          "Name": "EPL1 Camera"
+        },
+        {
+          "@id": "http://orcid.org/0000-0002-3545-944X"
+        },
+        {
+          "@id": "data/pics",
+          "@type": "CreativeWork",
+          "Description": "This directory contains the images for the research project",
+          "HasPart": {
+            "@id": "#data/pics/19093074_10155469333581584_5707039334816454031_o.jpg",
+            "ContentSize": "132765",
+            "Creator": {
+              "@id": "http://orcid.org/0000-0002-3545-944X",
+              "@type": "Person",
+              "Affiliation": {
+                "@id": "http://uts.edu.au"
+              },
+              "Email": "pt@ptsefton.com",
+              "ID": "http://orcid.org/0000-0002-3545-944X",
+              "Name": "Peter Sefton",
+              "Phone": ""
+            },
+            "Description": "This is a photo of a dog, and a fence.",
+            "encodingFormat": [
+              "JPEG File Interchange Format",
+              "JFIF 1.02"
+            ],
+            "fileFormat": [
+              {
+                "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/44"
+              },
+              "image/jpeg"
+            ],
+            "License": {
+              "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+            }
+          },
+          "Name": "Pictures"
+        },
+        {
+          "@id": "http://dx.doi.org/10.1000/123456",
+          "ID": "http://dx.doi.org/10.1000/123456",
+          "Name": "This is an example publication with a dodgy DOI"
+        },
+        {
           "@id": "data/lots_of_little_files",
           "@type": "CreativeWork",
           "Description": "This directory contains many small files, that we\u2019re not going to describe in detail.",
           "Name": "Too many files"
-        },
-        {
-          "@id": "#data/./DATACITE.xml",
-          "Creator": "",
-          "Description": "",
-          "License": ""
         },
         {
           "@id": "http://www.geonames.org/8152662/catalina-park.html",
@@ -150,62 +199,13 @@
           "Name": "Catalina Park"
         },
         {
-          "@id": "http://uts.edu.au"
-        },
-        {
-          "@id": "data/pics",
-          "@type": "CreativeWork",
-          "Description": "This directory contains the images for the research project",
-          "HasPart": {
-            "@id": "#data/pics/19093074_10155469333581584_5707039334816454031_o.jpg",
-            "ContentSize": "132765",
-            "Creator": {
-              "@id": "http://orcid.org/0000-0002-3545-944X"
-            },
-            "Description": "This is a photo of a dog, and a fence.",
-            "encodingFormat": [
-              "JPEG File Interchange Format",
-              "JFIF 1.02"
-            ],
-            "fileFormat": [
-              "image/jpeg",
-              {
-                "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/44"
-              }
-            ],
-            "License": {
-              "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
-            }
-          },
-          "Name": "Pictures"
-        },
-        {
-          "@id": "http://orcid.org/0000-0002-3545-944X",
-          "@type": "Person",
-          "Affiliation": {
-            "@id": "http://uts.edu.au"
-          },
-          "Email": "pt@ptsefton.com",
-          "ID": "http://orcid.org/0000-0002-3545-944X",
-          "Name": "Peter Sefton",
-          "Phone": ""
-        },
-        {
-          "@id": "#EPL1",
-          "Description": "Olympus camera with Panasonic 20mm lens",
-          "ID": "EPL1",
-          "Name": "EPL1 Camera"
-        },
-        {
-          "@id": "http://dx.doi.org/10.1000/123456",
-          "ID": "http://dx.doi.org/10.1000/123456",
-          "Name": "This is an example publication with a dodgy DOI"
-        },
-        {
           "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
           "Description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\n\nYou are free to:\n\nShare \u2014 copy and redistribute the material in any medium or format\nAdapt \u2014 remix, transform, and build upon the material\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\nUnder the following terms:\n\nAttribution \u2014 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNon-Commercial \u2014 You may not use the material for commercial purposes.\nShareAlike \u2014 If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions \u2014 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
           "ID": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
           "Name": "CC BY-NC-SA 3.0 AU"
+        },
+        {
+          "@id": "http://uts.edu.au"
         }
       ],
       "ID": "http://dx.doi.org/10.5281/zenodo.1009240",
