@@ -17,16 +17,16 @@ with additional metadata in a human-and-machine-readable format based on
 
 A DataCrate is a dataset a set of files contained in a single directory.
 
-*  A DataCrate is a [BagIt] bag conforming to the [DataCrate BagIt profile],   
+*  A DataCrate is a [BagIt] bag conforming to the [DataCrate BagIt profile].   
 
-*  A DataCrate has a CATALOG.html tag file in the root directory which
+*  A DataCrate has a CATALOG.html tag file in the base directory fo the bag which
    describes the files and directories in the BagIt payload (/data) directory.
    The CATALOG.html has metadata about the dataset as a whole, and MAY have
    information about individual files and directories, such as their title,
    license, authorship or other provenance information. Metadata is expressed in
    RDFa format.
 
-*  A DataCrate has a CATALOG.json file in the root bag directory with a JSON-LD
+*  A DataCrate has a CATALOG.json file in the base directory with a JSON-LD
    version of the RDFa Metadata in CATALOG.HTML, the metadata in this file is
    organized in a particular way via a JSON-LD frame, for easy processing. The
    metadata is redundant with the metadata in CATALOG.html.
@@ -44,7 +44,7 @@ The DataCrate specification aims to ensure that packages are as self documenting
 as possible. The CATALOG.html files are in [RDFa] format with (mostly)
 schema.org based metadata and thus are readable by both humans and machines.
 Anyone with a Data Crate zip file can unzip it, notice that there is a
-CATALOG.html file in the root directory, open that in a web browser, and find
+CATALOG.html file in the base directory, open that in a web browser, and find
 out about the data; where it came from, who to contact about it, if it has a
 homepage and so on, which is more usable than simple zipping or bagging of
 files or using XML-based metadata formats.
@@ -69,7 +69,7 @@ and research software applications.
 
 ## Examples
 
-There are examples of DataCrates in the [samples] directory. 
+There are examples of DataCrates in the [samples] directory.
 
 ## Defintions
 
@@ -82,7 +82,7 @@ or any other *thing* that forms part of the metadata for a DataCrate.
 *or a MetaData Entity* such as a person, organization, project or grant.
 
 *DataCrate RDFa Document*: a complete description of a dataset in HTML + RDFa
-format, which is to be saved in the bag root directory as CATALOG.html.
+format, which is to be saved in the bag base directory as CATALOG.html.
 
 *DataCrate-Framed JSON-LD*: a JSON-LD document containing DataCrate metadata,
 which has been framed using [JSON-LD Framing 1.1] and the [DataCrate JSON-LD frame].
@@ -205,130 +205,12 @@ following process.
 
 * Parse CATALOG.html using an RDFa parser.
 * Use the [DataCrate JSON-LD frame] to organize CATALOG.json document as a tree with the
-  DataSet at the root.
+  DataSet at the root of the JSON structure.
 
 
 ```
 {
   "@context": {
-    "Publisher": "schema:publisher",
-    "DatePublished": "schema:datePublished",
-    "HasPart": "schema:hasPart",
-    "ID": "schema:identifier",
-    "Identifier": "schema:identifier",
-    "Description": "schema:description",
-    "License": "schema:license",
-    "Title": "schema:name",
-    "Name": "schema:name",
-    "Creator": "schema:creator",
-    "Contributor": "schema:contributor",
-    "Related": "schema:relatedLink",
-    "Translator": "schema:translator",
-    "Funder": "schema:Funder",
-    "Person": "schema:Person",
-    "Contact": "schema:accountablePerson",
-    "Email": "schema:email",
-    "Phone": "schema:telephone",
-    "Dataset": "schema:Dataset",
-    "fileFormat": "schema:fileFormat",
-    "encodingFormat": "schema:encodingFormat",
-    "TemporalCoverage": "schema:TemporalCoverage",
-    "SpatialCoverage": "schema:spatialCoverage",
-    "ContentLocation": "schema:contentLocation",
-    "Keywords": "schema:keywords",
-    "Subject": "schema:subject",
-    "GivenName": "schema:givenName",
-    "FamilyName": "schema:familyName",
-    "HasFile": "pcdm:hasFile",
-    "fileOf": "pcdm:fileOf",
-    "MemberOf": "pcdm:memberOf",
-    "HasMember": "pcdm:hasMember",
-    "Object": "pcdm:Object",
-    "Collection": "pcdm:Collection",
-    "Place": "schema:Place",
-    "Organization": "schema:Organization",
-    "Affiliation": "schema:affiliation",
-    "GeoShape": "schema:GeoShape",
-    "GeoCoordinates": "schema:GeoCoordinates",
-    "geo": "schema:geo",
-    "Latitude": "schema:latitude",
-    "Longitude": "schema:longitude",
-    "Box": "schema:Box",
-    "CreativeWork": "schema:CreativeWork",
-    "MediaObject": "schema:MediaObject",
-    "Project": "vivo:Project",
-    "Equipment": "vivo:Equipment",
-    "ScholarlyArticle": "schema:ScholarlyArticle",
-    "SoftwareApplication": "schema:SoftwareApplication",
-    "Format": "formats:Format",
-    "formats": "http://www.w3.org/ns/formats/",
-    "Interviewee": "bibo:interviewee",
-    "bibo": "http://purl.org/ontology/bibo/",
-    "cc": "http://creativecommons.org/ns#",
-    "dct": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "pcdm": "http://pcdm.org/models#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfa": "http://www.w3.org/ns/rdfa#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "http://schema.org/",
-    "vivo": "http://vivoweb.org/ontology/core#"
-  },
-  "@type": "Dataset",
-  "@explicit": true,
-  "ContentLocation": {
-    "@type": "Place",
-    "@embed": "@always"
-  },
-  "Contact": {
-    "@type": "Person",
-    "@embed": "@always"
-  },
-  "Contributor": {
-    "@type": "Project",
-    "@embed": "@always"
-  },
-  "Description": {
-    "@id": "CATALOG.html",
-    "@embed": "@always"
-  },
-  "Related": {
-    "@type": "ScholarlyArticle",
-    "@embed": "@always"
-  },
-  "HasPart": {
-    "@embed": "@last"
-  }
-}
-```
-
-## About CATALOG.html
-
-CATALOG.html MUST contain a DataCrate Microdocument which wraps metadata about
-the whole data set. The div element is used in this example, but any HTML5
-element MAY be used as long as it is expressed in well-formed HTML. This applies
-to all the examples below.
-
-```
-    <div typeof='http://schema.org/Dataset'
-          about='data'>
-       <span property='http://schema.org/description'>
-           This dataset is ... . It is useful for ...
-       </span>
-       ...    
-    </div>
-```
-
-The above example corresponds to to the following *DataCrate-framed JSON-LD*.
-The [DataCrate JSON-LD Context] MUST be included inline as below (ordering is
-not meaningful) and MAY contain additional items.
-
-From now on the @context will be omitted from examples.
-
-```
-{
-  "@context":
-  {
       "Publisher": "schema:publisher",
       "DatePublished": "schema:datePublished",
       "HasPart": "schema:hasPart",
@@ -393,8 +275,124 @@ From now on the @context will be omitted from examples.
       "schema": "http://schema.org/",
       "vivo": "http://vivoweb.org/ontology/core#"
 
+  },
+  "@type": "Dataset",
+  "@explicit": true,
+  "ContentLocation": {
+    "@type": "Place",
+    "@embed": "@always"
+  },
+  "Contact": {
+    "@type": "Person",
+    "@embed": "@always"
+  },
+  "Contributor": {
+    "@type": "Project",
+    "@embed": "@always"
+  },
+  "Description": {
+    "@id": "CATALOG.html",
+    "@embed": "@always"
+  },
+  "Related": {
+    "@type": "ScholarlyArticle",
+    "@embed": "@always"
+  },
+  "HasPart": {
+    "@embed": "@last"
   }
-,
+}
+```
+
+## About CATALOG.html
+
+CATALOG.html MUST contain a DataCrate Microdocument which wraps metadata about
+the whole data set. The div element is used in this example, but any HTML5
+element MAY be used as long as it is expressed in well-formed HTML. This applies
+to all the examples below.
+
+```
+    <div typeof='http://schema.org/Dataset'
+          about='data'>
+       <span property='http://schema.org/description'>
+           This dataset is ... . It is useful for ...
+       </span>
+       ...    
+    </div>
+```
+
+The above example corresponds to to the following *DataCrate-framed JSON-LD*.
+The [DataCrate JSON-LD Context] MUST be included inline as below (ordering is
+not meaningful) and MAY contain additional items.
+
+From now on the @context will be omitted from examples.
+
+```
+{
+  "@context":
+  {
+      "ContentSize": "schema:contentSize",
+      "Copyright": "schema:copyrightHolder",
+      "Publisher": "schema:publisher",
+      "DatePublished": "schema:datePublished",
+      "HasPart": "schema:hasPart",
+      "ID": "schema:identifier",
+      "Description":  "schema:description",
+      "License": "schema:license",
+      "Title": "schema:name",
+      "Name": "schema:name",
+      "Creator": "schema:creator",
+      "Contributor": "schema:contributor",
+      "Related": "schema:relatedLink",
+      "SameAs":  "schema:sameAs",
+      "BasedOn": "schema:isBasedOn",
+      "Translator": "schema:translator",
+      "TranslationOf": "schema:translationOf",
+      "Funder": "schema:funder",
+      "Person": "schema:Person",
+      "Contact": "schema:accountablePerson",
+      "Email": "schema:email",
+      "Phone": "schema:telephone",
+      "Dataset": "schema:Dataset",
+      "fileFormat": "schema:fileFormat",
+      "encodingFormat": "schema:encodingFormat",
+      "TemporalCoverage": "schema:temporalCoverage",
+      "SpatialCoverage": "schema:spatialCoverage",
+      "ContentLocation": "schema:contentLocation",
+      "Keywords": "schema:keywords",
+      "Subject": "schema:subject",
+      "GivenName":  "schema:givenName",
+      "FamilyName": "schema:familyName",
+      "Place": "schema:Place",
+      "Organization": "schema:Organization",
+      "Affiliation": "schema:affiliation",
+      "Funder": "schema:Funder",
+      "GeoShape": "schema:GeoShape",
+      "GeoCoordinates": "schema:GeoCoordinates",
+      "geo": "schema:geo",
+      "Latitude": "schema:latitude",
+      "Longitude": "schema:longitude",
+      "Box": "schema:Box",
+      "CreativeWork": "schema:CreativeWork",
+      "MediaObject": "schema:MediaObject",
+      "Project": "vivo:Project",
+      "Equipment": "vivo:Equipment",
+      "ScholarlyArticle": "schema:ScholarlyArticle",
+      "SoftwareApplication": "schema:SoftwareApplication",
+      "Format": "formats:Format",
+      "formats": "http://www.w3.org/ns/formats/",
+      "Interviewee": "bibo:interviewee",
+      "bibo": "http://purl.org/ontology/bibo/",
+      "cc": "http://creativecommons.org/ns#",
+      "dct": "http://purl.org/dc/terms/",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfa": "http://www.w3.org/ns/rdfa#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/",
+      "vivo": "http://vivoweb.org/ontology/core#"
+
+  },
   "@graph": [
     {
       "@id": "data",
@@ -417,7 +415,7 @@ Other *Data Entities* and *MetaData Entities* MUST be nested inside the
 DataCrate Dataset. All nested *DataCrate Microdocuments* have at least one type:
 [schema:CreativeWork].
 
-If there are files in the root of the payload (/data) directory each file MAY be
+If there are files in the payload (/data) directory each file MAY be
 described by a *DataCrate microdocument* related to the
 schema:Dataset with a property [schema:hasPart].
 
@@ -448,7 +446,7 @@ the schema:Dataset. For example a table of files MAY begin with:
 An entry describing a file as a table row would then begin:
 
 ```
-<tr href='./data/wcc08_archencentre2_traj.txt'  
+<tr resource='./data/wcc08_archencentre2_traj.txt'  
     typeof='http://schema.org/Creativework'
     property='http:schema.org/hasPart'>
 ```
@@ -457,7 +455,7 @@ The first cell could be:
 
 ```
 <td>
-  <div property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' href='./wcr03_victoria_arch_3cm_shape.ply'>
+  <div property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' resource='./wcr03_victoria_arch_3cm_shape.ply'>
    <a  href='./data/wcr03_victoria_arch_3cm_shape.ply'>wcr03_victoria_arch_3cm_shape.ply</a>
    <details> ... </details>
   </div>
@@ -477,7 +475,7 @@ file MAY be included, for example:
     <tr>
         <th>Format version</th>
         <td property='http://schema.org/encodingFormat'
-             href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'>
+             resource='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'>
            <a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831'>PLY</a>
         </td>
     </tr>
@@ -523,12 +521,12 @@ The corresponding JSON-LD for the above would be:
 ```
 
 The ID data/datawcc08_archencentre2_traj.txt is a path URI, which references a file
-relative to CATALOG.html in the root directory.
+relative to CATALOG.html in the base directory of the bag.
 
 An example of a file description follows:
 
 ```
-<tr href='./wcr03_victoria_arch_3cm_shape.ply'  typeof='http://schmea.org/MediaObject' property='pdcm:hasMember'><td><span property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' href='./wcr03_victoria_arch_3cm_shape.ply'>
+<tr resource='./wcr03_victoria_arch_3cm_shape.ply'  typeof='http://schmea.org/MediaObject' property='pdcm:hasMember'><td><span property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' resource='./wcr03_victoria_arch_3cm_shape.ply'>
  <a  href='./wcr03_victoria_arch_3cm_shape.ply'>wcr03_victoria_arch_3cm_shape.ply</a>
 <details><table><tr>
     <th>File format</th>
@@ -536,7 +534,7 @@ An example of a file description follows:
 </tr>
 <tr>
     <th>Format version</th>
-    <td property='schema:encodingFormat' href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'><a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831'>PLY</a></td>
+    <td property='schema:encodingFormat' resource='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'><a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831'>PLY</a></td>
 </tr>
 <tr>
     <th>Mime</th>
@@ -588,7 +586,7 @@ directory 'data/lots_of_little_files'.
   <h2 >Directory: lots_of_little_files</h2>
   <div>Collection metadata:
     <div typeof='http://schema.org/CreativeWork' about='data/lots_of_little_files'>
-      <table><span rev='schema:hasPart' href='data/.'></span><tr>
+      <table><span rev='schema:hasPart' resource='data/.'></span><tr>
         <th>Title</th>
         <td>
             <div  property='http://schema.org/name'>Too many files</div>
@@ -613,7 +611,7 @@ directory 'data/lots_of_little_files'.
 
 ## How to represent various kinds of metadata
 
-### Contacts, Creators and contributors: People
+### Contacts, creators and contributors: people
 
 A core principle of Linked data is to use URIs as to identify things such as
 people.  The following is the minimum recommended way of representing a
@@ -652,7 +650,7 @@ An organization SHOULD be represented by a *DataCrate Microdocument* with two ty
     <th>TYPE:</th>
 </tr>
 
-<tr href='http://uts.edu.au'
+<tr resource='http://uts.edu.au'
     id='http://uts.edu.au'  
     typeof='schema:CreativeWork http://schema.org/Organization'
     property='schema:hasPart'>    
@@ -665,7 +663,7 @@ An organization SHOULD be represented by a *DataCrate Microdocument* with two ty
 
 </tr>
 
-<tr href='http://shu.edu.cn/' id='http://shu.edu.cn/'  typeof='schema:CreativeWork http://schema.org/Organization' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://shu.edu.cn/'>http://shu.edu.cn/</a></div>
+<tr resource='http://shu.edu.cn/' id='http://shu.edu.cn/'  typeof='schema:CreativeWork http://schema.org/Organization' property='schema:hasPart'>    <td><div  property='http://schema.org/identifier'><a href='http://shu.edu.cn/'>http://shu.edu.cn/</a></div>
 </td>
     <td><div  property='http://schema.org/name'>Shanghai University</div>
 </td>
@@ -703,7 +701,7 @@ in an example above with the [schema:creator] property.
     <th>TYPE:</th>
 </tr>
 
-<tr href='http://dx.doi.org/10.1109/TCYB.2014.2386282'
+<tr resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
     id='http://dx.doi.org/10.1109/TCYB.2014.2386282'  
     typeof='schema:CreativeWork http://schema.org/ScholarlyArticle'
     property='schema:hasPart'>    
@@ -715,22 +713,22 @@ in an example above with the [schema:creator] property.
        <div  property='http://schema.org/name'>Topic Model for Graph Mining</div>
     </td>
     <td>
-       <div href='http://orcid.org/0000-0002-8367-6908'
+       <div resource='http://orcid.org/0000-0002-8367-6908'
              property='http://schema.org/creator'>
           <a href='#http://orcid.org/0000-0002-8367-6908'>J. Xuan</a>
        </div>
 
-       <div href='http://orcid.org/0000-0003-0690-4732'
+       <div resource='http://orcid.org/0000-0003-0690-4732'
             property='http://schema.org/creator'>
            <a href='#http://orcid.org/0000-0003-0690-4732'>J. Lu</a>
        </div>
 
-       <div href='http://orcid.org/0000-0003-3960-0583'
+       <div resource='http://orcid.org/0000-0003-3960-0583'
             property='http://schema.org/creator'>
          <a href='#http://orcid.org/0000-0003-3960-0583'>G. Zhang</a>
         </div>
 
-      <div href='https://orcid.org/0000-0002-6953-3986'
+      <div resource='https://orcid.org/0000-0002-6953-3986'
            property='http://schema.org/creator'>
          <a href='#https://orcid.org/0000-0002-6953-3986'>X. Luo</a>
       </div>
@@ -758,7 +756,7 @@ publication http://dx.doi.org/10.1109/TCYB.2014.2386282 could look like:
 ...
 <tr>
   <th>Related</th>
-  <td><div href='http://dx.doi.org/10.1109/TCYB.2014.2386282'
+  <td><div resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
            property='http://schema.org/relatedLink'>
            <a href='#http://dx.doi.org/10.1109/TCYB.2014.2386282'>
               Topic Model for Graph Mining
@@ -873,7 +871,7 @@ with type [vivo:Project].
 ...
 <tr>
   <th>Contributor</th>
-  <td><div href='https://github.com/UTS-eResearch/datacrate'
+  <td><div resource='https://github.com/UTS-eResearch/datacrate'
            property='http://schema.org/contributor'>
            <a href='#https://github.com/UTS-eResearch/datacrate'>
            DataCrate</a></div>
@@ -890,7 +888,7 @@ with type [vivo:Project].
     <th>Funder</th>
 </tr>
 
-<tr href='https://github.com/UTS-eResearch/datacrate'
+<tr resource='https://github.com/UTS-eResearch/datacrate'
     id='https://github.com/UTS-eResearch/datacrate'  
     typeof='schema:CreativeWork' property='schema:hasPart'>    
     <td>
@@ -938,7 +936,7 @@ Use the [schema:publisher] property, referencing a [schema:Organization].
 ### Date of publication
 Use the [schema:datePublished] property with a date in ISO 8601 date format.
 
-### Licensing and Copyright
+### Licensing and copyright
 
 If a *Data Entity* has a license the entity SHOULD have a [schema:license]
 property with a value of a DataCrate Microdocument that describes the license,
@@ -949,14 +947,14 @@ To note the copyright holder of a Data Item, use the [schema:copyrightHolder]
 
 For example this table row describes a file:
 ```
-<tr href="./Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx" id="Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx" typeof="CreativeWork schema:MediaObject" property="schema:hasPart">    <td> <a href="Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx">AAA_Template_ECV_self_audit.docx</a>
+<tr resource="./Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx" id="Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx" typeof="CreativeWork schema:MediaObject" property="schema:hasPart">    <td> <a href="Data%20Management%20Planning/Final_Self_Audit/Templates_for_self_audit/AAA_Template_ECV_self_audit.docx">AAA_Template_ECV_self_audit.docx</a>
 <details><table><tbody><tr>
     <th>File format</th>
     <td property="http://schema.org/encodingFormat">Microsoft Office Open XML</td>
 </tr>
 <tr>
     <th>Format version</th>
-    <td property="http://schema.org/encodingFormat"><a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/189">Microsoft Office Open XML</a><span property="http://schema.org/fileFormat" href="http://www.nationalarchives.gov.uk/PRONOM/fmt/189"></span></td>
+    <td property="http://schema.org/encodingFormat"><a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/189">Microsoft Office Open XML</a><span property="http://schema.org/fileFormat" resource="http://www.nationalarchives.gov.uk/PRONOM/fmt/189"></span></td>
 </tr>
 <tr>
     <th>Mime</th>
@@ -970,11 +968,11 @@ For example this table row describes a file:
 </td>
     <td><div property="http://schema.org/description">Empty template for data audit for ECV project</div>
 </td>
-    <td><div href="http://orcid.org/0000-0002-0068-716X" property="http://schema.org/creator"><a href="#http://orcid.org/0000-0002-0068-716X">Cameron Neylon</a></div>
+    <td><div resource="http://orcid.org/0000-0002-0068-716X" property="http://schema.org/creator"><a href="#http://orcid.org/0000-0002-0068-716X">Cameron Neylon</a></div>
 </td>
-    <td><div href="https://creativecommons.org/licenses/by/4.0/" property="http://schema.org/license"><a href="#https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
+    <td><div resource="https://creativecommons.org/licenses/by/4.0/" property="http://schema.org/license"><a href="#https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
 </td>
-    <td><div href="#IDRC" property="http://schema.org/copyrightHolder"><a href="#IDRC">International Development Research Center</a></div>
+    <td><div resource="#IDRC" property="http://schema.org/copyrightHolder"><a href="#IDRC">International Development Research Center</a></div>
 </td>
 
 </tr>
@@ -984,7 +982,7 @@ The [schema:copyrightHolder] property references a DataCrate Microdocument of
 type [schema:creativeWork], which describes the license.
 
 ```
-<tr href="https://creativecommons.org/licenses/by/4.0/" id="https://creativecommons.org/licenses/by/4.0/" typeof="http://schema.org/CreativeWork" property="schema:hasPart">    <td><div property="http://schema.org/name">CC BY 4.0</div>
+<tr resource="https://creativecommons.org/licenses/by/4.0/" id="https://creativecommons.org/licenses/by/4.0/" typeof="http://schema.org/CreativeWork" property="schema:hasPart">    <td><div property="http://schema.org/name">CC BY 4.0</div>
 </td>
     <td><div property="http://schema.org/description">Attribution 4.0 International (CC BY 4.0)
 
@@ -1010,7 +1008,7 @@ This Data Item has a copyright holder which is different from its creator. There
 Microdocument of type [schema:Organization] describing the copyright holder.
 
 ```
-<tr href="#IDRC" id="IDRC" typeof="http://schema.org/CreativeWork http://schema.org/Organization" property="schema:hasPart">    <td><div property="http://schema.org/identifier">IDRC</div>
+<tr resource="#IDRC" id="IDRC" typeof="http://schema.org/CreativeWork http://schema.org/Organization" property="schema:hasPart">    <td><div property="http://schema.org/identifier">IDRC</div>
 </td>
     <td><div property="http://schema.org/name">International Development Research Center</div>
 </td>
@@ -1036,13 +1034,13 @@ shows how to associate equipment with an ID of
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
 ...
-<tr href='data/wcc02_arch_traj2.ply'
+<tr resource='data/wcc02_arch_traj2.ply'
     id='data/wcc02_arch_traj2.ply'  
     typeof='schema:CreativeWork schema:MediaObject'
     property='schema:hasPart'>    
 ...
 <td>
-<div href='https://confluence.csiro.au/display/ASL/Hovermap' property='http://schema.org/contributor'><a href='#https://confluence.csiro.au/display/ASL/Hovermap'>bentwing</a></div>
+<div resource='https://confluence.csiro.au/display/ASL/Hovermap' property='http://schema.org/contributor'><a href='#https://confluence.csiro.au/display/ASL/Hovermap'>bentwing</a></div>
 </tr>
 
 ...
@@ -1056,7 +1054,7 @@ shows how to associate equipment with an ID of
     <th>TYPE:</th>
 </tr>
 
-<tr href='https://confluence.csiro.au/display/ASL/Hovermap'
+<tr resource='https://confluence.csiro.au/display/ASL/Hovermap'
     id='https://confluence.csiro.au/display/ASL/Hovermap'  
     typeof='schema:CreativeWork http://vivoweb.org/ontology/core#Equipment'
     property='schema:hasPart'>    
@@ -1128,7 +1126,7 @@ This example shows how to define a place, using a [geonames] ID:
     <th>geo&gt;GeoCoordinates</th>
 </tr>
 
-<tr href='http://www.geonames.org/8152662/catalina-park.html'
+<tr resource='http://www.geonames.org/8152662/catalina-park.html'
     id='http://www.geonames.org/8152662/catalina-park.html'  
     typeof='http://schema.org:CreativeWork http://schema.org/Place'
     property='schema:hasPart'>    
@@ -1167,7 +1165,7 @@ This example shows how to define a place, using a [geonames] ID:
 ...
 <tr>
   <th>ContentLocation</th>
-  <td><div href='http://www.geonames.org/8152662/catalina-park.html' property='http://schema.org/contentLocation'><a href='#http://www.geonames.org/8152662/catalina-park.html'>Catalina Park</a></div>
+  <td><div resource='http://www.geonames.org/8152662/catalina-park.html' property='http://schema.org/contentLocation'><a href='#http://www.geonames.org/8152662/catalina-park.html'>Catalina Park</a></div>
 </td>
 </tr>
 
@@ -1182,7 +1180,7 @@ mandate the use of a subset of these.
 To describe the time period which a DataCrate Data Entity is *about*, use [schema:temporalCoverage].
 
 
-### Subjects & Keywords
+### Subjects & keywords
 
 Subject properties (equivalent to a Dublin Core Subject) on DataCrate
 MicroDocuments  MUST use the [schema:about] property.
@@ -1212,8 +1210,8 @@ A DataCrate MUST have a root [schema:Dataset] with ID of "data" with:
 BagIt metadata SHOULD be included in bag-info.txt where it is available as
 follows in the Dataset object at the root of '@graph' in *DataCrate-framed JSON-LD*.
 
-The following metadata SHOULD be extracted from the *DataCrate-framed JSON* at
-the root of the dataset.
+The following metadata SHOULD be extracted from the *DataCrate-framed JSON* in
+the base directory of the bag.
 
 ```
 Source-Organization:   ['Publisher']['Name']
@@ -1250,8 +1248,8 @@ identify all entities wherever possible.
 ## Datacite citations
 
 If there is sufficient metadata in a DataCrate, it SHOULD contain a DataCite
-citation, datacite.xml in the root of the bag directory compliant with the [DataCite Schema
-v4.0].
+citation, datacite.xml in the base directory of the bag, compliant with the
+[DataCite Schema v4.0].
 
 To generate DataCite.xml a DataCrate MUST have the following at the  schema:Dataset
 level:

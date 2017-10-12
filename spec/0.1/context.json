@@ -1,4 +1,5 @@
 {
+    "contentSize": "schema:ContentSize",
     "Publisher": "schema:publisher",
     "DatePublished": "schema:datePublished",
     "HasPart": "schema:hasPart",
