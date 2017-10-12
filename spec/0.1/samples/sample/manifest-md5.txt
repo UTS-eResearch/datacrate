@@ -1,4 +1,4 @@
-fdcbf9e7942337195d43b356566896e6  data/CATALOG_sample.xlsx
+101585ad153363b872e86182fcc6cc24  data/CATALOG_sample.xlsx
 7ce5dd7355de3c7bd20bbca62b6b773c  data/lots_of_little_files/CATALOG_lots_of_little_files.xlsx
 cfcd208495d565ef66e7dff9f98764da  data/lots_of_little_files/file_0.txt
 c4ca4238a0b923820dcc509a6f75849b  data/lots_of_little_files/file_1.txt
@@ -201,4 +201,4 @@ e2ef524fbf3d9fe611d5a8e90fefdc9c  data/lots_of_little_files/file_97.txt
 ed3d2c21991e3bef5e069713af9fa6ca  data/lots_of_little_files/file_98.txt
 ac627ab1ccbdb62ec96e702f07f6425b  data/lots_of_little_files/file_99.txt
 29c6b391180df181b54fe8651045db16  data/pics/19093074_10155469333581584_5707039334816454031_o.jpg
-c05fface49c5fc3777a01c3246aeeaa6  data/pics/CATALOG_pics.xlsx
+bf8a092edfb9521b0cfa66d45e0c0bbf  data/pics/CATALOG_pics.xlsx
