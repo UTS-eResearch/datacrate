@@ -3,7 +3,9 @@
 This is a draft work in progress, any and all details of this spec could change,
 including its very existence.
 
-The samples and examples here have not been exhaustively verified, so there may
+Please give feeback via github issues or a pull request.
+
+The samples and examples here have not been exhaustively verified, and there may
 be some inconsistencies between this spec and the associated files, such as the
 [DataCrate JSON-LD Context]. Where there *is* a discrepancy, the file is the
 authority rather than the spec.
@@ -207,15 +209,16 @@ following process.
 * Use the [DataCrate JSON-LD frame] to organize CATALOG.json document as a tree with the
   DataSet at the root of the JSON structure.
 
-
+The frame is:
 ```
 {
   "@context": {
+      "ContentSize": "schema:contentSize",
+      "Copyright": "schema:copyrightHolder",
       "Publisher": "schema:publisher",
       "DatePublished": "schema:datePublished",
       "HasPart": "schema:hasPart",
       "ID": "schema:identifier",
-      "Identifier": "schema:identifier",
       "Description":  "schema:description",
       "License": "schema:license",
       "Title": "schema:name",
@@ -223,7 +226,10 @@ following process.
       "Creator": "schema:creator",
       "Contributor": "schema:contributor",
       "Related": "schema:relatedLink",
+      "SameAs":  "schema:sameAs",
+      "BasedOn": "schema:isBasedOn",
       "Translator": "schema:translator",
+      "TranslationOf": "schema:translationOf",
       "Funder": "schema:funder",
       "Person": "schema:Person",
       "Contact": "schema:accountablePerson",
@@ -232,19 +238,13 @@ following process.
       "Dataset": "schema:Dataset",
       "fileFormat": "schema:fileFormat",
       "encodingFormat": "schema:encodingFormat",
-      "TemporalCoverage": "schema:TemporalCoverage",
+      "TemporalCoverage": "schema:temporalCoverage",
       "SpatialCoverage": "schema:spatialCoverage",
       "ContentLocation": "schema:contentLocation",
       "Keywords": "schema:keywords",
-      "Subject": "schema:about",
+      "Subject": "schema:subject",
       "GivenName":  "schema:givenName",
       "FamilyName": "schema:familyName",
-      "HasFile": "pcdm:hasFile",
-      "fileOf": "pcdm:fileOf",
-      "MemberOf": "pcdm:memberOf",
-      "HasMember": "pcdm:hasMember",
-      "Object": "pcdm:Object",
-      "Collection": "pcdm:Collection",
       "Place": "schema:Place",
       "Organization": "schema:Organization",
       "Affiliation": "schema:affiliation",
@@ -268,7 +268,6 @@ following process.
       "cc": "http://creativecommons.org/ns#",
       "dct": "http://purl.org/dc/terms/",
       "foaf": "http://xmlns.com/foaf/0.1/",
-      "pcdm": "http://pcdm.org/models#",
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdfa": "http://www.w3.org/ns/rdfa#",
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -306,7 +305,7 @@ following process.
 
 ## About CATALOG.html
 
-CATALOG.html MUST contain a DataCrate Microdocument which wraps metadata about
+CATALOG.html MUST contain a *DataCrate Microdocument* which wraps metadata about
 the whole data set. The div element is used in this example, but any HTML5
 element MAY be used as long as it is expressed in well-formed HTML. This applies
 to all the examples below.
@@ -325,7 +324,7 @@ The above example corresponds to to the following *DataCrate-framed JSON-LD*.
 The [DataCrate JSON-LD Context] MUST be included inline as below (ordering is
 not meaningful) and MAY contain additional items.
 
-From now on the @context will be omitted from examples.
+(From now on the @context will be omitted from examples.)
 
 ```
 {
@@ -526,28 +525,40 @@ relative to CATALOG.html in the base directory of the bag.
 An example of a file description follows:
 
 ```
-<tr resource='./wcr03_victoria_arch_3cm_shape.ply'  typeof='http://schmea.org/MediaObject' property='pdcm:hasMember'><td><span property='http://schema.org/hasPart' typeof='http://schema.org/hasPart' resource='./wcr03_victoria_arch_3cm_shape.ply'>
- <a  href='./wcr03_victoria_arch_3cm_shape.ply'>wcr03_victoria_arch_3cm_shape.ply</a>
-<details><table><tr>
-    <th>File format</th>
-    <td property='schema:encodingFormat'>Polygon File Format</td>
-</tr>
-<tr>
-    <th>Format version</th>
-    <td property='schema:encodingFormat' resource='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'><a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831'>PLY</a></td>
-</tr>
-<tr>
-    <th>Mime</th>
-    <td property='schema:fileFormat'>None</td>
-</tr>
-<tr>
-    <th>Size</th>
-    <td property='schema:contentSize'>591006805</td>
-</tr>
-</table></details>
+<tr resource='./wcr03_victoria_arch_3cm_shape.ply'  
+    typeof='http://schmea.org/MediaObject'
+    property='pdcm:hasMember'>
+    <td>
+    <span property='http://schema.org/hasPart'
+          typeof='http://schema.org/hasPart'
+          resource='./wcr03_victoria_arch_3cm_shape.ply'>
+      <a  href='./wcr03_victoria_arch_3cm_shape.ply'>
+        wcr03_victoria_arch_3cm_shape.ply
+      </a>
+    <details><table>
+      <tr>
+      <th>File format</th>
+      <td property='schema:encodingFormat'>Polygon File Format</td>
+      </tr>
+      <tr>
+          <th>Format version</th>
+          <td property='schema:encodingFormat' resource='http://www.nationalarchives.gov.uk/PRONOM/fmt/831' typeof='http://www.w3.org/ns/formats/Format'><a href='http://www.nationalarchives.gov.uk/PRONOM/fmt/831'>PLY</a></td>
+        </tr>
+        <tr>
+            <th>Mime</th>
+            <td property='schema:fileFormat'>None</td>
+        </tr>
+        <tr>
+            <th>Size</th>
+            <td property='schema:contentSize'>591006805</td>
+        </tr>
+    </table></details>
 </span>
 </td>
-<td><div  property='http://schema.org/description'>Victoria Arch point file data, sampled to 3cm resolution.</div>
+<td>
+   <div  property='http://schema.org/description'>
+       Victoria Arch point file data, sampled to 3cm resolution.
+   </div>
 </td>
 
 ...
@@ -629,7 +640,7 @@ This uses an ORCID, to unambiguously identify an author. However, it does not
 provide very much information about the author in the DataCrate. CATALOG.html
 SHOULD have a *DataCrate Microdocument* for each person who contributed to the
 data or publications mentioned in the crate, and for the the organizations
-concerned. Creators SHOULD be represented by DataCrate Microdocuments with two
+concerned. Creators SHOULD be represented by *DataCrate Microdocuments* with two
 types: [schema:CreativeWork] and [schema:Person].
 
 
@@ -703,7 +714,7 @@ in an example above with the [schema:creator] property.
 
 <tr resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
     id='http://dx.doi.org/10.1109/TCYB.2014.2386282'  
-    typeof='schema:CreativeWork http://schema.org/ScholarlyArticle'
+    typeof='http://schema.org/CreativeWork http://schema.org/ScholarlyArticle'
     property='schema:hasPart'>    
   <td>
   <div  property='http://schema.org/identifier'>
@@ -756,8 +767,9 @@ publication http://dx.doi.org/10.1109/TCYB.2014.2386282 could look like:
 ...
 <tr>
   <th>Related</th>
-  <td><div resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
-           property='http://schema.org/relatedLink'>
+  <td>
+    <div resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
+         property='http://schema.org/relatedLink'>
            <a href='#http://dx.doi.org/10.1109/TCYB.2014.2386282'>
               Topic Model for Graph Mining
            </a>
@@ -941,7 +953,8 @@ Use the [schema:datePublished] property with a date in ISO 8601 date format.
 If a *Data Entity* has a license the entity SHOULD have a [schema:license]
 property with a value of a DataCrate Microdocument that describes the license,
 the ID of the license should be its URL (eg a Creative Commons License URL). If
-this is not possible a URL MAY be used as the value.
+this is not possible a URL MAY be used as the value instead of a *DataCrate
+Microdocument*.
 
 To note the copyright holder of a Data Item, use the [schema:copyrightHolder]
 
@@ -1004,8 +1017,9 @@ No additional restrictions — You may not apply legal terms or technological me
 </tr>
 ```
 
-This Data Item has a copyright holder which is different from its creator. There is a reference to a DataCrate
-Microdocument of type [schema:Organization] describing the copyright holder.
+This Data Item has a copyright holder which is different from its creator. There
+is a reference to a DataCrate Microdocument of type [schema:Organization]
+describing the copyright holder.
 
 ```
 <tr resource="#IDRC" id="IDRC" typeof="http://schema.org/CreativeWork http://schema.org/Organization" property="schema:hasPart">    <td><div property="http://schema.org/identifier">IDRC</div>
@@ -1105,7 +1119,7 @@ This results in the following DataCrate-Framed JSON-LD:
 ### Places
 
 To associate a *Data Entity* with a MetaData Entity representing a *geographical
-location or region* the DataCrate Microdocument describing the entity SHOUD have
+location or region* the DataCrate Microdocument describing the entity SHOULD have
 a property of [schema:contentLocation] with a value of a DataCrate Microdocument
 of type  [schema:Place].
 
