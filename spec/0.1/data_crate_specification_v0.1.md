@@ -141,10 +141,9 @@ This specification has guidelines for ways to represent:
 
 One crucial *MetaData Entity* is a research project. Schema.org has no class for
 a project, although it does have a [schema:funder] property. DataCrate
-represents a research project using a *DataCrate Microdocument* as a
-[schema:Organization] using an entity with at least two types,
-[schema:Organization] AND [vivo:Project],  to represent a research project,
-which MAY have a [schema:funder] property or properties.
+represents a research project using a *DataCrate Microdocument* with at least
+two types, [schema:Organization] AND [vivo:Project], which in turn MAY have a
+[schema:funder] property or properties.
 
 Likewise, schema.org does not have a way to represent research equipment so
 DataCrate uses the [vivo:Equipment] class.
@@ -421,9 +420,9 @@ schema:Dataset with a property [schema:hasPart].
 NOTE: As per the BagIt standard, every file in the payload directory MUST be in
 the BagIt Manifest.  Describing every file in the payload directory is possible
 with DataCrate, but is not mandatory.  For use-cases where it is important to
-describe all files, future versions of this specification MAY allow for profiles
-- using which it will be possible to specify constraints such as "every file
-must have a [schema:description]".
+describe all files, future versions of this specification MAY allow for
+profiles, using which it will be possible to specify constraints such as "every
+file must have a [schema:description]".
 
 A table row is a convenient way to represent a *DataCrate microdocument* for a
 *Data Entity* in HTML. In the context of the markup above this adds a part to
@@ -1327,3 +1326,4 @@ vocabularies and ontologies when this is not possible.
 [schema.org]: http://schema.org
 [vivo:Project]: http://vivoweb.org/ontology/core#Project
 [vivo:Equipment]: http://vivoweb.org/ontology/core#Equipment
+[DCAT]: https://www.w3.org/TR/vocab-dcat/
