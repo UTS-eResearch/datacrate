@@ -19,7 +19,7 @@ A DataCrate is a dataset a set of files contained in a single directory.
 
 *  A DataCrate is a [BagIt] bag conforming to the [DataCrate BagIt profile].   
 
-*  A DataCrate has a CATALOG.html tag file in the base directory fo the bag which
+*  A DataCrate has a CATALOG.html tag file in the base directory for the bag which
    describes the files and directories in the BagIt payload (/data) directory.
    The CATALOG.html has metadata about the dataset as a whole, and MAY have
    information about individual files and directories, such as their title,
