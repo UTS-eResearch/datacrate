@@ -8,6 +8,8 @@ packaging file-based *research data* for re-use and distribution. (Archiving and
 preservation are not *immediate* concerns but we want to work with those
 communities of practice ASAP).
 
+The current draft version is [0.1](./spec/0.1/data_crate_specification_v0.1.md)
+
 Peter Sefton and Peter Bugeia developed a way of bundling data from the [HIEv]
 repository for deposit in the university Research Data Repository and for re-use
 by researchers. This work was [presented at eResearch Australasia in
@@ -32,16 +34,15 @@ In this context, packaging data means:
 *  Being able to distribute a data set via a single file (using Zip, TAR or a
    disc image format as appropriate) and/or via a URL with integrity checks
 
-* Host a data set on a web server with appropriate access controls in a way that
-  allows people to inspect the data set by reading summary metadata, at the same
-  time making the metadata available as part of the semantic web
+*  Host a data set on a web server with appropriate access controls in a way that
+  allows people to inspect the data set via an HTML page containing summary metadata, at the same
+  time making the metadata available as part of the semantic web for use by machines to build indexes or otherwise consume metadata.
  
 
-Other goals are:
+The goals are:
 
--  Embedding human and machine readable metadata in the package: To maximise the
-utility of the data for other researchers (including researchers’ ‘future
-selves’)
+-  To maximise the utility of the data for researchers (including researchers’ ‘future
+selves’). Given that a researcher has found a DataCrate package they should be able to tell what it *is*, *how the data may be used* and what all the files contain.
 
 *  To enable discovery of the data by exposing metadata as widely as possible
 (respecting access rights)
@@ -54,9 +55,6 @@ complexity is allowable, but complexity of implementation will add cost so there
 needs to be a cost-benefit analysis. Cost of consumption of data also costs, so
 we will try to minimise that in the design.
 
-## Principles
-
-TODO: Copy principles from existing design docs
 
 ## FAQ
 
@@ -77,7 +75,7 @@ a research data package before sending it off into the wold.
 for all the fields we wanted. DCAT also uses a terms from a wide range of
 vocabularies, making it more complicated to use than Schema.org.
 
- It is RDF based, though. There is an effort to
+It is RDF based, though. There is an effort to
 extend DCAT but it will take some time to complete.
 
 [Research Object Bundles] are very close in spirit to Data Crates, and there is
@@ -85,26 +83,21 @@ even an attempt to map them on to BagIt. However, RO metadata is very focussed
 on highly nuanced distinctions between different kinds of creators of research
 data, without addressing a lot of the who-what-where type metadata.
 
-[VIVO]: TODO
+"The [VIVO] ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions." - it is a designed for discovering information about researchers. It does not cover all the metadata one might want about research outputs, but we have drawn on it for 
 
 #### Non-RDF-based formats
 
-[Datacite] has a lot of metadata that is useful for Data Crates, but it is
-oriented towards publications, and thus only usful for some metadata and for
-data sets that are actually published formally.
+[Datacite] has a lot of metadata that is useful for Data Crates, because it is but it is
+oriented towards describing things at the dataset level, not the file level, and thus only useful for some metadata. It is also focussed on published data which has a DOI (although you can enter a null DOI). There was an RDF version of Datacite but it is out of date.
 
 [RIF-CS] is a standard created by the Australian National Data Service based on
 ISO 2146 for data dissemination which has good general purpose coverage but it's
 an XML based format that can't be used in a linked-data context directly.
 
-[Frictionless data] packages have a 
+[Frictionless data]  packages are attractive in that they are simple, JSON based metadata but they don't 
+interoperate with the semantic web, as there is no JSON-LD version and they do not reference mainstream approaches
+to metadata such as Dublin Core except in passing.
 
-### Why not use Frictionless data packages
-
-Frictionless data packages are attractive in that they are simple, JSON based metadata but:
-* Don't interoperate with the semantic web, as there is no JSON-LD version.
-
-* Don't have a 
 
 ### RDFa, really? Isn't that a bit out there?
 
@@ -114,7 +107,7 @@ for years.
 
 https://www.w3.org/TR/vocab-dcat/#Property:dataset_contactPoint
 
-
+[VIVO]: https://bioportal.bioontology.org/ontologies/VIVO
 [DCAT]: https://www.w3.org/TR/vocab-dcat/
 [BagIt]: https://tools.ietf.org/html/draft-kunze-bagit-14
 [Datacite]: https://schema.datacite.org/
