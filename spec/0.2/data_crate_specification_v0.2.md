@@ -602,7 +602,7 @@ TODO: Example from Cameron's dataset
 ### Equipment
 
 To specify which equipment was used to create or contribute to a *Data Entity*,
-it SHOULD have a TODO [contributor] property, with a value of a microdocument of
+it SHOULD have a TODO [contributor] property, with a value of
 type [Equipment].  This example shows how to associate equipment  with a file
 "data/wcc02_arch_traj2.ply":
 
@@ -681,9 +681,9 @@ To describe the time period which a DataCrate Data Entity is *about*, use [tempo
 ### Subjects & keywords
 
 Subject properties (equivalent to a Dublin Core Subject) on DataCrate
-MicroDocuments  MUST use the [about] property.
+MUST use the [about] property.
 
-Keyword properties MUST use [Keyword].
+Keyword properties MUST use [keyword].
 
 ## Minimum metadata summary for *Bagged DataCrates*
 
@@ -711,16 +711,16 @@ The following metadata SHOULD be extracted from the *DataCrate-flattened JSON* i
 the base directory of the bag.
 
 ```
-Source-Organization:   ['Publisher']['Name']
-Organization-Address:  ['Contact']['Publisher']['Name']
-Contact-Name: ['Contact']['Name']
-Contact-Phone: ['Contact']['Phone']
-Contact-Email:  ['Contact']['Email']
-External-Description: ['Description']
+Source-Organization:   ['publisher']['name']
+Organization-Address:  [contact]['publisher']['name']
+Contact-Name: [contact]['name']
+Contact-Phone: [contact]['phone']
+Contact-Email:  [contact]['email']
+External-Description: ['description']
 Bagging-Date:  To be entered by the software tool used to create the DataCrate
-External-Identifier:  ['ID'] (if the ID is an http or https URL)
+External-Identifier:  ['@id'] (if the ID is an http or https URL)
 Bag-Size:  To be entered by the software tool used to create the DataCrate
-Payload-Oxum:  TTo be entered by the software tool used to create the DataCrate
+Payload-Oxum:  To be entered by the software tool used to create the DataCrate
 
 Bag-Group-Identifier: N/A
 Bag-Count:  N/A
@@ -743,7 +743,7 @@ identify all entities wherever possible.
 
 ## index.html
 
-*DataCrate index.html*  MUST contain the same information as CATALOG.json,
+*DataCrate index.html*  MUST contain the same information as ```CATALOG.json```,
 organized as described below, with the exception that files that do not have a
 description, creator or other metadata that cannot be derived automatically MAY
 not be listed.
