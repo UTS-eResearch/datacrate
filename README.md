@@ -8,7 +8,7 @@ packaging file-based *research data* for re-use and distribution. (Archiving and
 preservation are not *immediate* concerns but we want to work with those
 communities of practice ASAP).
 
-The current draft version is [0.1](./spec/0.1/data_crate_specification_v0.1.md)
+The current draft version is [0.2](./spec/0.2/data_crate_specification_v0.2.md)
 
 Peter Sefton and Peter Bugeia developed a way of bundling data from the [HIEv]
 repository for deposit in the university Research Data Repository and for re-use
@@ -37,12 +37,14 @@ In this context, packaging data means:
 *  Host a data set on a web server with appropriate access controls in a way that
   allows people to inspect the data set via an HTML page containing summary metadata, at the same
   time making the metadata available as part of the semantic web for use by machines to build indexes or otherwise consume metadata.
- 
+
 
 The goals are:
 
--  To maximise the utility of the data for researchers (including researchers’ ‘future
-selves’). Given that a researcher has found a DataCrate package they should be able to tell what it *is*, *how the data may be used* and what all the files contain.
+-  To maximise the utility of the data for researchers (including the original
+researchers' 'future selves'). Given that a researcher has found a DataCrate
+package they should be able to tell what it *is*, *how the data may be used* and
+what all the files contain.
 
 *  To enable discovery of the data by exposing metadata as widely as possible
 (respecting access rights)
@@ -81,28 +83,46 @@ extend DCAT but it will take some time to complete.
 [Research Object Bundles] are very close in spirit to Data Crates, and there is
 even an attempt to map them on to BagIt. However, RO metadata is very focussed
 on highly nuanced distinctions between different kinds of creators of research
-data, without addressing a lot of the who-what-where type metadata.
+data using the [PAV], without addressing a lot of the who-what-where type metadata.
 
-"The [VIVO] ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions." - it is a designed for discovering information about researchers. It does not cover all the metadata one might want about research outputs, but we have drawn on it for 
+"The [VIVO] ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions." - it is a designed for discovering information about researchers. It does not cover all the metadata one might want about research outputs, but we have drawn on it for
+
+The[PROV] ontology has been used to describe research activities, but its data
+model is too complicated for simple data modelling. It does not allow us to
+express Some entity *created* this file. in [Prov] activities create files. It
+is not practical to model every authoring relationship with an intermediate act
+of creation.
 
 #### Non-RDF-based formats
 
-[Datacite] has a lot of metadata that is useful for Data Crates, because it is but it is
-oriented towards describing things at the dataset level, not the file level, and thus only useful for some metadata. It is also focussed on published data which has a DOI (although you can enter a null DOI). There was an RDF version of Datacite but it is out of date.
+[Datacite] has a lot of metadata that is useful for Data Crates, because it is
+but it is oriented towards describing things at the dataset level, not the file
+level, and thus only useful for some metadata at the dataset level. It is also
+focussed on published data which has a DOI (although you can enter a null DOI).
+There was an RDF version of Datacite but it is out of date.
 
 [RIF-CS] is a standard created by the Australian National Data Service based on
 ISO 2146 for data dissemination which has good general purpose coverage but it's
 an XML based format that can't be used in a linked-data context directly.
 
-[Frictionless data]  packages are attractive in that they are simple, JSON based metadata but they don't 
-interoperate with the semantic web, as there is no JSON-LD version and they do not reference mainstream approaches
-to metadata such as Dublin Core except in passing.
+[Frictionless data]  packages are attractive in that they are simple, JSON based
+metadata but they don't  interoperate with the semantic web, as there is no
+JSON-LD version and they do not reference mainstream approaches to metadata such
+as Dublin Core except in passing. Having said that, cross walking between
+DataCrate and Frictionless data would be easy.
+
+#### What about the *Contents of files?*
+
+The initial versions of DataCrate do not concern themselves with the contents of
+files, beyond using [Pronom] file format descriptors. Future versions of
+DataCrate may follow the lead of the [Frictionless data]  project, which allows
+for column-headers and variables in data files to be defined.
 
 
-### RDFa, really? Isn't that a bit out there?
+### JSON-LD really? Isn't that a bit out there?
 
 Remember, Schema.org, which is a standard sponsored by major web companies has
-as RDFa as its default encoding. The commercial web has been using this approach
+as JSON-LD as the recommended encoding. The commercial web has been using this approach
 for years.
 
 https://www.w3.org/TR/vocab-dcat/#Property:dataset_contactPoint
