@@ -117,7 +117,9 @@ There are examples of DataCrates in the [samples] directory.
 Examples on the web:
 
 *  [Victoria Arch](https://data.research.uts.edu.au/public/Victoria_Arch/) cave
-   data, updated from time to time as this spec changes. This is a *Bagged Data Crate*.
+   data, updated from time to time as this spec changes. This is a *Bagged Data
+   Crate*. NOTE: metadata/datacite.xml is missing, and the link back to this
+   spec is missing.
 
 *  TODO, more...
 
@@ -273,7 +275,8 @@ displayed in ```index.html```.
 (From now on the ```@context``` will be omitted from examples.)
 
 ```
-{
+{"@context" :
+    {
     "name": "schema:name",
     "givenName":  "schema:givenName",
     "familyName": "schema:familyName",
@@ -290,7 +293,7 @@ displayed in ```index.html```.
     "license": "schema:license",
     "creator": "schema:creator",
     "contributor": "schema:contributor",
-    "isOutputOf": "frapo:isOutputOf",
+    "outputOf": "frapo:outputOf",
     "related": "schema:relatedLink",
     "sameAs":  "schema:sameAs",
     "basedOn": "schema:isBasedOn",
@@ -341,9 +344,10 @@ displayed in ```index.html```.
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfa": "http://www.w3.org/ns/rdfa#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "http://schema.org/"
-}
-,
+    "schema": "http://schema.org/",
+    "frapo": "http://purl.org/cerif/frapo/"
+  }
+},
   "@graph": [
     {
       "@id": "data",
@@ -646,7 +650,7 @@ properties.
 {
   "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
   "@type": "Dataset",
-  "outputOf": {
+  "isOutputOf": {
     "@id": "https://github.com/UTS-eResearch/datacrate"
   },
   ...
