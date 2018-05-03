@@ -118,7 +118,7 @@ There are examples of DataCrates in the [samples] directory.
 
 Examples on the web:
 
-*  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample) A slightly silly simple sample datacrate.
+*  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample/) A slightly silly simple sample datacrate.
 
 *  [Glop Pot](https://data.research.uts.edu.au/examples/v0.2/Glop_Pot/) Cave exploration data.
 
