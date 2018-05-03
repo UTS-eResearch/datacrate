@@ -1,14 +1,19 @@
-# DataCrate Specification version 0.2
+# DataCrate Specification version 0.2.1
 
 This is a draft work in progress, any and all details of this spec could change,
 including its very existence.
+
+As this spec is still under development, v0.2 will be updated and committed to
+github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.2.
+The version number above will be incremented if there are breaking changes from
+0.2.1, edits for clarity and more detail will not be considered a new version.
 
 Please give feeback via github issues or a pull request.
 
 The samples and examples here have not been exhaustively verified, and there may
 be some inconsistencies between this spec and the associated files, such as the
 [DataCrate JSON-LD Context]. Where there *is* a discrepancy, the file is the
-authority rather than the spec.
+authority rather than the spec (this doc).
 
 ## Changes since version 0.1
 
@@ -32,9 +37,9 @@ The following changes have been made since version 0.1:
 
 This document specifies a method of organising file-based data  with associated
 metadata, known as *DataCrate* in both human and machine readable formats, based
-on [schema.org] linked-data supplemented with terms from the [SPAR] ontologies
-where schema.org does not have coverage. The motivation for this work comes from
-the research domain.
+on the [schema.org] linked-data vocabularly, supplemented with terms from the
+[SPAR] ontologies and [PCDM] where schema.org does not have coverage. The
+motivation for this work comes from the research domain.
 
 
 A *DataCrate* is a dataset a set of files contained in a single directory. There
@@ -55,22 +60,20 @@ If a *Bagged DataCrate* has sufficient metadata then it can be distributed as a
 
 About the contents of a datacrate:
 
-*  A *DataCrate* has a ```index.html``` file which describes the files and
-   directories in dataset.  The ```index.html``` has metadata about the dataset
-   as a whole, and MAY have information about individual files and directories,
-   such as their title, license, authorship or other provenance information. In
-   both kinds of *DataCrate* ```index.html``` is in the root of the *DataCrate*.
+*  Both kinds of *DataCrate* have a human-readable ```index.html``` file which
+   describes the files and directories in dataset.  The ```index.html``` has
+   metadata about the dataset as a whole, and MAY have information about
+   individual files and directories, such as their title, license, authorship or
+   other provenance information. In both kinds of *DataCrate* ```index.html```
+   is in the root of the *DataCrate*.
 
 *  A *DataCrate* has a ```CATALOG.json``` with a JSON-LD version
-   of ```index.html```, the metadata in this file is organized in a particular way
-   via a JSON-LD frame, for easy processing. In a *Working DataCrate* this is
-   stored in the root directory, in a *Bagged DataCrate* it is
-   in ```/metadata``` - to align with the TODO RDA spec name here.
+   of ```index.html```, the metadata in this file is [Flattened Document Form] for ease of processing. In a *Working DataCrate*. In both kinds of *DataCrate* this file is the root.
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
-   maybe  distributed as a *Citable DataCrate* which has a DataCite metadata
+   may be  distributed as a *Citable DataCrate* which has a DataCite metadata
    file in ```/metadata/datacite.xml``` and a human-readable citation
-   in ```index.html```.
+   in ```index.html```. Working datacrates do not have a ```datacite.xml``` file.
 
 This specification is a practical guide for software authors to create tools for
 generating and consuming research data packages. The JSON-LD format is not
@@ -97,8 +100,7 @@ Because DataCrates could be created at many different stages in the research
 data lifecycle there is a very minimal mandated minimum set of metadata. There
 are no metadata requirements at all for a *Working DataCreate*.
 
-For a *Bagged
-DataCrate* the mandatory metadata is:
+For a *Bagged DataCrate* the mandatory metadata is:
 *  A creation date,
 *  Contact details and
 *  A human-readable description of the data.
@@ -116,12 +118,17 @@ There are examples of DataCrates in the [samples] directory.
 
 Examples on the web:
 
-*  [Victoria Arch](https://data.research.uts.edu.au/public/Victoria_Arch/) cave
+*  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample) A slightly silly simple sample datacrate.
+
+*  [Glop Pot](https://data.research.uts.edu.au/examples/v0.2/Glop_Pot/) Cave exploration data.
+
+*  [Victoria Arch](https://data.research.uts.edu.au/public/Victoria_Arch/) more cave
    data, updated from time to time as this spec changes. This is a *Bagged Data
    Crate*. NOTE: metadata/datacite.xml is missing, and the link back to this
    spec is missing.
 
-*  TODO, more...
+*  [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](http://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
+
 
 ## Definitions
 
@@ -140,17 +147,16 @@ the rules in  [JSON-LD 1.1].
 
 ## Conventions
 
-Throughout this specification, RDF terms are be referred to using the names
+Throughout this specification, RDF terms are be referred to using the keys
 defined in  [DataCrate JSON-LD Context]. Following [schema.org] practice property
 names start with lowercase letters and class names with uppercase.
 
 In ```CATALOG.json``` RDF terms use their DataCrate JSON-LD names
 as defined in the [DataCrate JSON-LD context].
 
-In examples paths for a *Working DataCrate* are used. That is, the [path] of a
+In examples, paths for a *Working DataCrate* are used. That is, the [path] of a
 file is relative to a ```CATALOG.json``` document in the root of the DataCrate
-rather than in /metadata, when it would be located in a *Bagged DataCrate*. The
-difference is illustrated by example below.
+without a [BagIt] ```/data``` directory.
 
 ## Core metadata standard for DataCrate: Schema.org
 
@@ -164,7 +170,8 @@ well-maintained linked-data schema for research data with the coverage needed
 for this project - ie a single standard for expressing all the examples
 presented in this spec.
 
-Future versions of this specification may be based on other metadata standards.
+Future versions of this specification may be based on other metadata standards,
+as far as possible this will be done by swapping in new *DataCrate Context*.
 
 Additional metadata MAY be drawn from any RDF vocabulary to allow open-ended
 extensibility.
@@ -187,23 +194,22 @@ This specification has guidelines for ways to represent:
   what (instruments and computer programs) created or contributed to the data
   set and individual files within it.
 
-* If there is enough metadata, a DataCite citation for
-  the crate so it can be made into a *Bagged DataCrate* which is also a *Citable DataCrate*.
+* If there is enough metadata, a DataCite citation for the crate so it can be
+  made into a *Bagged DataCrate* which is also a *Citable DataCrate*.
 
 ## Note on compromises / limitations of schema.org
 
 One crucial *MetaData Entity* is a research project. Schema.org has no class for
 a project, although it does have a [funder] property. DataCrate
-represents a research project using [frapo:Project] (from the [SPAR] ontologies
+maps the key [project]to [frapo:Project] (from the [SPAR] ontologies
 [FRAPO] ontology), which in turn MAY have a [funder] property.
-
 
 Likewise, schema.org does not have a way to represent research equipment so
 DataCrate uses the [frapo:Equipment] class.
 
 A [Dataset] has no contactPoint property, unlike [DCAT], so The *DataCrate
-JSON-LD Context* maps schema:accountablePerson to [contact]; the concept is
-similar to "Corresponding Author" in academic publishing.
+JSON-LD Context* maps the key [contact] to schema:accountablePerson; the concept
+is similar to "Corresponding Author" in academic publishing.
 
 
 # Structure / DataCrate by example
@@ -269,8 +275,13 @@ DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/b
 
 The following *DataCrate-flattened JSON-LD* represents a minimal description of
 a *Working DataCrate* dataset.  The [DataCrate JSON-LD Context] MUST be included inline as below.
-Ordering is meaningful as it is used to sort the order in which metadata is
-displayed in ```index.html```.
+
+Any schema.org context MAY be included and unused parts of the schema MAY be omitted. Schema.org elements SHOULD be used as defined in the standard Schema.org context. However, this standard does use variant names for two elements.
+
+*  [File] is mapped to [schema:MediaObject] which was chosen as a compromise as
+   it has many of the properties that are needed to describe a generic file. Future version of schema.org or a research data extension may define [File].
+
+*  [path] is mapped to [schema:contentURL]. (TODO maybe change this?)
 
 (From now on the ```@context``` will be omitted from examples.)
 
@@ -281,7 +292,7 @@ displayed in ```index.html```.
     "givenName":  "schema:givenName",
     "familyName": "schema:familyName",
     "description":  "schema:description",
-    "file": "schema:mediaObject",
+    "File": "schema:MediaObject",
     "path": "schema:contentUrl",
     "contentSize": "schema:contentSize",
     "copyright": "schema:copyrightHolder",
@@ -468,7 +479,7 @@ property of a [Person].
 ```
 {
       "@type": "Dataset",
-      "@id": "some_id",   
+      "@id": "some_id",
       "Publisher": {"@id": "http://uts.edu.au"}
 }
 
@@ -486,7 +497,7 @@ the contact person:
 ```
 {
       "@type": "Dataset",
-      "@id": "some_id",   
+      "@id": "some_id",
       "Publisher": {"@id": "http://uts.edu.au"}
       "Contact": , {"@id": "http://orcid.org/0000-0002-3545-944X"}
 },
@@ -550,7 +561,7 @@ for a published article and data set:
 ```
 
 The first affiliation is a Faculty of a university. The Faculty is associated
-with the university via [memberOf].  
+with the university via [memberOf].
 
 ```
 {
@@ -588,7 +599,7 @@ For example:
 
 The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 
-```    
+```
 {
   "@id": "http://dx.doi.org/10.1109/TCYB.2014.2386282",
   "@type": "ScholarlyArticle",
@@ -867,6 +878,105 @@ MUST use the [about] property.
 
 Keyword properties MUST use [keyword].
 
+### Digital Library and Repository content
+
+To describe an export from a Digital Library or repository system, use the
+Portland Common Data Model ([PCDM]); a record from the library representing an
+abstract entity such as a person, or a work, or a place should have a```@type```
+of [pcdm:Object], in addition to any other types. Objects MAY be grouped
+together in [pcdm:Collection]s with [pcdm:hasMember] pointing to the the
+[opcdm:Object].
+
+NOTE: PDCM specifies that Files should have only technical metadata, not
+descriptive metadata, which is *not* a restriction in DataCrate. If the
+DataCrate is to be imported into a strict PCDM repository, modelling of object /
+file relationships will have to be worked out.
+
+For example, this data is exported from an Omeka repository:
+```
+{
+   "@id": "http://omeka.uws.edu.au/farmstofreeways/api/collections/6",
+   "@type": [
+      "pcdm:Collection"
+   ],
+   "title": [
+      "Project Materials"
+   ],
+   "description": [
+      "Materials associated with the project, including fliers seeking participants, lists of sources and question outline.   "
+   ],
+   "publisher": [
+      "University of Western Sydney"
+   ],
+   "rights": [
+      "Copyright University of Western Sydney 2015"
+   ],
+   "pcdm:hasMember": [
+      {
+         "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/166"
+      },
+      {
+         "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/167"
+      },
+      {
+         "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/168"
+      },
+      {
+         "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/169"
+      }
+   ]
+},
+{
+   "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/166",
+   "@type": [
+      "pcdm:Object",
+      "Text"
+   ],
+   "title": [
+      "Western Sydney Women's Oral History Project: Flier (illustrated)"
+   ],
+   "description": [
+      "Flier (illustrated) seeking participants for the project."
+   ],
+   "publisher": [
+      "University of Western Sydney"
+   ],
+   "rights": [
+      "Copyright University of Western Sydney 2015"
+   ],
+   "text": [
+      "<div style=\"text-align:center;\">DID YOU LIVE IN PENRITH OR BLACKTOWN IN THE 1950\u2019S?<br /><br /></div>\n<div style=\"text-align:center;\">IF SO, YOU MAY BE INTERESTED<br />TO SHARE YOUR MEMORIES OF THOSE<br />TIMES!<br /><br /></div>\n<div>The Women's Research Centre at the University of Western Sydney Nepean. is currently conducting interviews for an oral history project:<br /><br /></div>\n<div style=\"text-align:center;\">\"FROM FARMS TO FREEWAYS - WOMEN'S MEMORIES<br />OF WESTERN SYDNEY\"<br /><br /></div>\n<div>If you have lived in either of these areas from the late 1940s or early 1950s through to the 1960s and would like to share your memories of this time of rapid change. please see Robyn Arrowsmith during recess.<br /><br /></div>\n<div>More information is also available from Dr. Deborah Chambers: on (02) 678 7375.</div>"
+   ],
+   "originalFormat": [
+      "Paper"
+   ],
+   "identifier": [
+      "FTF_flier_illust"
+   ],
+   "rightsHolder": [
+      "Western Sydney University"
+   ],
+   "license": [
+      "Content in the Western Sydney Women's Oral History Project: From farms to freeways collection is licensed under a Creative Commons CC BY 3.0 AU licence (https://creativecommons.org/licenses/by/3.0/au/)."
+   ],
+   "pcdm:hasFile": [
+      {
+         "@id": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf"
+      },
+     ...
+   ]
+},
+{
+   "@type": "File",
+   "path": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf",
+   "@id": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf"
+},
+```
+
+
+
+
+
 ## Minimum metadata summary for *Bagged DataCrates*
 
 A *Bagged DataCrate* MUST have a root [Dataset] with:
@@ -1054,3 +1164,5 @@ vocabularies and ontologies when this is not possible.
 [Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [isOutputOf]: https://sparontologies.github.io/frapo/current/frapo.html#d4e526
 [Equipment]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
+
+[Flattened Document Form]: https://json-ld.org/spec/latest/json-ld/#flattened-document-form
