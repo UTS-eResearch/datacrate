@@ -35,15 +35,15 @@ The following changes have been made since version 0.1:
 
 ## Introduction & definition of a *DataCrate*
 
-This document specifies a method of organising file-based data  with associated
-metadata, known as *DataCrate* in both human and machine readable formats, based
-on the [schema.org] linked-data vocabularly, supplemented with terms from the
-[SPAR] ontologies and [PCDM] where schema.org does not have coverage.
+This document specifies a method of organising file-based data, known as
+*DataCrate*,  with associated metadata, in both human and machine readable
+formats, based on the [schema.org] linked-data vocabularly, supplemented with
+terms from the [SPAR] ontologies and [PCDM] where schema.org does not have
+coverage.
 
-The motivation for this work was to be able provide researchers with a way of
-distbuting self-describing packages of research data with standards based
-metadata at the package and the file level, and tools to create that format.
-
+The aim is to provide researchers with a way of distributing self-describing
+packages of research data with standards based metadata at the package and the
+file level.
 
 A *DataCrate* is a dataset a set of files contained in a single directory. There
 are two ways of organizing a *DataCrate*.
@@ -71,8 +71,10 @@ About the contents of a datacrate:
    other provenance information. In both kinds of *DataCrate* ```index.html```
    is in the root of the *DataCrate*.
 
-*  A *DataCrate* has a ```CATALOG.json``` with a JSON-LD version
-   of ```index.html```, the metadata in this file is [Flattened Document Form] for ease of processing. In a *Working DataCrate*. In both kinds of *DataCrate* this file is the root.
+*  A *DataCrate* has a ```CATALOG.json``` with a JSON-LD version of
+   ```index.html```, the metadata in this file is [Flattened Document Form] for
+   ease of processing. In a *Working DataCrate*. In both kinds of *DataCrate*
+   this file is the root.
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
    may be  distributed as a *Citable DataCrate* which has a DataCite metadata
@@ -128,11 +130,13 @@ and research software applications.
 
 There are examples of DataCrates in the [samples] directory.
 
-Examples on the web:
+Examples hosted on the web, as static mini-repositories with a download link:
 
 *  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample/). A slightly silly simple sample datacrate.
 
 *  [Glop Pot](https://data.research.uts.edu.au/examples/v0.2/Glop_Pot/). Cave exploration data.
+
+*  [GTM](https://data.research.uts.edu.au/examples/v0.2/GTM/). Some MATLAB code that supports a publication.
 
 *  [Farms to
    Freeways](https://data.research.uts.edu.au/examples/v0.2/farms_to_freeways/).
@@ -189,6 +193,10 @@ leaving the keys as described here the same.
 
 Additional metadata MAY be drawn from any RDF vocabulary to allow open-ended
 extensibility.
+
+Generally, the standard keys for Schema.org should be used, however there are a
+few keys which are defined differently than the standard, to allow for new terms
+to be defined in [schema.org] or for them to be mapped to other vocabularies.
 
 ## Summary of Coverage
 
