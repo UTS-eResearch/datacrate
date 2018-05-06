@@ -265,9 +265,9 @@ A *Working DataCrate* has this structure:
 
 ```
    <base directory>/
-   |   ```index.html```
-   |   ```CATALOG.json```
-   | ... Data here ...
+   |   index.html
+   |   CATALOG.json
+   |   [payload files]
 ```
 
 [Part 2 of the BagIt profile specification]() says:
