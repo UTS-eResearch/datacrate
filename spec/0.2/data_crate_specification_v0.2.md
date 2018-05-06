@@ -263,11 +263,12 @@ The Bagit file-system structure for a *Bagged DataCrate* is as follows.
 
 A *Working DataCrate* has this structure:
 
+```
    <base directory>/
    |   ```index.html```
    |   ```CATALOG.json```
    | ... Data here ...
-
+```
 
 [Part 2 of the BagIt profile specification]() says:
 > Bags complying to a BagIt profile MUST contain the tag BagIt-Profile-Identifier
