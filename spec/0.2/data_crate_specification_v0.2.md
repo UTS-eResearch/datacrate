@@ -131,6 +131,7 @@ and research software applications.
 There are examples of DataCrates in the [samples] directory.
 
 Examples hosted on the web, as static mini-repositories with a download link:
+ NOTE: These may be unavailable betweeen on Monday 2018-05-07 and Tuesday 2018-05-08 due to maintenance.
 
 *  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample/). A slightly silly simple sample datacrate.
 
