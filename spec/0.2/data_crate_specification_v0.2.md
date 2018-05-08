@@ -10,7 +10,7 @@ The version number above will be incremented if there are breaking changes from
 
 Please give feeback via github issues or a pull request.
 
-The samples and [examples][#Examples] here have not been exhaustively verified, and there may
+The samples and [examples](#Examples) here have not been exhaustively verified, and there may
 be some inconsistencies between this spec and the associated files, such as the
 [DataCrate JSON-LD Context]. Where there *is* a discrepancy, the file is the
 authority rather than the spec (this doc).
@@ -131,7 +131,6 @@ and research software applications.
 There are examples of DataCrates in the [samples] directory.
 
 Examples hosted on the web, as static mini-repositories with a download link:
- NOTE: These may be unavailable betweeen on Monday 2018-05-07 and Tuesday 2018-05-08 due to maintenance.
 
 *  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample/). A slightly silly simple sample datacrate.
 
