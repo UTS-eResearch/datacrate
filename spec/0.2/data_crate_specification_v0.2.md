@@ -632,14 +632,14 @@ To associate a publication with a dataset the *DataCreate Flattened JSON-LD* MUS
 
 For example:
 ```
-"related": {"@id": "http://dx.doi.org/10.1109/TCYB.2014.2386282"}
+"related": {"@id": "https://doi.org/10.1109/TCYB.2014.2386282"}
 ```
 
 The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 
 ```
 {
-  "@id": "http://dx.doi.org/10.1109/TCYB.2014.2386282",
+  "@id": "https://doi.org/10.1109/TCYB.2014.2386282",
   "@type": "ScholarlyArticle",
   "creator": [
     {
@@ -655,7 +655,7 @@ The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
       "@id": "https://orcid.org/0000-0002-6953-3986"
     }
   ],
-  "identifier": "http://dx.doi.org/10.1109/TCYB.2014.2386282",
+  "identifier": "https://doi.org/10.1109/TCYB.2014.2386282",
   "issn": "2168-2267",
   "name": "Topic Model for Graph Mining",
   "journal": "IEEE Transactions on Cybernetics",
@@ -670,7 +670,7 @@ should be a an [Organization] though it MAY be a string-literal or a URI.
 
 ```
 {
-  "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
+  "@id": "https://doi.org/10.5281/zenodo.1009240",
   "@type": "Dataset",
    <...>
   "name": "Sample dataset for DataCrate v0.2",
@@ -698,7 +698,7 @@ properties. The [isOutputOf] property MAY also be used to associate a dataset wi
 
 ```
 {
-  "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
+  "@id": "https://doi.org/10.5281/zenodo.1009240",
   "@type": "Dataset",
   "isOutputOf": {
     "@id": "https://github.com/UTS-eResearch/datacrate"
@@ -746,7 +746,7 @@ Use the [datePublished] property with a date in ISO 8601 date format to at least
 
 ```
 {
-  "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
+  "@id": "https://doi.org/10.5281/zenodo.1009240",
   "@type": "Dataset",
   "datePublished": "2017-06-29",
 },
@@ -880,7 +880,7 @@ The place has a [geo] property, referencing a [GeoCoordinates] item:
 And the place is referenced from the [contentLocation] property of the dataset.
 ```
 {
-  "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
+  "@id": "https://doi.org/10.5281/zenodo.1009240",
   "@type": "Dataset",
   "outputOf": "DataCrate",
   "contact": {
