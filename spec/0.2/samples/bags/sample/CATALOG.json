@@ -88,17 +88,17 @@
       "name": "Australian National Data Service"
     },
     {
-      "@id": "http://dx.doi.org/10.1000/123456",
+      "@id": "https://doi.org/10.1000/123456",
       "@type": "ScholarlyArticle",
       "creator": {
         "@id": "http://orcid.org/0000-0002-3545-944X"
       },
       "datePublished": "2018",
-      "identifier": "http://dx.doi.org/10.1000/123456",
+      "identifier": "https://doi.org/10.1000/123456",
       "name": "This is an example publication with a dodgy DOI"
     },
     {
-      "@id": "http://dx.doi.org/10.5281/zenodo.1009240",
+      "@id": "https://doi.org/10.5281/zenodo.1009240",
       "@type": "Dataset",
       "outputOf": "DataCrate",
       "contact": {
@@ -121,7 +121,7 @@
           "@id": "pics"
         }
       ],
-      "identifier": "http://dx.doi.org/10.5281/zenodo.1009240",
+      "identifier": "https://doi.org/10.5281/zenodo.1009240",
       "keywords": "Dogs, Fences, The Gully",
       "name": "Sample dataset for DataCrate v0.2",
       "publisher": {
