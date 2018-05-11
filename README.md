@@ -87,9 +87,9 @@ data using the [PAV], without addressing a lot of the who-what-where type metada
 
 "The [VIVO] ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions." - it is a designed for discovering information about researchers. It does not cover all the metadata one might want about research outputs, but we have drawn on it for
 
-The[PROV] ontology has been used to describe research activities, but its data
+The [PROV] ontology has been used to describe research activities, but its data
 model is too complicated for simple data modelling. It does not allow us to
-express Some entity *created* this file. in [Prov] activities create files. It
+express Some entity *created* this file. In [Prov] activities create files. It
 is not practical to model every authoring relationship with an intermediate act
 of creation.
 
