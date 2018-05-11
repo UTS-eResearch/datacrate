@@ -95,7 +95,7 @@ of creation.
 
 #### Non-RDF-based formats
 
-[Datacite] has a lot of metadata that is useful for Data Crates, because it is
+[Datacite] has a lot of metadata that is useful for Data Crates,
 but it is oriented towards describing things at the dataset level, not the file
 level, and thus only useful for some metadata at the dataset level. It is also
 focussed on published data which has a DOI (although you can enter a null DOI).
@@ -105,8 +105,8 @@ There was an RDF version of Datacite but it is out of date.
 ISO 2146 for data dissemination which has good general purpose coverage but it's
 an XML based format that can't be used in a linked-data context directly.
 
-[Frictionless data]  packages are attractive in that they are simple, JSON based
-metadata but they don't  interoperate with the semantic web, as there is no
+[Frictionless data] packages are attractive in that they are simple, JSON based
+metadata but they don't interoperate with the semantic web, as there is no
 JSON-LD version and they do not reference mainstream approaches to metadata such
 as Dublin Core except in passing. Having said that, cross walking between
 DataCrate and Frictionless data would be easy.
@@ -115,7 +115,7 @@ DataCrate and Frictionless data would be easy.
 
 The initial versions of DataCrate do not concern themselves with the contents of
 files, beyond using [Pronom] file format descriptors. Future versions of
-DataCrate may follow the lead of the [Frictionless data]  project, which allows
+DataCrate may follow the lead of the [Frictionless data] project, which allows
 for column-headers and variables in data files to be defined.
 
 
