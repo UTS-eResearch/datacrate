@@ -1,7 +1,6 @@
 # DataCrate Specification version 0.2.1
 
-This is a draft work in progress, any and all details of this spec could change,
-including its very existence.
+This is a draft work in progress. A version 1.0 release is being planned for some time in Q3 2018.
 
 As this spec is still under development, v0.2 will be updated and committed to
 github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.2.
@@ -1095,36 +1094,18 @@ without scripting. It MAY contain extra features enabled by Javascript.
 
 ## To generate an index HTML
 
-The following is pseudo code for how to generate the file:
+The `index.html` file SHOULD:
 
-TODO: not sure if this is a good approach - working on some javascript code in
-[calcyteJS]() as an example.
+*  Show the contents of `CATALOG.json` in a human readable form, showing each *Data Entity* and each *Metadata Entity* in HTML.
+*  When a *Data Entities* and *Metadata Entities* is referenced by its ID:
+    *  If it has a [name] property, provide a link to its HTML version.
+    *  If it does not have a name (eg a [Geo] location), show it embedded in the HTML for the entity.
+*  For keys that resolve in the `DataCrate JSON-LD Context` to a URI, indicate this (the simplest way is to link the key to its definition).
+*  For external URIs values provivde a link.
 
-```
-Set the page <title> to "DataCrate: $name-of-crate"
+An example implementation can be found in the [Calcyte] tool. This tool uses a table to show each entity but other implementations are possible. (NOTE: not all external links are working in Calcyte at the moment).
 
-function show_dataset_metadata():
-
-  Generate a table with an id <table id='dataset[@id]'>
-  Add table to a Table of contents
-      For each property of the Dataset:
-         Generate a row <tr> with:
-             <th>$property-name</th>
-             if $property-value is a scalar:
-                <td>$property-value<td>
-             else:
-                 link to property (eg a creator)
-
-    Show a table of files that are in an hasPart relationship to the dataset with all the metadata.
-
-   For each child Dataset (eg a directory) call show_data_set_metadata()
-
-   For each @type (other than Dataset and mediaObject):
-      Create a table listing all the metadata for each type.
-
-
-
-```
+TODO: Come up with a way of providing labels for external URIs.
 
 
 ## Datacite citations
