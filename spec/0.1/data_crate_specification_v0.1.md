@@ -689,7 +689,7 @@ An organization SHOULD be represented by a *DataCrate Microdocument* with two ty
 
 The following is an example of marking-up a publication, using a DataCrate
 Microdocument with type [schema:ScholarlyArticle]. In this example the ID of the
-document is a DOI URL (http://dx.doi.org/10.1109/TCYB.2014.2386282). IDs for
+document is a DOI URL (https://doi.org/10.1109/TCYB.2014.2386282). IDs for
 publications SHOULD be DOI URLs where possible.
 
 This *DataCrate microdocument* about a publication references people, described
@@ -711,13 +711,13 @@ in an example above with the [schema:creator] property.
     <th>TYPE:</th>
 </tr>
 
-<tr resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
-    id='http://dx.doi.org/10.1109/TCYB.2014.2386282'  
+<tr resource='https://doi.org/10.1109/TCYB.2014.2386282'
+    id='https://doi.org/10.1109/TCYB.2014.2386282'  
     typeof='http://schema.org/CreativeWork http://schema.org/ScholarlyArticle'
     property='schema:hasPart'>    
   <td>
   <div  property='http://schema.org/identifier'>
-   <a href='http://dx.doi.org/10.1109/TCYB.2014.2386282'>http://dx.doi.org/10.1109/TCYB.2014.2386282</a></div>
+   <a href='https://doi.org/10.1109/TCYB.2014.2386282'>https://doi.org/10.1109/TCYB.2014.2386282</a></div>
    </td>
     <td>
        <div  property='http://schema.org/name'>Topic Model for Graph Mining</div>
@@ -759,7 +759,7 @@ in an example above with the [schema:creator] property.
 A reference a *Data Entity* or *Metadata Entity* or  MUST use the property
 [schema:relatedItem], pointing to a *DataCrate Microdocument*. Building on the
 examples of Organizations, People and Publications above, referencing the
-publication http://dx.doi.org/10.1109/TCYB.2014.2386282 could look like:
+publication https://doi.org/10.1109/TCYB.2014.2386282 could look like:
 
 ```
 <div typeof='http://schema.org/Dataset' about='./data'>
@@ -767,9 +767,9 @@ publication http://dx.doi.org/10.1109/TCYB.2014.2386282 could look like:
 <tr>
   <th>Related</th>
   <td>
-    <div resource='http://dx.doi.org/10.1109/TCYB.2014.2386282'
+    <div resource='https://doi.org/10.1109/TCYB.2014.2386282'
          property='http://schema.org/relatedLink'>
-           <a href='#http://dx.doi.org/10.1109/TCYB.2014.2386282'>
+           <a href='#https://doi.org/10.1109/TCYB.2014.2386282'>
               Topic Model for Graph Mining
            </a>
       </div>
@@ -786,7 +786,7 @@ the following *DataCrate-framed JSON-LD*.
     "@type": "Dataset",
     "@id": "./",
     "Related": {
-      "@id": "http://dx.doi.org/10.1109/TCYB.2014.2386282",
+      "@id": "https://doi.org/10.1109/TCYB.2014.2386282",
       "Name": "Topic Model for Graph Mining",
       "@type": [
         "ScholarlyArticle",
@@ -866,7 +866,7 @@ the following *DataCrate-framed JSON-LD*.
           }
         }
       ],
-      "ID": "http://dx.doi.org/10.1109/TCYB.2014.2386282"
+      "ID": "https://doi.org/10.1109/TCYB.2014.2386282"
     }
 ```
 

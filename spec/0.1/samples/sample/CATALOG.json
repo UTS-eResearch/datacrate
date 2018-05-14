@@ -188,8 +188,8 @@
           "Name": "EPL1 Camera"
         },
         {
-          "@id": "http://dx.doi.org/10.1000/123456",
-          "ID": "http://dx.doi.org/10.1000/123456",
+          "@id": "https://doi.org/10.1000/123456",
+          "ID": "https://doi.org/10.1000/123456",
           "Name": "This is an example publication with a dodgy DOI"
         },
         {
@@ -208,7 +208,7 @@
           "@id": "http://uts.edu.au"
         }
       ],
-      "ID": "http://dx.doi.org/10.5281/zenodo.1009240",
+      "ID": "https://doi.org/10.5281/zenodo.1009240",
       "Name": "Sample dataset for DataCrate v0.1",
       "Publisher": {
         "@id": "http://uts.edu.au",
