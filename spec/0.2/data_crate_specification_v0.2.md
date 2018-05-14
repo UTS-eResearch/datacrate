@@ -65,7 +65,7 @@ If a *Bagged DataCrate* has sufficient metadata then it can be distributed as a
 About the contents of a datacrate:
 
 *  Both kinds of *DataCrate* have a human-readable ```index.html``` file which
-   describes the files and directories in dataset.  The ```index.html``` has
+   describes the files and directories in a dataset.  The ```index.html``` has
    metadata about the [Dataset] as a whole, and MAY have information about
    individual files and directories, such as their title, license, authorship or
    other provenance information. In both kinds of *DataCrate* ```index.html```
@@ -98,8 +98,8 @@ as possible:
    on web-servers with minimal effort as the index.html file describes the
    contents.
 
--  Repository managers can put *DataCrates* on the web with the ```index.html``
-   file giving a detailed peek inside the dataset. (This spec does not deal with
+-  Repository managers can put *DataCrates* on the web with the ```index.html```
+   file giving a detailed 'peek' inside the dataset. (This spec does not deal with
    showing previews or thumbnails of content but a future version will).
 
 In an academic context, it is important to be able to associate data with funded
@@ -929,14 +929,15 @@ Keyword properties MUST use [keyword].
 To describe an export from a Digital Library or repository system, use the
 Portland Common Data Model ([PCDM]); a record from the library representing an
 abstract entity such as a person, or a work, or a place should have a```@type```
-of [RepositoryObject], in addition to any other types. Objects MAY be grouped
-together in [RepostioryCollection]s with [hasMember] pointing to the the
-[RepositoryObject]. The keys RepositoryObject and RepositoryCollection were
-chosen to avoid collision with other similarly named properties.
+of [RepositoryObject] ([pcdm:Collection]), in addition to any other types.
+Objects MAY be grouped together in [RepostioryCollection]s ([pcdm:Colletion])
+with [hasMember] pointing to the the [RepositoryObject]. The keys
+RepositoryObject and RepositoryCollection were chosen to avoid collision between
+the terms Collection and Object with other vocabs.ß
 
-NOTE: PDCM specifies that Files should have only technical metadata, not
+NOTE: PCDM specifies that Files should have only technical metadata, not
 descriptive metadata, which is *not* a restriction in DataCrate. If the
-DataCrate is to be imported into a strict PCDM repository, modelling of
+DataCrate is to be imported into a strict [PCDM] repository, modelling of
 object/file relationships will have to be worked out.
 
 For example, this data is exported from an [Omeka](http://omeka.org) repository:
@@ -1214,8 +1215,10 @@ vocabularies and ontologies when this is not possible.
 [DataCite]: https://data.research.uts.edu.au/public/Victoria_Arch/
 [SPAR]: http://www.sparontologies.net/
 [FRAPO]: http://www.sparontologies.net/ontologies/frapo
-[PCDM]:
-[pcdm:Collection]
+[PCDM]: https://github.com/duraspace/pcdm/wiki
+[pcdm:Collection]: https://pcdm.org/2016/04/18/models#Collection
+[RepositoryCollection]: https://pcdm.org/2016/04/18/models#Collection
+[RepositoryObject]: https://pcdm.org/2016/04/18/models#Object
 [Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [frapo:Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [isOutputOf]: https://sparontologies.github.io/frapo/current/frapo.html#d4e526
