@@ -22,11 +22,11 @@ The following changes have been made since version 0.1:
 -  Added a new kind of DataDrate, a *Working DataCrate* which is not bagged, for
    use on working data.
 
--  ```CATALOG.html``` is now ```index.html``` - it remains in the package root
+-  `CATALOG.html` is now `index.html` - it remains in the package root
 
--  RDFa metadata is no longer required in ```index.html```
+-  RDFa metadata is no longer required in `index.html`
 
--  Metadata files - ```datacite.xml``` and ```CATALOG.json``` are now in a
+-  Metadata files - `datacite.xml` and `CATALOG.json` are now in a
    metadata Directory
 
 - The spec now references the [SPAR] ontologies for terms which are not available
@@ -50,12 +50,12 @@ are two ways of organizing a *DataCrate*.
 
 1. For working data or data that does not need to be distributed with checksums,
    a *Working DataCrate* is a plain-old directory containing payload data files,
-   with two metadata files at the root; one for humans (```index.html```) and
-   one for machines (```CATALOG.json```).
+   with two metadata files at the root; one for humans (`index.html`) and
+   one for machines (`CATALOG.json`).
 
 2. For distribution, or archiving; where integrity is important, a *Bagged
    DataCrate* is a [BagIt] bag conforming to the [DataCrate BagIt profile] with
-   the payload files in the ```/data``` directory. A *Bagged DataCrate* has a
+   the payload files in the `/data` directory. A *Bagged DataCrate* has a
    clear separation between metadata and payload, and can be integrity-checked
    using the checksums in the [BagIt] manifest.
 
@@ -64,22 +64,22 @@ If a *Bagged DataCrate* has sufficient metadata then it can be distributed as a
 
 About the contents of a datacrate:
 
-*  Both kinds of *DataCrate* have a human-readable ```index.html``` file which
-   describes the files and directories in a dataset.  The ```index.html``` has
+*  Both kinds of *DataCrate* have a human-readable `index.html` file which
+   describes the files and directories in a dataset.  The `index.html` has
    metadata about the [Dataset] as a whole, and MAY have information about
    individual files and directories, such as their title, license, authorship or
-   other provenance information. In both kinds of *DataCrate* ```index.html```
+   other provenance information. In both kinds of *DataCrate* `index.html`
    is in the root of the *DataCrate*.
 
-*  A *DataCrate* has a ```CATALOG.json``` with a JSON-LD version of
-   ```index.html```, the metadata in this file is [Flattened Document Form] for
+*  A *DataCrate* has a `CATALOG.json` with a JSON-LD version of
+   `index.html`, the metadata in this file is [Flattened Document Form] for
    ease of processing. In a *Working DataCrate*. In both kinds of *DataCrate*
    this file is the root.
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
    may be  distributed as a *Citable DataCrate* which has a DataCite metadata
-   file in ```/metadata/datacite.xml``` and a human-readable citation
-   in ```index.html```. Working datacrates do not have a ```datacite.xml``` file.
+   file in `/metadata/datacite.xml` and a human-readable citation
+   in `index.html`. Working datacrates do not have a `datacite.xml` file.
 
 This specification is a practical guide for software authors to create tools for
 generating and consuming research data packages. The JSON-LD format is not
@@ -91,14 +91,14 @@ The DataCrate specification aims to ensure that packages are as self documenting
 as possible:
 
 -  Anyone with a Data Crate zip file can unzip it, notice that there is an
-   ```index.html``` file in the base directory, open that in a web browser, and
+   `index.html` file in the base directory, open that in a web browser, and
    find out about the data; where it came from, who to contact about it, if it
    has a homepage and so on, which is more usable than simple zipping or bagging
    of files or using XML-based metadata formats. DataCrates can also be hosted
    on web-servers with minimal effort as the index.html file describes the
    contents.
 
--  Repository managers can put *DataCrates* on the web with the ```index.html```
+-  Repository managers can put *DataCrates* on the web with the `index.html`
    file giving a detailed 'peek' inside the dataset. (This spec does not deal with
    showing previews or thumbnails of content but a future version will).
 
@@ -157,7 +157,7 @@ Examples hosted on the web, as static mini-repositories with a download link:
 or any other *thing* that forms part of the metadata for a DataCrate.
 
 *[DataCrate JSON-LD Context]*: A [JSON-LD] context that provides human-readable
-labels for datacrate metadata. These labels are used in ```CATALOG.json``` which
+labels for datacrate metadata. These labels are used in `CATALOG.json` which
 contains *DataCrate-flattened JSON-LD*.
 
 *DataCrate-flattened JSON-LD*: a JSON-LD document, using the *DataCrate JSON-LD
@@ -170,12 +170,12 @@ Throughout this specification, RDF terms are be referred to using the keys
 defined in  [DataCrate JSON-LD Context]. Following [schema.org] practice property
 names start with lowercase letters and class names with uppercase.
 
-In ```CATALOG.json``` RDF terms use their DataCrate JSON-LD names
+In `CATALOG.json` RDF terms use their DataCrate JSON-LD names
 as defined in the [DataCrate JSON-LD context].
 
 In examples, paths for a *Working DataCrate* are used. That is, the [path] of a
-file is relative to a ```CATALOG.json``` document in the root of the DataCrate
-without a [BagIt] ```/data``` directory.
+file is relative to a `CATALOG.json` document in the root of the DataCrate
+without a [BagIt] `/data` directory.
 
 ## Core metadata standard for DataCrate: Schema.org
 
@@ -288,14 +288,14 @@ BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacr
 DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.2/data_crate_specification_v0.2.md
 ```
 
-## ```index.html``` and ```CATALOG.json```
+## `index.html` and `CATALOG.json`
 
--  ```CATALOG.json``` MUST be a *DataCrate-flattened JSON-LD* document.
+-  `CATALOG.json` MUST be a *DataCrate-flattened JSON-LD* document.
 
--  ```index.html``` MUST be an HTML 5 document containing a human readable summary of the contents of ```CATALOG.json```.
+-  `index.html` MUST be an HTML 5 document containing a human readable summary of the contents of `CATALOG.json`.
 
 
-## About ```CATALOG.json```
+## About `CATALOG.json`
 
 The following *DataCrate-flattened JSON-LD* represents a minimal description of
 a *Working DataCrate* dataset.  The [DataCrate JSON-LD Context] MUST be included inline as below.
@@ -307,9 +307,9 @@ Any schema.org context MAY be included and unused parts of the schema MAY be omi
 
 *  [path] is mapped to [schema:contentURL]. (TODO maybe change this?)
 
-(From now on the ```@context``` will be omitted from examples.)
+(From now on the `@context` will be omitted from examples.)
 
-The ```@context``` MUST be provided in ```CATALOG.json```. Keys which are not
+The `@context` MUST be provided in `CATALOG.json`. Keys which are not
 used MAY be ommitted.
 
 ```
@@ -405,8 +405,8 @@ used MAY be ommitted.
 ```
 
 
-If there are files in the payload directory (which is either ```/data``` for a
-*Bagged DataCrate* or ```/``` for a *Working DataCrate*) each file MAY be
+If there are files in the payload directory (which is either `/data` for a
+*Bagged DataCrate* or `/` for a *Working DataCrate*) each file MAY be
 described by a *Dataset* related to the schema:Dataset with a property
 *HasPart*.
 
@@ -422,10 +422,10 @@ is in the root directory fo the *Working DataCrate* dataset:
 
     ./cp7glop.ai
 
-For a *Bagged DataCrate* the path would be ```data/cp7glop.ai``` - the relative
-path from ```/CATALOG.json``` to the file in the payload directory.
+For a *Bagged DataCrate* the path would be `data/cp7glop.ai` - the relative
+path from `/CATALOG.json` to the file in the payload directory.
 
-An example ```DataCrate-flattened JSON-LD``` for the above would be as follows:
+An example `DataCrate-flattened JSON-LD` for the above would be as follows:
 
 ```
 "@graph": [
@@ -457,7 +457,7 @@ An example ```DataCrate-flattened JSON-LD``` for the above would be as follows:
 To describe a directory without listing all the files in it, DataCrate SHOULD
 have a description of the directory using an entity of ``@type`` [Dataset]. This
 DataCrate JSON-LD, describes the directory 'lots_of_little_files' in an *Working
-DataCrate*. To make it clear that the files are not listed in ```CATALOG.json```
+DataCrate*. To make it clear that the files are not listed in `CATALOG.json```
 this example shows and empty list for [hasPart].
 
 ```
@@ -494,9 +494,9 @@ a directory ([Dataset]) or to a [File].
 This uses an ORCID, to unambiguously identify an author and could be used as is.
 However, it does not provide very much information about the author and it is
 not possible to use this informtion to reliably construct a [DataCite] citation.
-The ```DataCrate-flattened JSON-LD``` @graph SHOULD contain additional
+The `DataCrate-flattened JSON-LD` @graph SHOULD contain additional
 information about *Metadata Entities* for the use of both humans (once it has
-been rendered as ```index.html```) and machines.
+been rendered as `index.html```) and machines.
 
 ```
 
@@ -811,7 +811,7 @@ To specify which equipment or software was used to create or contribute to a
 *Data Entity*, it SHOULD have a [contributor] property, with a value of type
 [Equipment] or [SoftwareApplication].
 
-NOTE: Capturig provenance about what equipment and software was used to create
+NOTE: Capturing provenance about what equipment and software was used to create
 files  is an area which needs to be expanded in future versions of this
 specification. Other work in this area includes [ResearchObject] and the [Software Sustainability Institute's work on provenance](https://www.software.ac.uk/who-do-we-work/provenance-tool-suite)
 
@@ -908,7 +908,7 @@ these. Any directory or file or *Metadata Entity* may be geo-located. For exampl
   "creator": {
     "@id": "http://orcid.org/0000-0002-3545-944X"
   },
-  ```
+```
 
 
 ### Time
@@ -929,11 +929,11 @@ Keyword properties MUST use [keyword].
 To describe an export from a Digital Library or repository system, use the
 Portland Common Data Model ([PCDM]); a record from the library representing an
 abstract entity such as a person, or a work, or a place should have a```@type```
-of [RepositoryObject] ([pcdm:Collection]), in addition to any other types.
+of [RepositoryObject] ([pcdm:Object]), in addition to any other types.
 Objects MAY be grouped together in [RepostioryCollection]s ([pcdm:Colletion])
 with [hasMember] pointing to the the [RepositoryObject]. The keys
 RepositoryObject and RepositoryCollection were chosen to avoid collision between
-the terms Collection and Object with other vocabs.ß
+the terms Collection and Object with other vocabularies.
 
 NOTE: PCDM specifies that Files should have only technical metadata, not
 descriptive metadata, which is *not* a restriction in DataCrate. If the
@@ -946,7 +946,7 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
 {
    "@id": "http://omeka.uws.edu.au/farmstofreeways/api/collections/6",
    "@type": [
-      "pcdm:Collection"
+      "RepositoryCollection"
    ],
    "title": [
       "Project Materials"
@@ -960,7 +960,7 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
    "rights": [
       "Copyright University of Western Sydney 2015"
    ],
-   "pcdm:hasMember": [
+   "hasMember": [
       {
          "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/166"
       },
@@ -978,7 +978,7 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
 {
    "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/166",
    "@type": [
-      "pcdm:Object",
+      "RepositoryObject",
       "Text"
    ],
    "title": [
@@ -1008,7 +1008,7 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
    "license": [
       "Content in the Western Sydney Women's Oral History Project: From farms to freeways collection is licensed under a Creative Commons CC BY 3.0 AU licence (https://creativecommons.org/licenses/by/3.0/au/)."
    ],
-   "pcdm:hasFile": [
+   "hasFile": [
       {
          "@id": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf"
       },
@@ -1072,7 +1072,7 @@ Internal-Sender-Description: N/A
 ### Recommended IDs
 
 Users of DataCrate SHOULD use the following IDs where possible:
-*  For a DataCrate, an ```@id``` which SHOULD be a DOI URL.
+*  For a DataCrate, an `@id` which SHOULD be a DOI URL.
 *  For People participating the research projects: ORCID identifiers.
 *  For [Organization]s including [funder]s, pending a global identifier scheme for
    use the homepage URL of the organization.
@@ -1084,7 +1084,7 @@ identify all entities wherever possible.
 
 ## index.html
 
-*DataCrate index.html*  MUST contain the same information as ```CATALOG.json```,
+*DataCrate index.html*  MUST contain the same information as `CATALOG.json`,
 organized as described below, with the exception that files that do not have a
 description, creator or other metadata that cannot be derived automatically MAY
 not be listed.
@@ -1130,14 +1130,14 @@ function show_dataset_metadata():
 
 ## Datacite citations
 
-In a *Bagged DataCrate*, if there is sufficient metadata in ```CATALOG.json```, it SHOULD contain a DataCite
-citation, datacite.xml in the ```/metadata``` relative to the root of the bag, compliant with the
+In a *Bagged DataCrate*, if there is sufficient metadata in `CATALOG.json`, it SHOULD contain a DataCite
+citation, datacite.xml in the `/metadata` relative to the root of the bag, compliant with the
 [DataCite Schema v4.0].
 
 To generate DataCite.xml a DataCrate MUST have the following at the
 schema:Dataset level:
 
-*  An ```@id``` for the DataCrate that is a DOI URL.
+*  An `@id` for the DataCrate that is a DOI URL.
 
 *  At least one [creator] with either a [name] or a
    [givenName] *and* [familyName].
@@ -1147,7 +1147,7 @@ schema:Dataset level:
 *  A least one [publisher] property which SHOULD be an organization but
    may be a String value.
 
-The mandatory DataCite resource type MUST be set to "DataCrate-v0.1".
+The mandatory DataCite resource type MUST be set to "DataCrate-v0.2".
 
 ## Extending DataCrate
 
