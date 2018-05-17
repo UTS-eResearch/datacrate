@@ -18,7 +18,7 @@ authority rather than the spec (this doc).
 
 The following changes have been made since version 0.1:
 
--  Added a new kind of DataDrate, a *Working DataCrate* which is not bagged, for
+-  Added a new kind of DataCrate, a *Working DataCrate* which is not bagged, for
    use on working data.
 
 -  `CATALOG.html` is now `index.html` - it remains in the package root
@@ -44,8 +44,8 @@ The aim is to provide researchers with a way of distributing self-describing
 packages of research data with standards based metadata at the package and the
 file level.
 
-A *DataCrate* is a dataset a set of files contained in a single directory. There
-are two ways of organizing a *DataCrate*.
+A *DataCrate* is a dataset: a set of files contained in a single directory. There
+are two ways of organizing a *DataCrate*:
 
 1. For working data or data that does not need to be distributed with checksums,
    a *Working DataCrate* is a plain-old directory containing payload data files,
@@ -455,7 +455,7 @@ An example `DataCrate-flattened JSON-LD` for the above would be as follows:
 To describe a directory without listing all the files in it, DataCrate SHOULD
 have a description of the directory using an entity of ``@type`` [Dataset]. This
 DataCrate JSON-LD, describes the directory 'lots_of_little_files' in an *Working
-DataCrate*. To make it clear that the files are not listed in `CATALOG.json```
+DataCrate*. To make it clear that the files are not listed in `CATALOG.json`
 this example shows and empty list for [hasPart].
 
 ```
@@ -494,7 +494,7 @@ However, it does not provide very much information about the author and it is
 not possible to use this informtion to reliably construct a [DataCite] citation.
 The `DataCrate-flattened JSON-LD` @graph SHOULD contain additional
 information about *Metadata Entities* for the use of both humans (once it has
-been rendered as `index.html```) and machines.
+been rendered as `index.html`) and machines.
 
 ```
 
@@ -1184,7 +1184,7 @@ vocabularies and ontologies when this is not possible.
 [publisher]: https://schema.org/publisher
 [translator]: https://schema.org/translator
 [translationOf]: https://schema.org/translationOf
-[DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/0.1/profile-datacrate-v0.1.json
+[DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
 [DataCrate JSON-LD Context]: ./context.json
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
 [DataCrate JSON-LD frame]: ./frame.json
