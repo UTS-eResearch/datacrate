@@ -25,12 +25,12 @@ The following changes have been made since version 0.1:
 
 -  RDFa metadata is no longer required in `index.html`
 
--  The  `datacite.xml` is now in a /metadata Directory, this is to align with
-   the [ResearchObject] project. Note: an earlier version of this spec
-   mistakenly said here that the CATALOG.json file in in metadata as well, but
-   it is not. It is the root on the basis that it is easier for people to
-   discover there, and there is nothing in the [BagIt] spec that prohibits tag
-   files being in the root.
+-  The  `datacite.xml` is now in a `/metadata` Directory, this is to align with
+   the [ResearchObject] project. NOTE: an earlier version of this spec
+   mistakenly said here in the changes section that the CATALOG.json file in in
+   metadata as well, but it is not. It is the root on the basis that it is
+   easier for people to discover there, and there is nothing in the [BagIt] spec
+   that prohibits tag files being in the root.
 
 - The spec now references the [SPAR] ontologies for terms which are not available
   in [schema.org].
@@ -257,7 +257,7 @@ The Bagit file-system structure for a *Bagged DataCrate* is as follows.
            |   bag-info.txt (with BagIt-Profile-Identifier: matching this specification)
            |   manifest-<algorithm>.txt
            |   index.html
-           |   CATALOG.json # TODO work out how to link between these
+           |   CATALOG.json
            \--- metadata
                |   [optional datacite.xml] # Aligned with RDA working group
                |                           # draft packaging spec
@@ -1212,5 +1212,5 @@ vocabularies and ontologies when this is not possible.
 [frapo:Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [isOutputOf]: https://sparontologies.github.io/frapo/current/frapo.html#d4e526
 [Equipment]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
-
+[ResearchObject]: http://www.researchobject.org/
 [Flattened Document Form]: https://json-ld.org/spec/latest/json-ld/#flattened-document-form
