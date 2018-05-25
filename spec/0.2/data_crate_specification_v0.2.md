@@ -7,7 +7,7 @@ github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.2.
 The version number above will be incremented if there are breaking changes from
 0.2.1, edits for clarity and more detail will not be considered a new version.
 
-Please give feeback via github issues or a pull request.
+Please give feedback via github issues or a pull request.
 
 The samples and [examples](#Examples) here have not been exhaustively verified, and there may
 be some inconsistencies between this spec and the associated files, such as the
@@ -25,8 +25,12 @@ The following changes have been made since version 0.1:
 
 -  RDFa metadata is no longer required in `index.html`
 
--  Metadata files - `datacite.xml` and `CATALOG.json` are now in a
-   metadata Directory
+-  The  `datacite.xml` is now in a /metadata Directory, this is to align with
+   the [ResearchObject] project. Note: an earlier version of this spec
+   mistakenly said here that the CATALOG.json file in in metadata as well, but
+   it is not. It is the root on the basis that it is easier for people to
+   discover there, and there is nothing in the [BagIt] spec that prohibits tag
+   files being in the root.
 
 - The spec now references the [SPAR] ontologies for terms which are not available
   in [schema.org].
@@ -72,13 +76,15 @@ About the contents of a datacrate:
 
 *  A *DataCrate* has a `CATALOG.json` with a JSON-LD version of
    `index.html`, the metadata in this file is [Flattened Document Form] for
-   ease of processing. In a *Working DataCrate*. In both kinds of *DataCrate*
+   ease of processing. In both kinds of *DataCrate*
    this file is the root.
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
    may be  distributed as a *Citable DataCrate* which has a DataCite metadata
    file in `/metadata/datacite.xml` and a human-readable citation
-   in `index.html`. Working datacrates do not have a `datacite.xml` file.
+   in `index.html`. Working DataCrates do not have a `datacite.xml` file.
+
+
 
 This specification is a practical guide for software authors to create tools for
 generating and consuming research data packages. The JSON-LD format is not
@@ -89,17 +95,20 @@ and search-engines.
 The DataCrate specification aims to ensure that packages are as self documenting
 as possible:
 
--  Anyone with a Data Crate zip file can unzip it, notice that there is an
+-  Anyone with a *DataCrate* zip file can unzip it, notice that there is an
    `index.html` file in the base directory, open that in a web browser, and
    find out about the data; where it came from, who to contact about it, if it
    has a homepage and so on, which is more usable than simple zipping or bagging
-   of files or using XML-based metadata formats. DataCrates can also be hosted
-   on web-servers with minimal effort as the index.html file describes the
-   contents.
+   of files or using XML-based metadata formats.
 
 -  Repository managers can put *DataCrates* on the web with the `index.html`
    file giving a detailed 'peek' inside the dataset. (This spec does not deal with
    showing previews or thumbnails of content but a future version will).
+
+-  In a *Bagged DataCrate* the metadata files `index.html` and `CATALOG.json`
+   are not in the payload directory, and hence can be changed (for example to
+   update to a new version of DataCrate) without changing the data payload and
+   its checksums.
 
 In an academic context, it is important to be able to associate data with funded
 research projects and publications, and desirable to be able to describe the
@@ -152,7 +161,7 @@ Examples hosted on the web, as static mini-repositories with a download link:
 *Data Entity*: A dataset, directory or file.
 
 *MetaData Entity*: A [Person], [Organization], [Project], item of [Equipment], [license]
-or any other *thing* that forms part of the metadata for a DataCrate.
+or any other *thing* or *event* that forms part of the metadata for a DataCrate.
 
 *[DataCrate JSON-LD Context]*: A [JSON-LD] context that provides human-readable
 labels for datacrate metadata. These labels are used in `CATALOG.json` which
@@ -1099,7 +1108,7 @@ The `index.html` file SHOULD:
 *  Show the contents of `CATALOG.json` in a human readable form, showing each *Data Entity* and each *Metadata Entity* in HTML.
 *  When a *Data Entities* and *Metadata Entities* is referenced by its ID:
     *  If it has a [name] property, provide a link to its HTML version.
-    *  If it does not have a name (eg a [Geo] location), show it embedded in the HTML for the entity.
+    *  If it does not have a name (eg a [GeoCoordinates] location), show it embedded in the HTML for the entity.
 *  For keys that resolve in the `DataCrate JSON-LD Context` to a URI, indicate this (the simplest way is to link the key to its definition).
 *  For external URIs values provivde a link.
 
