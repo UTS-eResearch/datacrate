@@ -25,18 +25,15 @@ that help researchers.
 
 ## Requirements
 
-It says above that this project is a specification for a standardised way of
-packaging file-based research data for re-use and distribution. So, what do we
-mean by data packaging?
 
 In this context, packaging data means:
 
 *  Being able to distribute a data set via a single file (using Zip, TAR or a
    disc image format as appropriate) and/or via a URL with integrity checks
 
-*  Host a data set on a web server with appropriate access controls in a way that
-  allows people to inspect the data set via an HTML page containing summary metadata, at the same
-  time making the metadata available as part of the semantic web for use by machines to build indexes or otherwise consume metadata.
+*  Host a data set on a web server with appropriate access controls  with:
+   *  An HTML page containing summary metadata down to (at least) the file level
+   *  Machine readable linked-date
 
 
 The goals are:
@@ -52,10 +49,7 @@ what all the files contain.
 *  To enable automated ingest into repositories or catalogues such as ReDBOX.
 
 NOTE: The package format does not need to be able to be created by people, that
-will be done by software tools such as Cr8it and Calcyte, this means some
-complexity is allowable, but complexity of implementation will add cost so there
-needs to be a cost-benefit analysis. Cost of consumption of data also costs, so
-we will try to minimise that in the design.
+will be done by software tools such as Cr8it and Calcyte.
 
 
 ## FAQ
@@ -67,7 +61,7 @@ additional human and machine readable metadata in JSON-LD.
 
 ### Why Schema.org? Surely there are suitable general purpose metadata formats for Research Data
 
-Well, actually no there aren't any linked-data-ready well-supported extensible
+Well, actually no there aren't any general-purpose linked-data-ready well-supported extensible
 schemas that cover all of the kids of general purpose metadata you might want to
 add to a research data package, and its component files before sending it off
 into the wold.
@@ -75,7 +69,7 @@ into the wold.
 #### RDF-based formats
 
 [DCAT] is close to what we wanted for this project but does not have coverage
-for all the fields we wanted at high level, but does not handle the structure of
+for all the fields we wanted at high level, and does not handle the structure of
 datasets. DCAT also uses a terms from a wide range of vocabularies, making it
 more complicated to use than Schema.org.
 
@@ -132,3 +126,9 @@ https://www.w3.org/TR/vocab-dcat/#Property:dataset_contactPoint
 [BagIt]: https://tools.ietf.org/html/draft-kunze-bagit-14
 [Datacite]: https://schema.datacite.org/
 [Calcyte]: https://codeine.research.uts.edu.au/eresearch/calcyte/tree/038302bea5719f500be2836d975894c2e69e931a
+[PAV]: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37
+[Pronom]: http://www.nationalarchives.gov.uk/PRONOM/Default.aspx
+[Frictionless data]: https://frictionlessdata.io/
+[RIF-CS]: https://en.wikipedia.org/wiki/RIF-CS
+[Research Object Bundles]: https://researchobject.github.io/specifications/bundle/
+[PROV]: https://www.w3.org/TR/prov-o/
