@@ -1,4 +1,4 @@
-# Research Data Crate
+# The DataCrate specification for packaging research data
 
 
 ## About this project
