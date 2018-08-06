@@ -457,7 +457,111 @@ An example `DataCrate-flattened JSON-LD` for the above would be as follows:
       ]
 ```
 
+### Thumbnails
 
+A [File] or any other item MAY have a [thumbnail] property which references another file.
+
+For example, the below [RepositoryObject] is related to four files which are all
+versions of the same image (via [hasFile]) one of which is a thumbnail. The
+thumbnail MUST be included in the DataCrate.
+
+If [thumbnail]s are incidental to the data set, they need not be referenced by [hasPart] or [hasFile] relationships
+
+TODO: work out if thumbnails and
+other derived files should have a special `@type`.
+
+
+```
+{
+  "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/383",
+  "@type": [
+    "RepositoryObject",
+    "Image"
+  ],
+  "identifier": [
+    "ftf_photo_stapleton1"
+  ],
+  "interviewee": [
+    {
+      "@id": "http://omeka.uws.edu.au/farmstofreeways/api/items/595",
+      "label": "Eugenie Stapleton"
+    }
+  ],
+  "description": [
+    "Photo of  Eugenie Stapleton inside her home"
+  ],
+  "license": [
+    "Content in the Western Sydney Women's Oral History Project: From farms to freeways collection is licensed under a Creative Commons CC BY 3.0 AU licence (https://creativecommons.org/licenses/by/3.0/au/)."
+  ],
+  "publisher": [
+    "University of Western Sydney"
+  ],
+  "hasFile": [
+    {
+      "@id": "files/383/original_c0f1189ec13ca936e8f556161663d4ba.jpg"
+    },
+    {
+      "@id": "files/383/fullsize_c0f1189ec13ca936e8f556161663d4ba.jpg"
+    },
+    {
+      "@id": "files/383/thumbnail_c0f1189ec13ca936e8f556161663d4ba.jpg"
+    },
+    {
+      "@id": "files/383/square_thumbnail_c0f1189ec13ca936e8f556161663d4ba.jpg"
+    }
+  ],
+  "thumbnail": [
+    {
+      "@id": "files/383/thumbnail_c0f1189ec13ca936e8f556161663d4ba.jpg"
+    }
+  ],
+  "name": [
+    "Photo of  Eugenie Stapleton 1"
+  ],
+  "relatedLink": [
+    "<a href=\"http://omeka.uws.edu.au/farmstofreeways/items/show/512\">Audio recording of interview with Eugenie Stapleton</a><br /><a href=\"http://omeka.uws.edu.au/farmstofreeways/items/show/454\">Transcript of interview with Eugenie Stapleton</a> <br /><a href=\"http://omeka.uws.edu.au/farmstofreeways/items/show/384\">Photo of Eugenie Stapleton 2</a><br /><a href=\"http://omeka.uws.edu.au/farmstofreeways/items/show/464\">Letter from Eugenie Stapleton</a>"
+  ],
+  "copyrightHolder": [
+    {
+      "@id": "http://westernsydney.edu.au",
+      "label": "Western Sydney University"
+    }
+  ],
+  "copyright": [
+    "Copyright University of Western Sydney 2015"
+  ]
+},
+{
+  "@type": "File",
+  "path": [
+    "data/files/384/original_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+  ],
+  "@id": "files/384/original_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+},
+{
+  "@type": "File",
+  "path": [
+    "data/files/384/fullsize_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+  ],
+  "@id": "files/384/fullsize_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+},
+{
+  "@type": "File",
+  "path": [
+    "data/files/384/thumbnail_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+  ],
+  "@id": "files/384/thumbnail_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+},
+{
+  "@type": "File",
+  "path": [
+    "data/files/384/square_thumbnail_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+  ],
+  "@id": "files/384/square_thumbnail_2ebbe681aa6ec138776343974ce8a3dd.jpg"
+},
+
+
+```
 
 ### Describing a directory but not files
 
@@ -1192,6 +1296,7 @@ vocabularies and ontologies when this is not possible.
 [familyName]: https://schema.org/familyName
 [publisher]: https://schema.org/publisher
 [translator]: https://schema.org/translator
+[thumbnail]: https://schema.org/thumbnail
 [translationOf]: https://schema.org/translationOf
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
 [DataCrate JSON-LD Context]: ./context.json
