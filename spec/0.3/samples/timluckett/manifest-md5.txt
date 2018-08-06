@@ -1,0 +1,5 @@
+48fd235923290d5ffc446046a903818f  data/CATALOG.xlsx
+6cdb2c95187d79bffa3e5bd5e56190d8  data/Data files associated with the IDEAL primary outcome manuscript.docx
+f5587374546ad334e4fca5bb9cc03766  data/IDEAL Nursing home facility descriptors N=20.sav
+95bb445675eeb24abb499ca0302099af  data/IDEAL Resident data N=131.sav
+ba4a66ef09275b11896f35d67d934826  data/IDEAL Staff qPAD baseline scores N=290.sav

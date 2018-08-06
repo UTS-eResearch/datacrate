@@ -1,0 +1,16 @@
+{
+   "BagIt-Profile-Info":{
+      "BagIt-Profile-Identifier":"https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json",
+      "Source-Organization":"University of Technology Sydney",
+      "Contact-Name":"Peter Sefton",
+      "External-Description":"BagIt profile for DataCrate research data packages. ",
+      "Version":"0.2"
+   },
+
+  Tag-Files-Required: ["CATALOG.html", "CATALOG.json" ],
+
+   "Accept-BagIt-Version":[
+      "0.96",
+      "0.97"
+   ]
+}

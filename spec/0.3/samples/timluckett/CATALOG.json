@@ -1,0 +1,504 @@
+{
+  "@graph": [
+    {
+      "Description": "Palliative care planning for nursing home residents with advanced dementia is often suboptimal. This study compared effects of facilitated case conferencing (FCC) with usual care (UC) on end-of-life care",
+      "HasPart": [
+        {
+          "ID": "http://orcid.org/0000-0001-6611-6565",
+          "Affiliation": {
+            "@id": "#10"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0001-6611-6565",
+          "Name": "Stephen Goodall"
+        },
+        {
+          "@id": "#1"
+        },
+        {
+          "@id": "#4"
+        },
+        {
+          "ID": "http://orcid.org/0000-0002-6756-6119",
+          "Affiliation": [
+            {
+              "@id": "#1"
+            },
+            {
+              "@id": "#4"
+            },
+            {
+              "@id": "#2"
+            },
+            {
+              "@id": "#3"
+            }
+          ],
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0002-6756-6119",
+          "Name": "Meera Agar"
+        },
+        {
+          "Description": "Description of data files provided by Tim Luckett",
+          "encodingFormat": "Microsoft Office Open XML",
+          "License": {
+            "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+          },
+          "fileFormat": [
+            {
+              "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/189"
+            },
+            "None"
+          ],
+          "@type": [
+            "CreativeWork",
+            "MediaObject"
+          ],
+          "@id": "data/Data%20files%20associated%20with%20the%20IDEAL%20primary%20outcome%20manuscript.docx",
+          "schema:contentSize": "14039",
+          "Name": ""
+        },
+        {
+          "ID": "http://orcid.org/0000-0002-3691-8230",
+          "Affiliation": {
+            "@id": "#1"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0002-3691-8230",
+          "Name": "Jane Phillips"
+        },
+        {
+          "ID": "http://nla.gov.au/nla.party-1509834",
+          "Affiliation": [
+            {
+              "@id": "#1"
+            },
+            {
+              "@id": "#9"
+            }
+          ],
+          "Email": "",
+          "@type": [
+            "Person",
+            "CreativeWork"
+          ],
+          "@id": "http://nla.gov.au/nla.party-1509834",
+          "Name": "Patricia M Davidson"
+        },
+        {
+          "@id": "#5"
+        },
+        {
+          "ID": "http://orcid.org/0000-0002-4767-5131",
+          "Affiliation": {
+            "@type": [
+              "Organization",
+              "CreativeWork"
+            ],
+            "@id": "#5",
+            "Description": "",
+            "ID": "5",
+            "Name": "Sydney Medical School, The University of Sydney"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0002-4767-5131",
+          "Name": "Georgina Luscombe"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "https://doi.org/10.13039/501100003921",
+          "Description": "The IDEAL Study was funded by the Australian Department of Health (previously Department of Health and Ageing). The funder played no role in the research",
+          "ID": "https://doi.org/10.13039/501100003921",
+          "Name": "Australian Department of Health"
+        },
+        {
+          "ID": "http://orcid.org/0000-0002-9779-0605",
+          "Affiliation": {
+            "@type": [
+              "Organization",
+              "CreativeWork"
+            ],
+            "@id": "#4",
+            "Description": "",
+            "ID": "4",
+            "Name": "Improving Palliative Care through Clinical Trials (ImPaCCT)"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0002-9779-0605",
+          "Name": "Elizabeth Beattie"
+        },
+        {
+          "ID": "",
+          "Affiliation": {
+            "@id": "#1"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "#Janet%20Cook",
+          "Name": "Janet Cook"
+        },
+        {
+          "ID": "http://orcid.org/0000-0002-1783-9289",
+          "Affiliation": {
+            "@id": "#11"
+          },
+          "Email": "",
+          "@type": [
+            "Person",
+            "CreativeWork"
+          ],
+          "@id": "http://orcid.org/0000-0002-1783-9289",
+          "Name": "Lynnette Chenoweth"
+        },
+        {
+          "ID": "http://orcid.org/0000-0001-7817-6821",
+          "Affiliation": {
+            "@id": "#8"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0001-7817-6821",
+          "Name": "Geoffrey Mitchell"
+        },
+        {
+          "@type": [
+            "Organization",
+            "CreativeWork"
+          ],
+          "@id": "#2",
+          "Description": "",
+          "ID": "2",
+          "Name": "South Western Sydney Clinical School, University of New South Wales"
+        },
+        {
+          "@id": "#6"
+        },
+        {
+          "ID": "http://orcid.org/0000-0001-6520-4213",
+          "Affiliation": {
+            "@id": "#6"
+          },
+          "Email": "",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0001-6520-4213",
+          "Name": "Dimity Pond"
+        },
+        {
+          "ID": "http://orcid.org/0000-0001-6121-5409",
+          "Affiliation": {
+            "@type": [
+              "Organization",
+              "CreativeWork"
+            ],
+            "@id": "#1",
+            "Description": "",
+            "ID": "1",
+            "Name": "Faculty of Health, University of Technology Sydney"
+          },
+          "Email": "tim.luckett@uts.edu.au",
+          "@type": [
+            "CreativeWork",
+            "Person"
+          ],
+          "@id": "http://orcid.org/0000-0001-6121-5409",
+          "Name": "Tim Luckett"
+        },
+        {
+          "Description": "",
+          "ID": "",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "@id": "_:b0"
+          },
+          "@type": [
+            "CreativeWork",
+            "Place"
+          ],
+          "@id": "#83fdd912-dcd9-451e-86fa-8fe78b83e572",
+          "Name": ""
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "#9",
+          "Description": "",
+          "ID": "9",
+          "Name": "School of Nursing, Johns Hopkins University"
+        },
+        {
+          "ID": "",
+          "Affiliation": {
+            "@id": "#10"
+          },
+          "Email": "",
+          "@type": [
+            "Person",
+            "CreativeWork"
+          ],
+          "@id": "#Jennifer%20Houltram",
+          "Name": "Jennifer Houltram"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "#11",
+          "Description": "",
+          "ID": "11",
+          "Name": "Centre for Healthy Brain Ageing, University of New South Wales"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "#7",
+          "Description": "",
+          "ID": "7",
+          "Name": "School of Medicine and Public Health, The University of Newcastle"
+        },
+        {
+          "ID": "http://orcid.org/0000-0003-4902-0654",
+          "Affiliation": {
+            "@type": [
+              "Organization",
+              "CreativeWork"
+            ],
+            "@id": "#6",
+            "Description": "",
+            "ID": "6",
+            "Name": "School of Nursing, Queensland University of Technology"
+          },
+          "Email": "",
+          "@type": [
+            "Person",
+            "CreativeWork"
+          ],
+          "@id": "http://orcid.org/0000-0003-4902-0654",
+          "Name": "Deborah Brooks"
+        },
+        {
+          "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        {
+          "Description": "",
+          "encodingFormat": "SPSS Data File",
+          "License": {
+            "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+          },
+          "fileFormat": [
+            "None",
+            {
+              "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/638"
+            }
+          ],
+          "@type": [
+            "CreativeWork",
+            "MediaObject"
+          ],
+          "@id": "data/IDEAL%20Resident%20data%20N%3D131.sav",
+          "schema:contentSize": "68118",
+          "Name": "Dataset 2"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "#8",
+          "Description": "",
+          "ID": "8",
+          "Name": "Faculty of Medicine, The University of Queensland"
+        },
+        {
+          "Description": "Baseline characteristics of the 20 nursing homes (Table 1).\nN.B. Table 1 Questionnaire on Palliative care for Advanced Dementia (qPAD) median scores by group calculated using staff level data in Dataset 2.",
+          "encodingFormat": "SPSS Data File",
+          "License": {
+            "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+          },
+          "fileFormat": [
+            "None",
+            {
+              "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/638"
+            }
+          ],
+          "@type": [
+            "CreativeWork",
+            "MediaObject"
+          ],
+          "@id": "data/IDEAL%20Nursing%20home%20facility%20descriptors%20N%3D20.sav",
+          "schema:contentSize": "1534",
+          "Name": "Dataset 1"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "Organization"
+          ],
+          "@id": "#3",
+          "Description": "",
+          "ID": "3",
+          "Name": "Ingham Institute for Applied Medical Research"
+        },
+        {
+          "Description": "Contains \nbaseline characteristics of the 131 residents (Table 1)\nEnd of Life Outcomes (family-rated and nurse-rated) total scores and weeks to completion (Tables 2, 3 and 4)\nN.B. there are more \u2018time to completion\u2019 data points than EOLD (End Of Life Dementia) scores since some EOLD responses were provided but unable to generate a valid total score.\nCase conference (whether or not resident received at least one case conference)\nQuality of Life in Late-stage Dementia (QUALID) data\nSymptoms and care during the last month of life (Table 5)",
+          "encodingFormat": "SPSS Data File",
+          "License": {
+            "@type": "CreativeWork",
+            "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
+            "Description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\n\nYou are free to:\n\nShare \u2014 copy and redistribute the material in any medium or format\nAdapt \u2014 remix, transform, and build upon the material\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\nUnder the following terms:\n\nAttribution \u2014 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNon-Commercial \u2014 You may not use the material for commercial purposes.\nShareAlike \u2014 If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions \u2014 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
+            "ID": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
+            "Name": "CC BY-NC-SA 3.0 AU"
+          },
+          "fileFormat": [
+            {
+              "@id": "http://www.nationalarchives.gov.uk/PRONOM/fmt/638"
+            },
+            "None"
+          ],
+          "@type": [
+            "CreativeWork",
+            "MediaObject"
+          ],
+          "@id": "data/IDEAL%20Staff%20qPAD%20baseline%20scores%20N%3D290.sav",
+          "schema:contentSize": "9987",
+          "Name": "Dataset 3"
+        },
+        {
+          "@type": [
+            "Organization",
+            "CreativeWork"
+          ],
+          "@id": "#10",
+          "Description": "",
+          "ID": "10",
+          "Name": "Centre for Health Research and Evaluation (CHERE), Faculty of Business, University of Technology Sydney"
+        }
+      ],
+      "Related": null,
+      "ContentLocation": null,
+      "@type": "Dataset",
+      "@id": "data",
+      "Contact": {
+        "ID": "http://orcid.org/0000-0001-6121-5409",
+        "Affiliation": {
+          "@type": [
+            "Organization",
+            "CreativeWork"
+          ],
+          "@id": "#1",
+          "Description": "",
+          "ID": "1",
+          "Name": "Faculty of Health, University of Technology Sydney"
+        },
+        "Email": "tim.luckett@uts.edu.au",
+        "@type": [
+          "CreativeWork",
+          "Person"
+        ],
+        "@id": "http://orcid.org/0000-0001-6121-5409",
+        "Name": "Tim Luckett"
+      },
+      "Contributor": null
+    }
+  ],
+  "@context": {
+    "Description": "schema:description",
+    "Subject": "schema:subject",
+    "HasPart": "schema:hasPart",
+    "rdfa": "http://www.w3.org/ns/rdfa#",
+    "Longitude": "schema:longitude",
+    "Interviewee": "bibo:interviewee",
+    "GivenName": "schema:givenName",
+    "TemporalCoverage": "schema:TemporalCoverage",
+    "MemberOf": "pcdm:memberOf",
+    "GeoShape": "schema:GeoShape",
+    "FamilyName": "schema:familyName",
+    "schema": "http://schema.org/",
+    "geo": "schema:geo",
+    "Equipment": "vivo:Equipment",
+    "Translator": "schema:translator",
+    "Dataset": "schema:Dataset",
+    "formats": "http://www.w3.org/ns/formats/",
+    "Title": "schema:name",
+    "Keywords": "schema:keywords",
+    "Latitude": "schema:latitude",
+    "Object": "pcdm:Object",
+    "ID": "schema:identifier",
+    "Place": "schema:Place",
+    "HasMember": "pcdm:hasMember",
+    "HasFile": "pcdm:hasFile",
+    "License": "schema:license",
+    "bibo": "http://purl.org/ontology/bibo/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vivo": "http://vivoweb.org/ontology/core#",
+    "Organization": "schema:Organization",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "encodingFormat": "schema:encodingFormat",
+    "Identifier": "schema:identifier",
+    "CreativeWork": "schema:CreativeWork",
+    "Related": "schema:relatedLink",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "Collection": "pcdm:Collection",
+    "ScholarlyArticle": "schema:ScholarlyArticle",
+    "Project": "vivo:Project",
+    "GeoCoordinates": "schema:GeoCoordinates",
+    "Box": "schema:Box",
+    "Funder": "schema:Funder",
+    "Format": "formats:Format",
+    "Person": "schema:Person",
+    "Creator": "schema:creator",
+    "fileFormat": "schema:fileFormat",
+    "Publisher": "schema:publisher",
+    "Phone": "schema:telephone",
+    "DatePublished": "schema:datePublished",
+    "fileOf": "pcdm:fileOf",
+    "pcdm": "http://pcdm.org/models#",
+    "Email": "schema:email",
+    "Affiliation": "schema:affiliation",
+    "MediaObject": "schema:MediaObject",
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "SpatialCoverage": "schema:spatialCoverage",
+    "cc": "http://creativecommons.org/ns#",
+    "ContentLocation": "schema:contentLocation",
+    "dct": "http://purl.org/dc/terms/",
+    "Name": "schema:name",
+    "Contact": "schema:accountablePerson",
+    "Contributor": "schema:contributor"
+  }
+}

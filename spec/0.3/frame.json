@@ -1,0 +1,96 @@
+{
+    "@context": {
+        "Affiliation": "schema:affiliation",
+        "BasedOn": "schema:isBasedOn",
+        "Box": "schema:Box",
+        "Contact": "schema:accountablePerson",
+        "ContentLocation": "schema:contentLocation",
+        "ContentSize": "schema:contentSize",
+        "Contributor": "schema:contributor",
+        "Copyright": "schema:copyrightHolder",
+        "CreativeWork": "schema:CreativeWork",
+        "Creator": "schema:creator",
+        "Dataset": "schema:Dataset",
+        "DatePublished": "schema:datePublished",
+        "Description": "schema:description",
+        "Email": "schema:email",
+        "Equipment": "vivo:Equipment",
+        "FamilyName": "schema:familyName",
+        "Format": "formats:Format",
+        "Funder": "schema:Funder",
+        "GeoCoordinates": "schema:GeoCoordinates",
+        "GeoShape": "schema:GeoShape",
+        "GivenName": "schema:givenName",
+        "HasPart": "schema:hasPart",
+        "ID": "schema:identifier",
+        "Interviewee": "bibo:interviewee",
+        "Keywords": "schema:keywords",
+        "Latitude": "schema:latitude",
+        "License": "schema:license",
+        "Longitude": "schema:longitude",
+        "MediaObject": "schema:MediaObject",
+        "Name": "schema:name",
+        "Organization": "schema:Organization",
+        "Person": "schema:Person",
+        "Phone": "schema:telephone",
+        "Place": "schema:Place",
+        "Project": "vivo:Project",
+        "Publisher": "schema:publisher",
+        "Related": "schema:relatedLink",
+        "SameAs": "schema:sameAs",
+        "ScholarlyArticle": "schema:ScholarlyArticle",
+        "SoftwareApplication": "schema:SoftwareApplication",
+        "SpatialCoverage": "schema:spatialCoverage",
+        "Subject": "schema:subject",
+        "TemporalCoverage": "schema:temporalCoverage",
+        "Title": "schema:name",
+        "TranslationOf": "schema:translationOf",
+        "Translator": "schema:translator",
+        "bibo": "http://purl.org/ontology/bibo/",
+        "cc": "http://creativecommons.org/ns#",
+        "dct": "http://purl.org/dc/terms/",
+        "encodingFormat": "schema:encodingFormat",
+        "fileFormat": "schema:fileFormat",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "formats": "http://www.w3.org/ns/formats/",
+        "geo": "schema:geo",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfa": "http://www.w3.org/ns/rdfa#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "vivo": "http://vivoweb.org/ontology/core#"
+    },
+    "@explicit": true,
+    "@type": "Dataset",
+    "Contact": {
+        "@embed": "@always",
+        "@type": "Person"
+    },
+    "ContentLocation": {
+        "@embed": "@always",
+        "@type": "Place"
+    },
+    "Contributor": {
+        "@embed": "@always",
+        "@type": "Project"
+    },
+    "Creator": {
+        "@embed": "@always",
+        "@type": "Person"
+    },
+    "DatePublished": {},
+    "Description": {
+        "@embed": "@always",
+        "@id": "CATALOG.html"
+    },
+    "HasPart": {
+        "@embed": "@last"
+    },
+    "ID": {},
+    "Name": {},
+    "Publisher": {},
+    "Related": {
+        "@embed": "@always",
+        "@type": "ScholarlyArticle"
+    }
+}
