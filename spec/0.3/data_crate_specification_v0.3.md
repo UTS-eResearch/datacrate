@@ -16,10 +16,10 @@ authority rather than the spec (this doc).
 
 ## Changes since version 0.2
 
-[ ] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
-  [ ]  Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+[X] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
+  [X]  Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
   [X]  Change the way publications are referenced to use citation instead of `related`
-  [ ]  
+  [X]  A distribution *Context Entity*
 
 [X] Added a new option for multiple-page HTML files instead of just CATALOG.html
 
@@ -32,7 +32,7 @@ authority rather than the spec (this doc).
 [X] Add the Schema.org to the CATALOG.html page as a script
 
 [ ] Write up the HTML generation algorithm 
-    [ ] Add @label for items referenced by @id
+  
 
 
 
@@ -107,7 +107,6 @@ About the contents of a datacrate:
    may be  distributed as a *Citable DataCrate* which has a DataCite metadata
    file in `/metadata/datacite.xml` and a human-readable citation
    in `CATALOG.html`. Working DataCrates do not have a `datacite.xml` file.
-
 
 This specification is a practical guide for software authors to create tools for
 generating and consuming research data packages. The JSON-LD format is not
@@ -268,21 +267,13 @@ a project, although it does have a [funder] property. DataCrate
 maps the key [Project] to [frapo:Project] (from the [SPAR] ontologies
 [FRAPO] ontology), which in turn MAY have a [funder] property.
 
-
-
-A [Dataset] has no contactPoint property, unlike [DCAT], so following the
-example set by Google in their guidelines for dataset markup, the
-recommendation is to have an [Organization] referenced by a [creator] property
-and to add a [contactPoint] property to the organization.
-
-
 # Structure / DataCrate by example
 
 This section describes the DataCrate specification starting from the BagIt
 structure on which it is built, with examples. It contains some normative
 statements (what a DataCrate SHOULD, MUST and MAY have).
 
-The Bagit file-system structure for a *Bagged DataCrate* is as follows.
+The BagIt file-system structure for a *Bagged DataCrate* is as follows.
 
 ```
 
@@ -761,8 +752,11 @@ precision than by using string-literals as values for [affiliation].
 
 A DataCrate SHOULD have contact information, using a [contactPoint] property
 with a value of [ContactPoint]. Note that [schema:Dataset] does not (yet) have a
-contact property, so this has to be on a Person or Organization which is related
-to the Dataset via a creator property. If there is a ContactPoint it MUST have `contactType` of `customer service` and MUST have a url which is an http URI.
+contactPoint property, so strictly this would have to be on a Person or
+Organization which is related to the Dataset via a [creator] or [contributor]
+property. If there is a ContactPoint it MUST have `contactType` of
+`customer service` and MUST have a url which is an http URI. The ID of the
+contact point MAY be an email address.
 
 NOTE: This usage follows that of Google Dataset search. 
 
@@ -872,7 +866,7 @@ should be a an [Organization] though it MAY be a string-literal or a URI.
 
 {
   "@id": "http://uts.edu.au",
-  "@type": "Organisation",
+  "@type": "Organization",
   "identifier": "http://uts.edu.au",
   "name": "University of Technology Sydney"
 },
@@ -994,7 +988,6 @@ is a reference to an [Organization] describing the copyright holder and a
 
 ```
 
-
 ### Equipment
 
 To specify which equipment or software was used to create or update a
@@ -1012,11 +1005,11 @@ To specify which equipment or software was used to create or update a
 
 To allow for flexibility in modelling provenance, and following best practice used by archivists DataCrate uses subtypes of the [Action], [CreateAction] and [UpdateAction] class to model the contributions of *Context Entities* of type [Person] or [Organization].
 
-In this example the CreateAction has a human [agent] and the Hovermap drone is the [instrument] used in the file creation event.
+In this example the CreateAction has a human [agent] and the Hovermap drone is the [instrument] used in the file creation event. 
 
 ```
 {
-  "@id": "some-arbitrary_id",
+  "@id": "DataCapture_event_1",
   "@type": "CreateAction",
   "agent": {"@id": "http://orcid.org/0000-0002-1672-552X"}
   "instrument": {
@@ -1042,13 +1035,21 @@ In this example the CreateAction has a human [agent] and the Hovermap drone is t
 ```
 
 Equipment SHOULD be described as accurately as possible. For example, to record
-the particular physical optical filter used to capture an image, the [File]
-SHOULD reference the filter using a [contributor] property.
-
+the particular physical optical filter used to capture an image, in a microscope
+a [CreateAction] should list the instrument(s) involved.
 ```
+
+{
+  "@id": "MicroscopeCapture 1",
+  "@type": "CreateAction",
+  
+  "instrument": {
+      "@id": "https://code.uts.edu.au/some-path-to-a-page"
+    },
+   
+}
 {
   "@type": ["File", "Image"],
-  "contributor": "@id": "https://code.uts.edu.au/some-path-to-a-page",
   "encodingFormat": "Tagged Image File Format",
    "fileFormat": "http://www.nationalarchives.gov.uk/PRONOM/fmt/353"
   "path": [
@@ -1058,7 +1059,8 @@ SHOULD reference the filter using a [contributor] property.
 }
 ```
 
-With an appropriate mapping added to the `@context` for the key Filter. 
+... with an appropriate mapping added to the `@context` for the key Filter. 
+
 ```
 {
   "Filter": "http://purl.bioontology.org/ontology/SNOMEDCT/116250002"
