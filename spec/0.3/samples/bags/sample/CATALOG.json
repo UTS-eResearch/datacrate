@@ -83,7 +83,7 @@
     {
       "@id": "http://ands.org.au",
       "@type": "Organization",
-      "description": "The core purpose iof the Australian National Data Service (ANDS) is to make Australia’s research data assets more valuable for researchers, research institutions and the nation.",
+      "description": "The core purpose iof the Australian National Data Service (ANDS) is to make Australia's research data assets more valuable for researchers, research institutions and the nation.",
       "identifier": "http://ands.org.au",
       "name": "Australian National Data Service"
     },
@@ -131,7 +131,7 @@
     },
     {
       "@id": "http://eresearch.uts.edu.au/projects/provisioner",
-      "@type": "Project ",
+      "@type": "Project",
       "description": "The University of Technology Sydney Provisioner project is ",
       "funder": [
         {
@@ -172,7 +172,7 @@
     },
     {
       "@id": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
-      "description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nYou are free to:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nShare — copy and redistribute the material in any medium or format\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nAdapt — remix, transform, and build upon the material\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nUnder the following terms:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nAttribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNon-Commercial — You may not use the material for commercial purposes.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNo additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
+      "description": "Attribution-NonCommercial-ShareAlike 3.0 Australia (CC BY-NC-SA 3.0 AU)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nThis is a human-readable summary of (and not a substitute for) the license. Disclaimer.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nYou are free to:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nShare - copy and redistribute the material in any medium or format\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nAdapt - remix, transform, and build upon the material\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nThe licensor cannot revoke these freedoms as long as you follow the license terms.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nUnder the following terms:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nAttribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNon-Commercial - You may not use the material for commercial purposes.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNo additional restrictions - You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
       "identifier": "https://creativecommons.org/licenses/by-nc-sa/3.0/au/",
       "name": "CC BY-NC-SA 3.0 AU"
     },
@@ -190,7 +190,7 @@
       "@id": "lots_of_little_files",
       "@type": "Dataset",
       "path": "data/lots_of_little_files",
-      "description": "This directory contains many small files, that we’re not going to describe in detail.",
+      "description": "This directory contains many small files, that we're not going to describe in detail.",
       "identifier": "lots_of_little_files"
     },
     {
