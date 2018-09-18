@@ -1,4 +1,4 @@
-# DataCrate Specification version 0.3.1
+# DataCrate Specification version 0.3.2
 
 This is a draft work in progress. A version 1.0 release is being planned for some time in Q3 2018.
 
@@ -13,15 +13,28 @@ be some inconsistencies between this spec and the associated files, such as the
 [DataCrate JSON-LD Context]. Where there *is* a discrepancy, the file is the
 authority rather than the spec (this doc).
 
+
 ## Changes since version 0.2
 
-These changes are still TODO:
+[ ] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
+  [ ]  Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+  [X]  Change the way publications are referenced to use citation instead of `related`
+  [ ]  
 
-[ ] Added a new option for multiple-page HTML files instead of just index.html
+[X] Added a new option for multiple-page HTML files instead of just CATALOG.html
 
-[ ] Added @label
 
-[ ] More support for provenance
+
+[X] More support for provenance with more extensive advice on
+
+[X] Reverting index.html to  CATALOG.html to avoid collisions with existing data sets (on the insistence of Mike Lake)
+
+[X] Add the Schema.org to the CATALOG.html page as a script
+
+[ ] Write up the HTML generation algorithm 
+    [ ] Add @label for items referenced by @id
+
+
 
 ## Changes since version 0.1
 
@@ -30,9 +43,9 @@ The following changes have been made since version 0.1:
 -  Added a new kind of DataCrate, a *Working DataCrate* which is not bagged, for
    use on working data.
 
--  `CATALOG.html` is now `index.html` - it remains in the package root
+-  `CATALOG.html` is now `CATALOG.html` - it remains in the package root
 
--  RDFa metadata is no longer required in `index.html`
+-  RDFa metadata is no longer required in `CATALOG.html`
 
 -  The  `datacite.xml` is now in a `/metadata` Directory, this is to align with
    the [ResearchObject] project. NOTE: an earlier version of this spec
@@ -62,8 +75,9 @@ are two ways of organizing a *DataCrate*:
 
 1. For working data or data that does not need to be distributed with checksums,
    a *Working DataCrate* is a plain-old directory containing payload data files,
-   with two metadata files at the root; one for humans (`index.html`) and
-   one for machines (`CATALOG.json`).
+   with two metadata files at the root; one for humans (`CATALOG.html`) and one
+   for machines (`CATALOG.json`), and an optional `/CATALOG` directory for
+   additional HTML content.
 
 2. For distribution, or archiving; where integrity is important, a *Bagged
    DataCrate* is a [BagIt] bag conforming to the [DataCrate BagIt profile] with
@@ -71,28 +85,28 @@ are two ways of organizing a *DataCrate*:
    clear separation between metadata and payload, and can be integrity-checked
    using the checksums in the [BagIt] manifest.
 
+
 If a *Bagged DataCrate* has sufficient metadata then it can be distributed as a
 *Citable DataCrate*, with a [DataCite] citation. See below.
 
 About the contents of a datacrate:
 
-*  Both kinds of *DataCrate* have a human-readable `index.html` file which
-   describes the files and directories in a dataset.  The `index.html` has
+*  Both kinds of *DataCrate* have a human-readable `CATALOG.html` file which
+   describes the files and directories in a dataset.  The `CATALOG.html` has
    metadata about the [Dataset] as a whole, and MAY have information about
    individual files and directories, such as their title, license, authorship or
-   other provenance information. In both kinds of *DataCrate* `index.html`
+   other provenance information. In both kinds of *DataCrate* `CATALOG.html`
    is in the root of the *DataCrate*.
 
 *  A *DataCrate* has a `CATALOG.json` with a JSON-LD version of
-   `index.html`, the metadata in this file is [Flattened Document Form] for
+   `CATALOG.html`, the metadata in this file is [Flattened Document Form] for
    ease of processing. In both kinds of *DataCrate*
    this file is the root.
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
    may be  distributed as a *Citable DataCrate* which has a DataCite metadata
    file in `/metadata/datacite.xml` and a human-readable citation
-   in `index.html`. Working DataCrates do not have a `datacite.xml` file.
-
+   in `CATALOG.html`. Working DataCrates do not have a `datacite.xml` file.
 
 
 This specification is a practical guide for software authors to create tools for
@@ -104,27 +118,26 @@ and search-engines.
 The DataCrate specification aims to ensure that packages are as self documenting
 as possible:
 
--  Anyone with a *DataCrate* zip file can unzip it, notice that there is an
-   `index.html` file in the base directory, open that in a web browser, and
+-  Anyone with a *DataCrate* zip file can unzip it, notice that there is a
+   `CATALOG.html` file in the base directory, open that in a web browser, and
    find out about the data; where it came from, who to contact about it, if it
    has a homepage and so on, which is more usable than simple zipping or bagging
-   of files or using XML-based metadata formats.
+   of files or using XML, JSON or bespoke metadata formats.
 
--  Repository managers can put *DataCrates* on the web with the `index.html`
-   file giving a detailed 'peek' inside the dataset. (This spec does not deal with
-   showing previews or thumbnails of content but a future version will).
+-  Repository managers can put *DataCrates* on the web with the `CATALOG.html`
+   file giving a detailed 'peek' inside the dataset.
 
--  In a *Bagged DataCrate* the metadata files `index.html` and `CATALOG.json`
-   are not in the payload directory, and hence can be changed (for example to
-   update to a new version of DataCrate) without changing the data payload and
-   its checksums.
+-  In a *Bagged DataCrate* the metadata files `CATALOG.html` and `CATALOG.json`
+   are not in the Bagit payload directory (`/data`), and hence can be changed
+   (for example to update to a new version of DataCrate) without changing the
+   data payload and its checksums.
 
 In an academic context, it is important to be able to associate data with funded
 research projects and publications, and desirable to be able to describe the
 *contents* of a data package, not just the data in aggregate, so DataCrate
 allows for file-level descriptions; to describe file format and extent,
-licensing, copyright ownership and authorship and other metadata at a granular
-level.
+licensing, copyright ownership and authorship and other metadata and contextual
+information at a granular level.
 
 Because DataCrates could be created at many different stages in the research
 data lifecycle there is a very minimal mandated minimum set of metadata. There
@@ -149,28 +162,28 @@ There are examples of DataCrates in the [samples] directory.
 
 Examples hosted on the web, as static mini-repositories with a download link:
 
-*  [Sample](https://data.research.uts.edu.au/examples/v0.2/sample/). A slightly silly simple sample datacrate.
+*  [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/). A slightly silly simple sample datacrate.
 
-*  [Glop Pot](https://data.research.uts.edu.au/examples/v0.2/Glop_Pot/). Cave exploration data.
+*  [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/). Cave exploration data.
 
-*  [GTM](https://data.research.uts.edu.au/examples/v0.2/GTM/). Some MATLAB code that supports a publication.
+*  [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/). Some MATLAB code that supports a publication.
 
 *  [Farms to
-   Freeways](https://data.research.uts.edu.au/examples/v0.2/farms_to_freeways/).
+   Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/).
    A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
 
-*  [Victoria Arch](https://data.research.uts.edu.au/public/Victoria_Arch/) more cave
+*  [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/) more cave
    data collected by a drone with a 3d lidar scanner, with video.
 
 *  [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](http://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
 
-## Definitions
+## Additional Definitions
 
-*Data Entity*: A dataset, directory or file.
+*Data Entity*: A [Dataset], directory or file.
 
-*MetaData Entity*: A [Person], [Organization], [Project], item of [Equipment], [license]
-or any other *thing* or *event* that forms part of the metadata for a DataCrate.
+*Context Entity*: A [Person], [Organization], [Project], item of [Equipment], [license]
+or any other *thing* or *event* that forms part of the metadata for a DataCrate, or
 
 *[DataCrate JSON-LD Context]*: A [JSON-LD] context that provides human-readable
 labels for datacrate metadata. These labels are used in `CATALOG.json` which
@@ -180,7 +193,17 @@ contains *DataCrate-flattened JSON-LD*.
 Context* containing DataCrate metadata, which has been flattened according to
 the rules in  [JSON-LD 1.1].
 
-*Anonymous Entity* A piece of contextual information such as a set of [GeoCoordinates] or [Event] which does not have a [name] property of its own. *Anonymous Entities* should have a [@label] which summarises their contents as a short string.
+*Anonymous Entity* A piece of contextual information such as a set of [GeoCoordinates]
+or [Event] which does not have a [name] property of its own. *Anonymous
+Entities* MAY be referenced using a [@label] which summarizes their contents as
+a short string (see examples below).
+
+*Root Dataset* A *Data Entity* which is a [Dataset] representing the entire
+contents of the DataCrate. Datasets may be nested but the *Root Dataset* can be
+located by looking for an Dataset with [path] of "./", which means the DataCrate
+is a *Working DataCrate*, and if that is not found, a path of "data/" which
+means the DataCrate is a *Bagged DataCrate*.
+
 
 ## Conventions
 
@@ -206,14 +229,14 @@ know there are no alternative existing well-maintained linked-data schema for
 research data with the coverage needed for this project - ie a single standard
 for expressing all the examples presented in this spec.
 
-Future versions of this specification may be based on other metadata standards,
+Future versions of this specification may be based on other metadata standards;
 as far as possible this will be done by swapping in a new *DataCrate Context*,
 leaving the keys as described here the same.
 
 Additional metadata MAY be drawn from any RDF vocabulary to allow open-ended
 extensibility.
 
-Generally, the standard keys for Schema.org should be used, however there are a
+Generally, the standard keys for [Schema.org] should be used, however there are a
 few keys which are defined differently than the standard, to allow for new terms
 to be defined in [schema.org] or for them to be mapped to other vocabularies.
 
@@ -240,17 +263,18 @@ This specification has guidelines for ways to represent:
 
 ## Note on compromises / limitations of schema.org
 
-One crucial *MetaData Entity* is a research project. Schema.org has no class for
+One crucial *Context Entity* is a research project. Schema.org has no class for
 a project, although it does have a [funder] property. DataCrate
 maps the key [Project] to [frapo:Project] (from the [SPAR] ontologies
 [FRAPO] ontology), which in turn MAY have a [funder] property.
 
 Likewise, schema.org does not have a way to represent research equipment so
-DataCrate uses the [frapo:Equipment] class.
+DataCrate uses the [frapo:Equipment] class. 
 
-A [Dataset] has no contactPoint property, unlike [DCAT], so The *DataCrate
-JSON-LD Context* maps the key [contact] to schema:accountablePerson; the concept
-is similar to "Corresponding Author" in academic publishing.
+A [Dataset] has no contactPoint property, unlike [DCAT], so following the
+example set by Google in their guidelines for dataset markup, the
+recommendation is to have an [Organization] referenced by a [creator] property
+and to add a [contactPoint] property to the organization.
 
 
 # Structure / DataCrate by example
@@ -267,8 +291,12 @@ The Bagit file-system structure for a *Bagged DataCrate* is as follows.
            |   bagit.txt
            |   bag-info.txt (with BagIt-Profile-Identifier: matching this specification)
            |   manifest-<algorithm>.txt
-           |   index.html
+           |   CATALOG.html
            |   CATALOG.json
+           \--- CATALOG # Directory for additional HTML files
+                | - 0.html
+                | - ...
+                | - n.html
            \--- metadata
                |   [optional datacite.xml] # Aligned with RDA working group
                |                           # draft packaging spec
@@ -284,8 +312,9 @@ A *Working DataCrate* has this structure:
 
 ```
    <base directory>/
-   |   index.html
+   |   CATALOG.html
    |   CATALOG.json
+   \ --- CATALOG # Directory for additional HTML files
    |   [payload files]
 ```
 
@@ -306,127 +335,119 @@ BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacr
 DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/0.2/data_crate_specification_v0.2.md
 ```
 
-## `index.html` and `CATALOG.json`
+## `CATALOG.html` and `CATALOG.json`
 
 -  `CATALOG.json` MUST be a *DataCrate-flattened JSON-LD* document.
 
--  `index.html` MUST be an HTML 5 document containing a human readable summary of the contents of `CATALOG.json`.
-
+-  `CATALOG.html` MUST be an HTML 5 document containing a human readable summary
+   of the [Dataset] DataCrate contents of `CATALOG.json`. This HTML page MAY be
+   a stand-alone self-contained page with descriptions for all the *Data
+   Entities* and *Context Entities* in `CATALOG.json`, or MAY describe only the
+   DataCrate *Data Entity* and link to additional HTML files in a subdiretory:
+   `/CATALOG`. `CATALOG.html` and all linked HTML files MUST contain the JSON-ld
+   for that corresponds to the entit(ies) described in that file.
 
 ## About `CATALOG.json`
 
 The following *DataCrate-flattened JSON-LD* represents a minimal description of
 a *Working DataCrate* dataset.  The [DataCrate JSON-LD Context] MUST be included inline as below.
 
-Any schema.org context MAY be included and unused parts of the schema MAY be omitted. Schema.org elements SHOULD be used as defined in the standard Schema.org context. However, this standard does use variant names for two elements.
+Any schema.org context or other MAY be included.
+
+Any unused parts of the schema MUST be omitted. 
+
+Schema.org elements SHOULD be used as defined in the standard
+Schema.org context. However, this standard does use variant names for two
+elements.
 
 *  [File] is mapped to [schema:MediaObject] which was chosen as a compromise as
-   it has many of the properties that are needed to describe a generic file. Future version of schema.org or a research data extension may define [File].
+   it has many of the properties that are needed to describe a generic file.
+   Future version of schema.org or a research data extension may define [File].
 
-*  [path] is mapped to [schema:contentURL]. (TODO maybe change this?)
+*  [path] is mapped to [schema:contentURL].
 
 (From now on the `@context` will be omitted from examples.)
 
-The `@context` MUST be provided in `CATALOG.json`. Keys which are not
-used MAY be ommitted.
+The `@context` MUST be provided as a local context in `CATALOG.json`. Terms which are not
+used SHOULD be omitted.
+
+# *Working DataCrates*
+
+For DataCrates which are used in-situ and have not been distributed as a BagIt bag, the minimal markup is as follows.
 
 ```
 {"@context" :
     {
-    "name": "schema:name",
-    "givenName":  "schema:givenName",
-    "familyName": "schema:familyName",
-    "description":  "schema:description",
-    "File": "schema:MediaObject",
-    "path": "schema:contentUrl",
-    "contentSize": "schema:contentSize",
-    "copyright": "schema:copyrightHolder",
-    "publisher": "schema:publisher",
-    "journal": "schema:periodical",
-    "issn": "schema:issn",
-    "datePublished": "schema:datePublished",
-    "identifier": "schema:identifier",
-    "license": "schema:license",
-    "creator": "schema:creator",
-    "contributor": "schema:contributor",
-    "related": "schema:relatedLink",
-    "sameAs":  "schema:sameAs",
-    "basedOn": "schema:isBasedOn",
-    "translator": "schema:translator",
-    "translationOf": "schema:translationOf",
-    "funder": "schema:funder",
-    "Person": "schema:Person",
-    "contact": "schema:accountablePerson",
-    "email": "schema:email",
-    "phone": "schema:telephone",
-    "Dataset": "schema:Dataset",
-    "fileFormat": "schema:fileFormat",
-    "encodingFormat": "schema:encodingFormat",
-    "temporalCoverage": "schema:temporalCoverage",
-    "spatialCoverage": "schema:spatialCoverage",
-    "contentLocation": "schema:contentLocation",
-    "keywords": "schema:keywords",
-    "subject": "schema:subject",
-    "givenName":  "schema:givenName",
-    "familyName": "schema:familyName",
-    "Place": "schema:Place",
-    "Organization": "schema:Organization",
-    "memberOf": "schema:memberOf",
-    "member": "schema:hasMember",
-    "Project": "frapo:Project",
-    "affiliation": "schema:affiliation",
-    "Funder": "schema:Funder",
-    "GeoShape": "schema:GeoShape",
-    "GeoCoordinates": "schema:GeoCoordinates",
-    "geo": "schema:geo",
-    "latitude": "schema:latitude",
-    "longitude": "schema:longitude",
-    "Box": "schema:Box",
-    "CreativeWork": "schema:CreativeWork",
-    "MediaObject": "schema:MediaObject",
-    "Project": "frapo:Project",
-    "isOutputOf": "frap:isOutputOf",
-    "Equipment": "frapo:Equipment",
-    "ScholarlyArticle": "schema:ScholarlyArticle",
-    "SoftwareApplication": "schema:SoftwareApplication",
-
-    "Project": "frapo:Project",
-    "isOutputOf": "frapo:isOutputOf",
-    "Equipment": "frapo:Equipment",
-    "interviewee": "bibo:interviewee",
-    "interviewer": "bibo:interviewer",
-    "hasFile": "pcdm:hasFile",
-    "hasMember": "pcdm:hasMember",
-    "RepositoryCollection": "pcdm:Collection",
-    "RepositoryObject": "pcdm:object",
-    "pcdm": "http://pcdm.org/models#",
-    "bibo": "http://purl.org/ontology/bibo/",
-    "cc": "http://creativecommons.org/ns#",
-    "dct": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfa": "http://www.w3.org/ns/rdfa#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "http://schema.org/",
-    "frapo": "http://purl.org/cerif/frapo/"
+    "description":  "https://schema.org/description",
+    "Dataset":  "https://schema.org/Dataset"
   }
 },
   "@graph": [
     {
-      "@id": "data",
+      "@id": "/",
+      "path": "/",
       "@type": "Dataset",
       "Description": "This dataset doesn't really exist"
     }
   ]
 }
+```
+
+DataCrates which are packaged for distribution SHOULD:
+*  Have a DOI as an identifier. 
+*  Use the DOI URL as the `@id`.
+*  Include the DOI without a URL as an [identifier].
+*  Link to a [DataDownload] using the [distribution] property.
+
+ {
+      "@id": "http://doi.org/10.4225/59/59672c09f4a4b",
+      "@type": "Dataset",
+      "citation": {
+        "@id": "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0181020"
+      },
+      "path": "data/",
+      "datePublished": "2017",
+      "description": "Palliative care planning for nursing home residents with advanced dementia is often suboptimal. This study compared effects of facilitated case conferencing (FCC) with usual care (UC) on end-of-life care",
+     
+      "identifier": [
+        "http://doi.org/10.4225/59/59672c09f4a4b",
+        "doi.org/10.4225/59/59672c09f4a4b"
+      ],
+      "name": "Data files associated with the manuscript:Effects of facilitated family case conferencing for advanced dementia: A cluster randomised clinical trial",
+      "distribution": [
+        {
+          "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip"
+        }
+      ]
+    }
+
+{
+      "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
+      "contentUrl": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
+      "@type": "DataDownload",
+      "encodingFormat": "zip"
+    }
 
 ```
 
-
 If there are files in the payload directory (which is either `/data` for a
 *Bagged DataCrate* or `/` for a *Working DataCrate*) each file MAY be
-described by a *Dataset* related to the schema:Dataset with a property
+described by a *MediaObject* related to the schema:Dataset with a property
 *HasPart*.
+
+For a published DataCrate the `@id` property should be a DOI URL if possible. T
+
+
+```
+{
+  "@type": "Dataset",
+  "name": "NCDC Storm Events Database",
+  "description": "Storm Data is provided by the National Weather Service (NWS) and contain statistics on...",
+  "url": "https://catalog.data.gov/dataset/ncdc-storm-events-database",
+  "sameAs":"https://gis.ncdc.noaa.gov/geoportal/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510",
+  
+}
+```
 
 NOTE: As per the BagIt standard, every file in the payload directory of a
 *Bagged DataCrate*  MUST be in the BagIt Manifest.  Describing every file in the
@@ -476,11 +497,7 @@ For example, the below [RepositoryObject] is related to four files which are all
 versions of the same image (via [hasFile]) one of which is a thumbnail. The
 thumbnail MUST be included in the DataCrate.
 
-If [thumbnail]s are incidental to the data set, they need not be referenced by [hasPart] or [hasFile] relationships
-
-TODO: work out if thumbnails and
-other derived files should have a special `@type`.
-
+If [thumbnail]s are incidental to the data set, they need not be referenced by [hasPart] or [hasFile] relationships.
 
 ```
 {
@@ -596,7 +613,7 @@ this example shows and empty list for [hasPart].
 
 ## How to represent various kinds of metadata
 
-### Contacts, creators and contributors: people
+### People
 
 A core principle of Linked data is to use URIs as to identify things such as
 people.  The following is the minimum recommended way of representing a
@@ -618,7 +635,7 @@ However, it does not provide very much information about the author and it is
 not possible to use this informtion to reliably construct a [DataCite] citation.
 The `DataCrate-flattened JSON-LD` @graph SHOULD contain additional
 information about *Metadata Entities* for the use of both humans (once it has
-been rendered as `index.html`) and machines.
+been rendered as `CATALOG.html`) and machines.
 
 ```
 
@@ -631,7 +648,7 @@ been rendered as `index.html`) and machines.
 ```
 
 Note the string-value of the organizational affiliation. This SHOULD be improved
-by also providing a *Metadata Entity* for the organization.
+by also providing a *Context Entity* for the organization.
 
 ### Organizations as values
 
@@ -654,15 +671,12 @@ property of a [Person].
 ```
 
 
-A [organization] SHOULD also be used for [Person]'s affiliation. For example
-the contact person:
-
+A [organization] SHOULD also be used for [Person]'s affiliation. 
 ```
 {
       "@type": "Dataset",
       "@id": "some_id",
       "publisher": {"@id": "http://uts.edu.au"}
-      "contact": , {"@id": "http://orcid.org/0000-0002-3545-944X"}
 },
 {
   "@id": "http://uts.edu.au",
@@ -678,7 +692,7 @@ the contact person:
      }
 ```
 
-Sometimes researchers want to affiliate with a sub-part of an instition, such as
+Sometimes researchers want to affiliate with a sub-part of an institution, such as
 institute, faculty department, or research group.
 
 Here's a (real) example of a researcher who has four institutional affiliations
@@ -688,9 +702,6 @@ for a published article and data set:
 {
   "@id": "http://doi.org/10.4225/59/59672c09f4a4b",
   "@type": "Dataset",
-  "contact": {
-    "@id": "http://orcid.org/0000-0001-6121-5409"
-  },
   "path": "./",
   "creator": [
     {
@@ -747,15 +758,72 @@ Thus *DataCrate Flattened JSON-LD* MAY express chained affiliations with more
 precision than by using string-literals as values for [affiliation].
 
 
+### Contact point
+
+A DataCrate SHOULD have contact information, using a [contactPoint] property
+with a value of [ContactPoint]. Note that [schema:Dataset] does not (yet) have a
+contact property, so this has to be on a Person or Organization which is related
+to the Dataset via a creator property. If there is a ContactPoint it MUST have `contactType` of `customer service` and MUST have a url which is an http URI.
+
+NOTE: This usage follows that of Google Dataset search. 
+
+NOTE: The Google structured Data tool gives an error if mailto: URLs are used in
+the "url" property.
+
+```
+{
+      "@id": "http://orcid.org/0000-0001-6121-5409",
+      "@type": "Person",
+      "affiliation": {
+        "@id": "1"
+      },
+      "contactPoint": {
+        "@id": "tim.luckett@uts.edu.au"
+      },
+      "familyName": "Luckett",
+      "givenName": "Tim",
+      "identifier": "http://orcid.org/0000-0001-6121-5409",
+      "name": "Tim Luckett"
+    },
+
+
+  {
+      "@id": "tim.luckett@uts.edu.au",
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "tim.luckett@uts.edu.au",
+      "identifier": "tim.luckett@uts.edu.au",
+      "url": "http://orcid.org/0000-0001-6121-5409"
+    },
+
+```
+
+This is not ideal, as there is no direct semantic relationship between the
+contactPoint property and the Dataset, so the same [contactPoint] should be
+added to the *Root Dataset*, in anticipation of this being added to Schema.org.
+
+```
+{
+  "@id": "http://doi.org/10.4225/59/59672c09f4a4b",
+  "@type": "Dataset",
+  "path": "./",
+  "contactPoint": {
+        "@id": "tim.luckett@uts.edu.au"
+      },
+}
+
+
+
+```
 ### Publications
 
 To associate a publication with a dataset the *DataCreate Flattened JSON-LD* MUST include a URL
-(preferably a DOI) as the ID of a publication using the [related] or
-[isOutputOf] property.
+(preferably a DOI) as the ID of a publication using the [citation] or
+property.
 
 For example:
 ```
-"related": {"@id": "https://doi.org/10.1109/TCYB.2014.2386282"}
+"citation": {"@id": "https://doi.org/10.1109/TCYB.2014.2386282"}
 ```
 
 The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
@@ -789,7 +857,7 @@ The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 ### Publisher
 
 The root [Dataset] in  *Bagged DataCrate* must have a [publisher] property. This
-should be a an [Organization] though it MAY be a string-literal or a URI.
+should be a an [Organization] though it MAY be a string-literal or a URI. 
 
 ```
 {
@@ -865,7 +933,8 @@ properties. The [isOutputOf] property MAY also be used to associate a dataset wi
 
 ### Date of publication
 
-Use the [datePublished] property with a date in ISO 8601 date format to at least the precision of a day.
+The [datePublished] property MUST be a date in ISO 8601 date format and SHOULD
+be specified to least the precision of a day.
 
 ```
 {
@@ -930,12 +999,8 @@ is a reference to an [Organization] describing the copyright holder and a
 ### Equipment
 
 To specify which equipment or software was used to create or contribute to a
-*Data Entity*, it SHOULD have a [contributor] property, with a value of type
+*Data Entity*, it SHOULD have a [contributor] property, with a value of `@type`
 [Equipment] or [SoftwareApplication].
-
-NOTE: Capturing provenance about what equipment and software was used to create
-files  is an area which needs to be expanded in future versions of this
-specification. Other work in this area includes [ResearchObject] and the [Software Sustainability Institute's work on provenance](https://www.software.ac.uk/who-do-we-work/provenance-tool-suite)
 
 This example shows how to associate equipment with a file.
 
@@ -969,10 +1034,52 @@ This example shows how to associate equipment with a file.
 },
 ```
 
+Equipment SHOULD be described as accurately as possible. For example, to record
+the particular physical optical filter used to capture an image, the [File]
+SHOULD reference the filter using a [contributor] property.
+
+```
+{
+  "@type": ["File", "Image"],
+  "contributor": "@id": "https://code.uts.edu.au/some-path-to-a-page",
+  "encodingFormat": "Tagged Image File Format",
+   "fileFormat": "http://www.nationalarchives.gov.uk/PRONOM/fmt/353"
+  "path": [
+    "data/files/2ebbe681aa6ec138776343974ce8a3dd.jpg"
+  ],
+  "@id": "2ebbe681aa6ec138776343974ce8a3dd.jpg"
+}
+```
+
+With an appropriate mapping added to the `@context` for the key Filter. 
+```
+{
+  "Filter": "http://purl.bioontology.org/ontology/SNOMEDCT/116250002"
+}
+```
+The actual equipment SHOULD at least be represented with a *Context Entity* giving a summary of its properties. The *Context Entity* MAY use properties from [Product] such as manufacturer and model:
+
+```
+{
+"@id": "https://code.uts.edu.au/some-path-to-a-page",
+"@type": ["Equipment","Product"]
+"name": "Chris to supply",
+"description": "Chris to supply",
+"image": {"@id", },
+"manufacturer": "",
+"model": ""
+}
+```
+
+The ID "@id": "https://code.uts.edu.au/some-path-to-a-page" SHOULD resolve to a web page describing the equipment, which SHOULD contain JSON-LD data as above.
+
+
+
+
 
 ### Places
 
-To associate a *Data Entity* with a MetaData Entity representing a *geographical
+To associate a *Data Entity* with a Context Entity representing a *geographical
 location or region*  the entity SHOULD have
 a property of [contentLocation] with a value of type [Place].
 
@@ -997,11 +1104,11 @@ The place has a [geo] property, referencing an *Anonymous Entity* of [@type] [Ge
   "@type": "GeoCoordinates",
   "latitude": "-33.7152",
   "longitude": "150.30119",
-  "@label": "Lat: -33.7152 Long: 150.30119"
+  "name": "Latitude: -33.7152 Longitude: 150.30119"
 },
 ```
 
-The [GeoCoordinates] item SHOULD have a [@label], which is used in the generating the `index.html` file.x
+The [GeoCoordinates] item SHOULD have a human readable [name], which is used in the generating the `CATALOG.html` file.
 
 And the place is referenced from the [contentLocation] property of the dataset.
 ```
@@ -1019,7 +1126,7 @@ And the place is referenced from the [contentLocation] property of the dataset.
 
 [Place] MAY use any of the [resources available in Schema.org](http://schema.org/geo) to
 describe places. Future profiles of DataCrate may mandate the use of a subset of
-these. Any directory or file or *Metadata Entity* may be geo-located. For example this file:
+these. Any directory or file or *Context Entity* may be geo-located. For example this file:
 
 ```
 {
@@ -1153,7 +1260,7 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
 
 ## Minimum metadata summary for *Bagged DataCrates*
 
-A *Bagged DataCrate* MUST have a root [Dataset] with:
+A *Bagged DataCrate* MUST have a *Root [Dataset]* with:
  *  a [description] property, which describes the whole dataset contained
     in the data (BagIt payload) directory.
 
@@ -1207,23 +1314,23 @@ Users of DataCrate SHOULD use the following IDs where possible:
 In the absence of the above, DataCrates SHOULD contain stable persistent URIs to
 identify all entities wherever possible.
 
-## index.html
+## CATALOG.html
 
-*DataCrate index.html*  MUST contain the same information as `CATALOG.json`,
+*DataCrate CATALOG.html*  MUST contain the same information as `CATALOG.json`,
 organized as described below, with the exception that files that do not have a
 description, creator or other metadata that cannot be derived automatically MAY
 not be listed.
 
-*DataCrate index.html* must be a static pre-compiled HTML file that will display
+*DataCrate CATALOG.html* must be a static pre-compiled HTML file that will display
 without scripting. It MAY contain extra features enabled by Javascript.
 
 (TODO: will publish a sample implementation)
 
 ## To generate an index HTML
 
-The `index.html` file SHOULD:
+The `CATALOG.html` file SHOULD:
 
-*  Show the contents of `CATALOG.json` in a human readable form, showing each *Data Entity* and each *Metadata Entity* in HTML.
+*  Show the contents of `CATALOG.json` in a human readable form, showing each *Data Entity* and each *Context Entity* in HTML.
 *  When a *Data Entities* and *Metadata Entities* is referenced by its ID:
     *  If it has a [name] property, provide a link to its HTML version.
     *  If it does not have a name (eg a [GeoCoordinates] location), show it embedded in the HTML for the entity.
@@ -1312,6 +1419,12 @@ vocabularies and ontologies when this is not possible.
 [translator]: https://schema.org/translator
 [thumbnail]: https://schema.org/thumbnail
 [translationOf]: https://schema.org/translationOf
+[Product]: https://schema.org/Product
+[contactPoint]: https://schema.org/contactPoint
+[contactType]: https://schema.org/contactType
+[ContactPoint]: https://schema.org/ContactPoint
+
+
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
 [DataCrate JSON-LD Context]: ./context.json
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
