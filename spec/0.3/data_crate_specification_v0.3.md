@@ -268,8 +268,7 @@ a project, although it does have a [funder] property. DataCrate
 maps the key [Project] to [frapo:Project] (from the [SPAR] ontologies
 [FRAPO] ontology), which in turn MAY have a [funder] property.
 
-Likewise, schema.org does not have a way to represent research equipment so
-DataCrate uses the [frapo:Equipment] class. 
+
 
 A [Dataset] has no contactPoint property, unlike [DCAT], so following the
 example set by Google in their guidelines for dataset markup, the
@@ -998,32 +997,40 @@ is a reference to an [Organization] describing the copyright holder and a
 
 ### Equipment
 
-To specify which equipment or software was used to create or contribute to a
-*Data Entity*, it SHOULD have a [contributor] property, with a value of `@type`
-[Equipment] or [SoftwareApplication].
-
-This example shows how to associate equipment with a file.
+To specify which equipment or software was used to create or update a
+*Data Entity*, the *DataCrate* JSON-LD should have a *Context Entity* for each item of equipment which SHOULD be of `@type` [IndividualProduct]. The entity SHOULD have a serial number, manufacturer, and so on noted. In this case the equipment is a bespoke machine.
 
 ```
-
 {
   "@id": "https://confluence.csiro.au/display/ASL/Hovermap",
-  "@type": "Equipment",
+  "@type": "IndividualProduct",
   "description": "The CSIRO bentwing is an unmanned aerial vehicles (UAV, commonly known as a drone) with a LIDAR mounted underneath to capture 3D information on the surroundings.",
   "identifier": "https://confluence.csiro.au/display/ASL/Hovermap",
   "name": "bentwing"
-},
+}
+```
+
+To allow for flexibility in modelling provenance, and following best practice used by archivists DataCrate uses subtypes of the [Action], [CreateAction] and [UpdateAction] class to model the contributions of *Context Entities* of type [Person] or [Organization].
+
+In this example the CreateAction has a human [agent] and the Hovermap drone is the [instrument] used in the file creation event.
+
+```
+{
+  "@id": "some-arbitrary_id",
+  "@type": "CreateAction",
+  "agent": {"@id": "http://orcid.org/0000-0002-1672-552X"}
+  "instrument": {
+      "@id": "https://confluence.csiro.au/display/ASL/Hovermap"
+    },
+   
+}
 
 {
   "@id": "wcc04_archentrance_traj2.ply",
   "@type": "File",
   "contentSize": "547332",
   "path": "wcc04_archentrance_traj2.ply",
-  "contributor": [
-
-    {
-      "@id": "https://confluence.csiro.au/display/ASL/Hovermap"
-    }
+  
   ],
   "creator": {
     "@id": "http://orcid.org/0000-0002-1672-552X"
@@ -1062,18 +1069,17 @@ The actual equipment SHOULD at least be represented with a *Context Entity* givi
 ```
 {
 "@id": "https://code.uts.edu.au/some-path-to-a-page",
-"@type": ["Equipment","Product"]
+"@type": ["IndividualProduct"]
 "name": "Chris to supply",
 "description": "Chris to supply",
 "image": {"@id", },
 "manufacturer": "",
+"serialNumber: "",
 "model": ""
 }
 ```
 
 The ID "@id": "https://code.uts.edu.au/some-path-to-a-page" SHOULD resolve to a web page describing the equipment, which SHOULD contain JSON-LD data as above.
-
-
 
 
 
@@ -1423,6 +1429,8 @@ vocabularies and ontologies when this is not possible.
 [contactPoint]: https://schema.org/contactPoint
 [contactType]: https://schema.org/contactType
 [ContactPoint]: https://schema.org/ContactPoint
+[CreateAction]: http://schema.org/CreateAction
+[IndividualProduct]: http://schema.org/IndividualProduct
 
 
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
@@ -1443,6 +1451,5 @@ vocabularies and ontologies when this is not possible.
 [Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [frapo:Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [isOutputOf]: https://sparontologies.github.io/frapo/current/frapo.html#d4e526
-[Equipment]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [ResearchObject]: http://www.researchobject.org/
 [Flattened Document Form]: https://json-ld.org/spec/latest/json-ld/#flattened-document-form
