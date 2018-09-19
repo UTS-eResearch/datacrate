@@ -389,6 +389,7 @@ DataCrates which are packaged for distribution SHOULD:
 *  Include the DOI without a URL as an [identifier].
 *  Link to a [DataDownload] using the [distribution] property.
 
+```
  {
       "@id": "http://doi.org/10.4225/59/59672c09f4a4b",
       "@type": "Dataset",
@@ -793,7 +794,8 @@ the "url" property.
 
 This is not ideal, as there is no direct semantic relationship between the
 contactPoint property and the Dataset, so the same [contactPoint] should be
-added to the *Root Dataset*, in anticipation of this being added to Schema.org.
+added to the *Root Dataset*, in anticipation of this being added to Schema.org,
+even though this is not strictly supported by schema.org.
 
 ```
 {
@@ -874,7 +876,7 @@ should be a an [Organization] though it MAY be a string-literal or a URI.
 
 ### Funding and grants
 
-To associate a research project (with or without funding) to a [Dataset], use
+To associate a research project (with or without funding) with a [Dataset], use
 the ([FRAPO]) [isOutputOf] property referencing an instance of [Project]. This example
 shows a [Dataset] which has an [isOutputOf] property referencing a project which in turn
 has the the same [Organisation] referenced by [funder] and [publisher]
@@ -944,7 +946,6 @@ with a value of [CreativeWork] that describes the license.  The ID of the licens
 should be its URL (eg a Creative Commons License URL) and a summary of the
 license included in the DataCrate. If this is not possible a URL MAY be used as
 the value.
-
 
 This Data Item has a copyright holder which is different from its creator. There
 is a reference to an [Organization] describing the copyright holder and a
@@ -1264,8 +1265,6 @@ For example, this data is exported from an [Omeka](http://omeka.org) repository:
 
 
 
-
-
 ## Minimum metadata summary for *Bagged DataCrates*
 
 A *Bagged DataCrate* MUST have a *Root [Dataset]* with:
@@ -1322,9 +1321,16 @@ Users of DataCrate SHOULD use the following IDs where possible:
 In the absence of the above, DataCrates SHOULD contain stable persistent URIs to
 identify all entities wherever possible.
 
-## CATALOG.html
+## CATALOG.html and additional index.html files
 
-*DataCrate CATALOG.html*  MUST contain the same information as `CATALOG.json`,
+The *DataCrate CATALOG.html* is an entry point to collection of HTML pages which
+describe each *Data Entity* and *Contextual Entity*. The CATALOG.html file MUST
+describe the *Root Dataset* and link to other pages, one per entity, which are
+stored in /CATALOG_files, and organized according to the [Pairtree]
+specification. The path to additional HTML file is: `/CATALOG_files/` followed
+by the `@id` of the file converted to a pairtree path followed by `index.html`.
+
+*DataCrate CATALOG.html*  MUST contain the same information as the JSON-LD `CATALOG.json`,
 organized as described below, with the exception that files that do not have a
 description, creator or other metadata that cannot be derived automatically MAY
 not be listed.
@@ -1332,29 +1338,41 @@ not be listed.
 *DataCrate CATALOG.html* must be a static pre-compiled HTML file that will display
 without scripting. It MAY contain extra features enabled by Javascript.
 
-(TODO: will publish a sample implementation)
 
-## To generate an index HTML
+The `CATALOG.html` and `index.html` files file SHOULD:
 
-The `CATALOG.html` file SHOULD:
-
-*  Show the contents of `CATALOG.json` in a human readable form, showing each *Data Entity* and each *Context Entity* in HTML.
+*  Show the contents of each data entity in a human readable form, showing each *Data Entity* and each *Context Entity* in HTML.
 *  When a *Data Entities* and *Metadata Entities* is referenced by its ID:
-    *  If it has a [name] property, provide a link to its HTML version.
-    *  If it does not have a name (eg a [GeoCoordinates] location), show it embedded in the HTML for the entity.
-*  For keys that resolve in the `DataCrate JSON-LD Context` to a URI, indicate this (the simplest way is to link the key to its definition).
+    * If it has a [name] property, provide a link to its HTML version.
+    * If it does not have a name (eg a [GeoCoordinates] location), show it
+       embedded in the HTML for the entity.
+*  For keys that resolve in the `DataCrate JSON-LD Context` to a URI, indicate
+   this (the simplest way is to link the key to its definition.
 *  For external URIs values provivde a link.
 
-An example implementation can be found in the [Calcyte] tool. This tool uses a table to show each entity but other implementations are possible. (NOTE: not all external links are working in Calcyte at the moment).
+An example implementation can be found in the [Calcyte] tool.
 
-TODO: Come up with a way of providing labels for external URIs.
+To create the web-content in a DataCrate:
+* Traverse the JSON-LD `@graph` by iterating over every entity in the *DataCrate-flattened JSON-LD*:
+  * Compile an index of items by ID we will call the `ID-index`.
+
+* Make a second pass of the JSON-LD to add JSON-LD @reverse properties and (TODO: )
+
+* Starting with the *Root Dataset*, create an HTML page at /CATALOG.html which has:
+   * A prominent DataCite citation in text format.
+   * For *Hosted DataCrates* a prominent link to a downloadable version of the dataset (in addition to the fact that there will be a [distribution] property)
+   * The properties of the entity. For example, using a two-column table showing the property in the left column and its values in the right column.
+      * Large lists of properties should be made accessible, for example by generating nested HTML `summary` elements.
+      * For properties that link to another 
+   * For properties that reference an external URI, show the URI as a link. 
+   * For each referenced entity which is found in the `ID-index` generate a sub page.
 
 
 ## Datacite citations
 
-In a *Bagged DataCrate*, if there is sufficient metadata in `CATALOG.json`, it SHOULD contain a DataCite
-citation, datacite.xml in the `/metadata` relative to the root of the bag, compliant with the
-[DataCite Schema v4.0].
+In a *Bagged DataCrate*, if there is sufficient metadata in `CATALOG.json`, it
+SHOULD contain a DataCite citation, datacite.xml in the `/metadata` relative to
+the root of the bag, compliant with the [DataCite Schema v4.0].
 
 To generate DataCite.xml a DataCrate MUST have the following at the
 schema:Dataset level:
