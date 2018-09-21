@@ -18,7 +18,7 @@ authority rather than the spec (this doc).
 
 [X] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
 
-[X] Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+[X] Change contact details to match the Google way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
 
 [X] Change the way publications are referenced to use citation instead of `related`
 
@@ -31,6 +31,8 @@ authority rather than the spec (this doc).
 [X] Reverting index.html to  CATALOG.html to avoid collisions with existing data sets (on the insistence of Mike Lake)
 
 [X] Add the Schema.org to the CATALOG.html page as a script
+
+[X] Added a section on modelling curation actions with Action objects
 
 [ ] Write up the HTML generation algorithm 
   
