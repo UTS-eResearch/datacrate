@@ -17,9 +17,12 @@ authority rather than the spec (this doc).
 ## Changes since version 0.2
 
 [X] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
-  [X]  Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
-  [X]  Change the way publications are referenced to use citation instead of `related`
-  [X]  A distribution *Context Entity*
+
+[X] Change contact details to match the Google way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+
+[X] Change the way publications are referenced to use citation instead of `related`
+
+[X] A distribution *Context Entity*
 
 [X] Switched to using multiple-page HTML files instead of a single CATALOG.html (originally index.html)
 
@@ -28,6 +31,8 @@ authority rather than the spec (this doc).
 [X] Reverting index.html to  CATALOG.html to avoid collisions with existing data sets (on the insistence of Mike Lake)
 
 [X] Add the Schema.org to the CATALOG.html page as a script
+
+[X] Added a section on modelling curation actions with Action objects
 
 [ ] Write up the HTML generation algorithm 
   
@@ -1151,6 +1156,71 @@ machine generated for use at scale.
 
 ```
 
+### Curation
+
+To record an action which changes the DataSet's metadata, or changes its state in a publication or other workflow, a [CreateAction] or [UpdateAction] SHOULD be associated with a *Data Entity*.
+
+A curation Action MUST have at least one [object] which associates it with either the DataSet or one of its components.
+
+An Action which creates new *Data entities* - for example, the creation of a new metadata file - SHOULD have these as [result]s. 
+
+An Action SHOULD have a [name] and MAY have a [description].
+
+An Action SHOULD have an [endTime], which MUST be in ISO 8601 date format and SHOULD be specified to at least the precision of a day. An Action MAY have a [startTime] meeting the same specifications.
+
+An Action SHOULD have a human [agent] who was responsible for authorising the action, and MAY have an [instrument] which associates the action with a particular piece of software (for example, the CMS or data catalogue through which an update was approved). As with equipment, an instrument should be of `@type` IndividualProduct.
+
+An Action which has failed MAY record any error message in an [error] property.
+
+[UpdateAction] SHOULD only be used for actions which affect the DataSet as a whole, such as movement through a workflow.
+
+To record curation actions which modify a [File] within a DataSet - for example, by correcting or enhancing metadata - the old version of the [File] SHOULD be retained, and a [CreateAction] added which has the original version as its [object] and the new version as its [result].
+ 
+
+```
+{
+    "@id": "history-01",
+    "@type": "CreateAction",
+    "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
+    "name": "DataCrate created",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+}
+
+{
+    "@id": "history-02",
+    "@type": "UpdateAction",
+    "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
+    "name": "DataCrate published",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+}
+
+{ 
+    "@id": "history-03",
+    "@type": "CreateAction",
+    "object": { "@id": "./metadata.xml.v0.1" },
+    "result": { "@id": "./metadata.xml" }
+    "name": "metadata update",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+
+}
+
+{
+    "@id": "https://stash.research.uts.edu.au",
+    "@type": "IndividualProduct",
+    "name": "Stash",
+    "description": "UTS Research Data Catalogue",
+    "identifier": "https://stash.research.uts.edu.au"
+}
+```
+
+
+
 ### Extra metadata such as Exif
 
 Schema.org has an generic extension mechanism for encoding adding arbitrary
@@ -1277,7 +1347,7 @@ To describe an export from a Digital Library or repository system, use the
 Portland Common Data Model ([PCDM]); a record from the library representing an
 abstract entity such as a person, or a work, or a place should have a```@type```
 of [RepositoryObject] ([pcdm:Object]), in addition to any other types.
-Objects MAY be grouped together in [RepostioryCollection]s ([pcdm:Collection])
+Objects MAY be grouped together in [RepositoryCollection]s ([pcdm:Collection])
 with [hasMember] pointing to the the [RepositoryObject]. The keys
 RepositoryObject and RepositoryCollection were chosen to avoid collision between
 the terms Collection and Object with other vocabularies.
@@ -1449,12 +1519,13 @@ The mandatory DataCite resource type MUST be set to "DataCrate-v0.2".
 
 ## The *DataCrate Website*
 
-The *DataCrate CATALOG.html* is an entry point to collection of HTML pages which
-describe each *Data Entity* and each *Contextual Entity*. The CATALOG.html file MUST
-describe the *Root Dataset* and link to other pages, one per entity, which are
-stored in /CATALOG_files, and organized according to the [Pairtree]
-specification. The path to additional HTML file is: `/CATALOG_files/` followed
-by the `@id` of the file converted to a pairtree path followed by `index.html`.
+The *DataCrate CATALOG.html* is an entry point to the *DataCrate Website*, a
+collection of HTML pages which describe each *Data Entity* and each *Contextual
+Entity*. The CATALOG.html file MUST describe the *Root Dataset* and link to
+other pages, one per entity, which are stored in /CATALOG_files, and organized
+according to the [Pairtree] specification. The path to additional HTML file is:
+`/CATALOG_files/` followed by the `@id` of the file converted to a Pairtree path
+followed by `index.html`.
 
 *DataCrate CATALOG.html* MUST contain the same information as the JSON-LD
 `CATALOG.json`, organized as described below, with the exception that files that
@@ -1481,20 +1552,32 @@ An example implementation can be found in the [CalcyteJS] tool.
 
 To create the web-content in a DataCrate:
 * Traverse the JSON-LD `@graph` by iterating over every entity in the *DataCrate-flattened JSON-LD*:
-  * Compile an index of items by ID we will call the `ID-index`.
+  * Compile an index of items by ID (the `ID-index` for the purposes of this explanation).
 
-* Make a second pass of the JSON-LD to add JSON-LD @reverse properties and (TODO: )
 
-* Starting with the *Root Dataset*, call a function DataSet-to-HTML to generate CATALOG.html which should contain:
-   * A prominent citation in DataCite text format if there is sufficient metadata to genrate one.
-   * For *Hosted DataCrates* a prominent link to a downloadable version of the dataset (in addition to the fact that there will be a [distribution] property)- DataSet-to-HTML should call itself 
+* Make a second pass of the JSON-LD to add reciprocal properties linking back from a referenced entity to the entity that references it.
+  * For the following structural properties, use the inverse property: `hasFile -> fileOf  hasPart -> isPartOf hasMember -> memberOf`.
+  * For other properties use JSON-LD's `@reverse` feature. For example: `{"@reverse": { creator: [ { '@id': '1' } ] }}`
 
-* DataSet-to-HTML: A function to generate a sumamry of a
+JSON-LD @reverse properties linking Classes back to the properties that link them. 
+
+* Starting with the *Root Dataset*, call a function Entity-to-HTML to generate `CATALOG.html` which should contain:
+   * A prominent citation in DataCite text format if there is sufficient metadata to generate one.
+   * For *Hosted DataCrates* a prominent link to a downloadable version of the dataset (in addition to the fact that there will be a [distribution] property).
+
+* Function: Entity-to-HTML: A function to generate a web page summarizing 
    * The properties of the entity. For example, using a two-column table showing the property in the left column and its values in the right column.
       * Large lists of properties should be made accessible, for example by generating nested HTML `summary` elements.
-      * For properties that link to another 
+      * For properties that link to another entity, call DataSet-to-HTML
    * For properties that reference an external URI, show the URI as a link. 
-   * For each referenced entity which is found in the `ID-index` generate a sub page with a link to CATALOG.html.
+   * For each referenced entity which is found in the `ID-index` call
+     Entity-to-HTML (which will save the page) and link to it by calculating its path from its ID (see below)/
+   * Save the web page on a path calculated as follows: If it is the *Root Dataset* page, use `CATALOG.html`, or for all other pages calculate a pairtree path using the item `@id` and add that to `CATALOG_html`. For example: the path.
+     `http://orcid.org/0000-0002-3545-944X`
+     becomes:
+     `CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-3/54/5-/94/4X/index.html`
+
+
 
 
 
