@@ -54,18 +54,17 @@ The following changes have been made since version 0.1:
 
 ## Introduction & definition of a *DataCrate*
 
-This document specifies a method of organizing file-based data, known as
-*DataCrate*,  with associated metadata, in both human and machine readable
-formats, based on the [schema.org] linked-data vocabulary, supplemented with
-terms from the [SPAR] ontologies and [PCDM] where schema.org does not have
-coverage.
+This document specifies a method, known as *DataCrate*, of organizing file-based
+data and repository data, with associated metadata, in both human and machine
+readable formats, based on the [schema.org] linked-data vocabulary, and [PCDM]
+for representing repository collections.
 
 The aim is to provide researchers with a way of distributing self-describing
 packages of research data with standards based metadata at the package and the
 file level.
 
-A *DataCrate* is a dataset: a set of files contained in a single directory. There
-are two ways of organizing a *DataCrate*:
+A *DataCrate* is a single [Dataset]: a set of files contained in a single
+directory. There are two ways of organizing a *DataCrate*:
 
 1. For working data or data that does not need to be distributed with checksums,
    a *Working DataCrate* is a plain-old directory containing payload data files,
@@ -73,12 +72,12 @@ are two ways of organizing a *DataCrate*:
    for machines (`CATALOG.json`), and an optional `/CATALOG` directory for
    additional HTML content.
 
-2. For distribution, or archiving; where integrity is important, a *Bagged
+2. For distribution, or archiving, where integrity is important, a *Bagged
    DataCrate* is a [BagIt] bag conforming to the [DataCrate BagIt profile] with
-   the payload files in the `/data` directory. A *Bagged DataCrate* has a
-   clear separation between metadata and payload, and can be integrity-checked
-   using the checksums in the [BagIt] manifest.
-
+   the payload files in the `/data` directory. A *Bagged DataCrate* has a clear
+   separation between metadata and payload, meaning tyhat metadata can be
+   updated without affecting the integrity fo the data and can be
+   integrity-checked using the checksums in the [BagIt] manifest.
 
 If a *Bagged DataCrate* has sufficient metadata then it can be distributed as a
 *Citable DataCrate*, with a [DataCite] citation. See below.
@@ -118,7 +117,7 @@ as possible:
    of files or using XML, JSON or bespoke metadata formats.
 
 -  Repository managers can put *DataCrates* on the web with the `CATALOG.html`
-   file giving a detailed 'peek' inside the dataset.
+   file giving a detailed 'peek' inside the dataset's contents and context.
 
 -  In a *Bagged DataCrate* the metadata files `CATALOG.html` and `CATALOG.json`
    are not in the Bagit payload directory (`/data`), and hence can be changed
@@ -175,7 +174,7 @@ Examples hosted on the web, as static mini-repositories with a download link:
 
 *Data Entity*: A [Dataset], directory or file.
 
-*Context Entity*: A [Person], [Organization] (including research projects), item of [Equipment], [license]
+*Context Entity*: A [Person], [Organization] (including research projects), item of equipment ([IndividualProduct]), [license]
 or any other *thing* or *event* that forms part of the metadata for a DataCrate,
 or supporting information.
 
