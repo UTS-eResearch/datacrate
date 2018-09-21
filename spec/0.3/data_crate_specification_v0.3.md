@@ -17,9 +17,12 @@ authority rather than the spec (this doc).
 ## Changes since version 0.2
 
 [X] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
-  [X]  Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
-  [X]  Change the way publications are referenced to use citation instead of `related`
-  [X]  A distribution *Context Entity*
+
+[X] Change contact details to match the Goole way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+
+[X] Change the way publications are referenced to use citation instead of `related`
+
+[X] A distribution *Context Entity*
 
 [X] Switched to using multiple-page HTML files instead of a single CATALOG.html (originally index.html)
 
@@ -1151,6 +1154,71 @@ machine generated for use at scale.
     },
 
 ```
+
+### Curation
+
+To record an action which changes the DataSet's metadata, or changes its state in a publication or other workflow, a [CreateAction] or [UpdateAction] SHOULD be associated with a *Data Entity*.
+
+A curation Action MUST have at least one [object] which associates it with either the DataSet or one of its components.
+
+An Action which creates new *Data entities* - for example, the creation of a new metadata file - SHOULD have these as [result]s. 
+
+An Action SHOULD have a [name] and MAY have a [description].
+
+An Action SHOULD have an [endTime], which MUST be in ISO 8601 date format and SHOULD be specified to at least the precision of a day. An Action MAY have a [startTime] meeting the same specifications.
+
+An Action SHOULD have a human [agent] who was responsible for authorising the action, and MAY have an [instrument] which associates the action with a particular piece of software (for example, the CMS or data catalogue through which an update was approved). As with equipment, an instrument should be of `@type` IndividualProduct.
+
+An Action which has failed MAY record any error message in an [error] property.
+
+[UpdateAction] SHOULD only be used for actions which affect the DataSet as a whole, such as movement through a workflow.
+
+To record curation actions which modify a [File] within a DataSet - for example, by correcting or enhancing metadata - the old version of the [File] SHOULD be retained, and a [CreateAction] added which has the original version as its [object] and the new version as its [result].
+ 
+
+```
+{
+    "@id": "history-01",
+    "@type": "CreateAction",
+    "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
+    "name": "DataCrate created",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+}
+
+{
+    "@id": "history-02",
+    "@type": "UpdateAction",
+    "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
+    "name": "DataCrate published",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+}
+
+{ 
+    "@id": "history-03",
+    "@type": "CreateAction",
+    "object": { "@id": "./metadata.xml.v0.1" },
+    "result": { "@id": "./metadata.xml" }
+    "name": "metadata update",
+    "endTime": "2018-09-10",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+
+}
+
+{
+    "@id": "https://stash.research.uts.edu.au",
+    "@type": "IndividualProduct",
+    "name": "Stash",
+    "description": "UTS Research Data Catalogue",
+    "identifier": "https://stash.research.uts.edu.au"
+}
+```
+
+
 
 ### Extra metadata such as Exif
 
