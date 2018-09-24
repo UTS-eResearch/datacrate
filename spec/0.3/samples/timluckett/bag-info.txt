@@ -1,6 +1,0 @@
-Bag-Software-Agent: bagit.py <http://github.com/libraryofcongress/bagit-python>
-Bagging-Date: 2017-07-26
-Contact-Name: Tim Luckett
-Contact-email: tim.luckett@uts.edu.au
-External-Description: Palliative care planning for nursing home residents with advanced dementia is often suboptimal. This study compared effects of facilitated case conferencing (FCC) with usual care (UC) on end-of-life care
-Payload-Oxum: 114447.5
