@@ -82,7 +82,7 @@ on highly nuanced distinctions between different kinds of creators of research
 data using the [PAV], without addressing a lot of general who-what-where type metadata.
 
 
-The[PROV] ontology has been used to describe research activities, but its data
+The [PROV] ontology has been used to describe research activities, but its data
 model is too complicated for simple data modelling. It does not allow us to
 express Some entity *created* this file. in [Prov] *activities* create files. It
 is not practical to model every authoring relationship with an intermediate act
