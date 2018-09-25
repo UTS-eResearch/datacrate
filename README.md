@@ -8,7 +8,7 @@ packaging file-based *research data* for re-use and distribution. (Archiving and
 preservation are not *immediate* concerns but we want to work with those
 communities of practice ASAP).
 
-The current draft version is [0.2](./spec/0.2/data_crate_specification_v0.2.md)
+The current draft version is [0.3](./spec/0.3/data_crate_specification_v0.3.md)
 
 Peter Sefton and Peter Bugeia developed a way of bundling data from the [HIEv]
 repository for deposit in the university Research Data Repository and for re-use
