@@ -1393,8 +1393,8 @@ Keyword properties MUST use [keyword].
 To describe an export from a Digital Library or repository system, use the
 Portland Common Data Model ([PCDM]); a record from the library representing an
 abstract entity such as a person, or a work, or a place should have a```@type```
-of [RepositoryObject] ([pcdm:Object]), in addition to any other types.
-Objects MAY be grouped together in [RepositoryCollection]s ([pcdm:Collection])
+of [RepositoryObject], in addition to any other types.
+Objects MAY be grouped together in [RepositoryCollection]s
 with [hasMember] pointing to the the [RepositoryObject]. The keys
 RepositoryObject and RepositoryCollection were chosen to avoid collision between
 the terms Collection and Object with other vocabularies.
@@ -1585,8 +1585,8 @@ Entity*. The CATALOG.html file MUST describe the *Root Dataset* and link to
 other pages, one per entity, which are stored in /CATALOG_files, and organized
 according to the [Pairtree specification]. [Pairtree] was chosen as it specifies
 how to generate a path from an identifier, and divides up the file-space
-efficiently, which is an advantage in very large datacrates, where there may be
-thousands of pages in the *DataCrate* website. The path to additional HTML file
+efficiently, which is an advantage in very large DataCrates, where there may be
+thousands of pages in the *DataCrate Website*. The path to additional HTML file
 is: `/CATALOG_files/` followed by the `@id` of the file converted to a Pairtree
 path followed by `index.html`.
 
@@ -1609,7 +1609,7 @@ The `CATALOG.html` and `index.html` files file SHOULD:
        embedded in the HTML for the entity.
 *  For keys that resolve in the `DataCrate JSON-LD Context` to a URI, indicate
    this (the simplest way is to link the key to its definition.
-*  For external URIs values provivde a link.
+*  For external URI values, provide a link.
 
 An example implementation can be found in the [CalcyteJS] tool.
 
@@ -1639,10 +1639,6 @@ To create the web-content in a DataCrate:
      `CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-3/54/5-/94/4X/index.html`
 
 
-
-
-
-
 ## Extending DataCrate
 
 To extend DataCrate implementers SHOULD try to use valid schema.org
@@ -1652,7 +1648,7 @@ vocabularies and ontologies when this is not possible.
 The terms (properties and classes) used SHOULD be added to the `@context`. URIs
 in the `@context` SHOULD resolve to a useful human readable page. Where this is
 not possible - for example if the URI resolves to an RDF ontology file a
-human-readable URI should be provided using SameAs.
+human-readable URI SHOULD be provided using SameAs.
 
 For example. This URI from the [BIBO] ontology
 <"http://purl.org/ontology/bibo/interviewee"> resolves to an ontology file,
@@ -1750,6 +1746,7 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [CreateAction]: https://schema.org/CreateAction
 [result]: https://schema.org/result
 [object]: https://schema.org/object
+[error]: https://schema.org/error
 [UpdateAction]: https://schema.org/UpdateAction
 [Action]: https://schema.org/Action
 [IndividualProduct]: https://schema.org/IndividualProduct
