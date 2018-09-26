@@ -232,7 +232,7 @@ supplement gaps in schema.org's ability to represent dataset metadata.
 Schema.org was chosen because it is widely used on the World Wide Web and
 supported by search engines, on the assumption that discovery is likely to be
 maximized if commercial  search engines index the content.  NOTE: As far as we
-know there are no alternative existing well-maintained linked-data schema for
+know there is no alternative existing well-maintained linked-data schema for
 research data with the coverage needed for this project - ie a single standard
 for expressing all the examples presented in this spec.
 
