@@ -952,7 +952,7 @@ SHOULD also reference funders directly, as well as via a chain of references.
 
 {
   "@id": "https://eresearch.uts.edu.au/projects/provisioner",
-  "@type": "Project",
+  "@type": "Organization",
   "description": "The University of Technology Sydney Provisioner project is ...",
   "funder": [
     {
@@ -968,7 +968,7 @@ SHOULD also reference funders directly, as well as via a chain of references.
 
 {
   "@id": "https://uts.edu.au",
-  "@type": "Organisation",
+  "@type": "Organizsation",
   "identifier": "https://uts.edu.au",
   "name": "University of Technology Sydney"
 },
@@ -1047,7 +1047,7 @@ is a reference to an [Organization] describing the copyright holder and a
 
 ```
 
-[See this example of a an audio recording with a `copyrightHolder` property which is different from the `creator` property, and which is linked to a license](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
+[See this example of a an audio recording with a `copyrightHolder` property (which is different from the `creator` property) and which is linked to a license](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
 
 
 ### Equipment
@@ -1063,7 +1063,7 @@ page, and the address of the description SHOULD be used as its `@id`.
 {
   "@id": "https://confluence.csiro.au/display/ASL/Hovermap",
   "@type": "IndividualProduct",
-  "description": "The CSIRO bentwing is an unmanned aerial vehicles (UAV, commonly known as a drone) with a LIDAR mounted underneath to capture 3D information on the surroundings.",
+  "description": "The CSIRO bentwing is an unmanned aerial vehicle (UAV, commonly known as a drone) with a LIDAR mounted underneath to capture 3D information on the surroundings.",
   "identifier": "https://confluence.csiro.au/display/ASL/Hovermap",
   "name": "bentwing"
 }
@@ -1727,6 +1727,7 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [Place]: https://schema.org/Place
 [description]: https://schema.org/description
 [geo]: https://schema.org/geo
+[sameAs]: https://schema.org/sameAs
 [GeoCoordinates]: https://schema.org/GeoCoordinates
 [email]: https://schema.org/email
 [phone]: https://schema.org/phone
