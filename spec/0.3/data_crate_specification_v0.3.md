@@ -188,11 +188,11 @@ The following examples are hosted on the web, as static mini-sites with a downlo
 
 ## Additional Definitions
 
-*Data Entity*: A [Dataset], directory or file.
+*Data Entity*: A [Dataset], directory or file, which is represented by a [JSON Object].
 
 *Context Entity*: A [Person], [Organization] (including research projects), item of equipment ([IndividualProduct]), [license]
 or any other *thing* or *event* that forms part of the metadata for a DataCrate,
-or supporting information.
+or supporting information, represented by a [JSON Object].
 
 *[DataCrate JSON-LD Context]*: A [JSON-LD] context that provides human-readable
 labels for DataCrate metadata. These labels are used in `CATALOG.json` which
@@ -229,8 +229,7 @@ without a [BagIt] `/data` directory.
 
 ## Core metadata standard for DataCrate: Schema.org
 
-[Schema.org] is the base metadata standard for DataCrate with a few additions to
-supplement gaps in schema.org's ability to represent dataset metadata.
+[Schema.org] is the base metadata standard for DataCrate.
 Schema.org was chosen because it is widely used on the World Wide Web and
 supported by search engines, on the assumption that discovery is likely to be
 maximized if commercial  search engines index the content.  NOTE: As far as we
@@ -468,7 +467,7 @@ If there are files in the payload directory (which is either `/data` for a
 described by a *MediaObject* related to the schema:Dataset with a property
 *HasPart*.
 
-[See a DataCrate with a DOI identifier](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/)
+[See a DataCrate with a DOI identifier.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/)
 
 For a published DataCrate the `@id` property should be a DOI URL if possible. 
 
@@ -626,7 +625,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
  
 ```
 
-[See an example of a thumbnail](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
+[See an example of a thumbnail.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
 
 ### Describing a directory but not files
 
@@ -797,7 +796,7 @@ with the university via [memberOf].
 Thus *DataCrate Flattened JSON-LD* MAY express chained affiliations with more
 precision than by using string-literals as values for [affiliation].
 
-[See an example of a Person with four affiliations](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
+[See an example of a Person with four affiliations.](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
 
 
 ### Contact point
@@ -859,7 +858,7 @@ even though this is not strictly supported at the moment.
 }
 ```
 
-[See an example of an item of `@type` `ContactPoint`, which is linked to a `Dataset` and to an `Organization` via a `contactPoint` property](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
+[See an example of an item of `@type` `ContactPoint`, which is linked to a `Dataset` and to an `Organization` via a `contactPoint` property.](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
 
 ### Publications
 
@@ -900,7 +899,7 @@ The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 }
 ```
 
-[See an example of a journal article](https://data.research.uts.edu.au/examples/v0.3/GTM/CATALOG_files/pairtree_root/ht/tp/+=/=d/x,/do/i,/or/g=/10/,1/10/9=/TC/YB/,2/01/4,/23/86/28/2/index.html)
+[See an example of a journal article.](https://data.research.uts.edu.au/examples/v0.3/GTM/CATALOG_files/pairtree_root/ht/tp/+=/=d/x,/do/i,/or/g=/10/,1/10/9=/TC/YB/,2/01/4,/23/86/28/2/index.html)
 
 ### Publisher
 
@@ -982,7 +981,7 @@ SHOULD also reference funders directly, as well as via a chain of references.
 },
 
 ```
-[See an example of a Dataset which has three listed funders](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG.html) in a chained relationship, [for example this Organization is linked as a funder and in turn links to another funder](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/s+/==/gi/th/ub/,c/om/=U/TS/-e/Re/se/ar/ch/=p/ro/je/ct/s=/da/ta/cr/at/e/index.html)
+[See an example of a Dataset which has three listed funders](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG.html) in a chained relationship, [for example this Organization is linked as a funder and in turn links to another funder.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/s+/==/gi/th/ub/,c/om/=U/TS/-e/Re/se/ar/ch/=p/ro/je/ct/s=/da/ta/cr/at/e/index.html)
 
 ### Date of publication
 
@@ -1047,7 +1046,7 @@ is a reference to an [Organization] describing the copyright holder and a
 
 ```
 
-[See this example of a an audio recording with a `copyrightHolder` property (which is different from the `creator` property) and which is linked to a license](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
+[See this example of a an audio recording with a `copyrightHolder` property (which is different from the `creator` property) and which is linked to a license.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
 
 
 ### Equipment
@@ -1114,7 +1113,7 @@ event.
     },
 ```
 
-[See an example of a data-capture CreateAction with an `Object` and two files as `result`s .](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
+[See an example of a data-capture CreateAction with an `Object` and two files as `result`s.](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
 
 ### Software 
 
@@ -1304,11 +1303,11 @@ example shows one property of several hundred.
 
 ```
 
-[See an example of Exif data displayed in HTML](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
+[See an example of Exif data displayed in HTML.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
 
 ### Places
 
-To associate a *Data Entity* with a Context Entity representing a *geographical
+To associate a *Data Entity* with a *Context Entity* representing a *geographical
 location or region*  the entity SHOULD have
 a property of [contentLocation] with a value of type [Place].
 
@@ -1325,7 +1324,7 @@ This example shows how to define a place, using a [geonames] ID:
   "name": "Catalina Park"
 },
 ```
-The place has a [geo] property, referencing an *Context Entity* of [@type] [GeoCoordinates]:
+The place has a [geo] property, referencing an *Context Entity* of `@type` [GeoCoordinates]:
 
 ```
 {
@@ -1371,7 +1370,7 @@ these. Any directory or file or *Context Entity* may be geo-located. For example
   },
 ```
 
-[See an example of a place in HTML](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=w/ww/,g/eo/na/me/s,/or/g=/81/52/66/2=/ca/ta/li/na/-p/ar/k,/ht/ml/index.html)
+[See an example of a place in HTML.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=w/ww/,g/eo/na/me/s,/or/g=/81/52/66/2=/ca/ta/li/na/-p/ar/k,/ht/ml/index.html)
 
 ### Time
 
@@ -1388,19 +1387,19 @@ Keyword properties MUST use [keyword].
 
 ### Digital Library and Repository content
 
-To describe an export from a Digital Library or repository system, use the
-Portland Common Data Model ([PCDM]); a record from the library representing an
-abstract entity such as a person, or a work, or a place should have a```@type```
+To describe an export from a Digital Library or repository system, DataCrate uses the
+Portland Common Data Model ([PCDM]). A *Context Entity* from a repository, representing an
+abstract entity such as a person, or a work, or a place SHOULD have a```@type```
 of [RepositoryObject], in addition to any other types.
 Objects MAY be grouped together in [RepositoryCollection]s
 with [hasMember] pointing to the the [RepositoryObject]. The keys
 RepositoryObject and RepositoryCollection were chosen to avoid collision between
 the terms Collection and Object with other vocabularies.
 
-NOTE: PCDM specifies that Files should have only technical metadata, not
+NOTE: [PCDM] specifies that Files should have only technical metadata, not
 descriptive metadata, which is *not* a restriction in DataCrate. If the
 DataCrate is to be imported into a strict [PCDM] repository, modeling of
-object/file relationships will have to be worked out.
+object/file relationships will be necessary.
 
 For example, this data is exported from an [Omeka](https://omeka.org) repository:
 
@@ -1455,9 +1454,6 @@ For example, this data is exported from an [Omeka](https://omeka.org) repository
    "rights": [
       "Copyright University of Western Sydney 2015"
    ],
-   "text": [
-      "<div style=\"text-align:center;\">DID YOU LIVE IN PENRITH OR BLACKTOWN IN THE 1950\u2019S?<br /><br /></div>\n<div style=\"text-align:center;\">IF SO, YOU MAY BE INTERESTED<br />TO SHARE YOUR MEMORIES OF THOSE<br />TIMES!<br /><br /></div>\n<div>The Women's Research Centre at the University of Western Sydney Nepean. is currently conducting interviews for an oral history project:<br /><br /></div>\n<div style=\"text-align:center;\">\"FROM FARMS TO FREEWAYS - WOMEN'S MEMORIES<br />OF WESTERN SYDNEY\"<br /><br /></div>\n<div>If you have lived in either of these areas from the late 1940s or early 1950s through to the 1960s and would like to share your memories of this time of rapid change. please see Robyn Arrowsmith during recess.<br /><br /></div>\n<div>More information is also available from Dr. Deborah Chambers: on (02) 678 7375.</div>"
-   ],
    "originalFormat": [
       "Paper"
    ],
@@ -1483,7 +1479,7 @@ For example, this data is exported from an [Omeka](https://omeka.org) repository
    "@id": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf"
 },
 ```
-[See an example of a repository exported to a DataCrate](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/)
+[See an example of a repository exported to a DataCrate.](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/)
 
 ## Minimum metadata summary for *Bagged DataCrates*
 
@@ -1492,15 +1488,11 @@ A *Bagged DataCrate* MUST have a *Root [Dataset]* with:
     in the data (BagIt payload) directory.
 
  *  A creation date in ISO data format for the dataset using
-    [dataModified] which is the last date that the *payload*, *not* the
+    [dateModified] which is the last date that the *payload*, *not* the
     metadata was changed.
 
- *  A contact person (or role) expressed via a property schema:accountablePerson
-    on the [Dataset] of with a value of type [Person], with  at
-    least one of the following properties.
-    *  [email] (text)
-    *  [phone] (text)
-    *  [affiliation] - with a text value or reference to an [Organization].
+ *  A [contactPoint] property referencing a [ContactPoint] *Context Entity*.
+
 
 ### BagIt metadata
 
@@ -1508,13 +1500,13 @@ BagIt metadata SHOULD be included in bag-info.txt where it is available as
 follows in the Dataset object at the root of '@graph' in *DataCrate-flattened JSON-LD*.
 
 The following metadata SHOULD be extracted from the *DataCrate-flattened JSON* in
-the base directory of the bag.
+the base directory of the bag. The expressions below show how to look-up BagIt metadata. For example, "['contactPoint'] -> ['email']" means find a [contactPoint] property, resolve that to a *Context Entity* and get its [email] property.
 
 ```
 Source-Organization:   ['publisher'] -> ['name']
-Contact-Name: [contactPoint] -> ['name']
-Contact-Phone: [contactPoint] -> ['phone']
-Contact-Email:  [contactPoint] -> ['email']
+Contact-Name: ['contactPoint'] -> ['name']
+Contact-Phone: ['contactPoint'] -> ['phone']
+Contact-Email:  ['contactPoint'] -> ['email']
 External-Description: ['description']
 Bagging-Date:  To be entered by the software tool used to create the DataCrate
 External-Identifier:  ['@id'] (if the ID is an http or https URL)
@@ -1541,9 +1533,9 @@ Bagging-Date: 2018-09-23T23:48:07.867Z
 
 ### Recommended IDs
 
-Users of DataCrate SHOULD use the following IDs where possible:
+*DataCrate-flattened JSON-LD* documents SHOULD use the following IDs where possible:
 *  For a DataCrate, an `@id` which SHOULD be a DOI URL.
-*  For People participating in the research process: ORCID identifiers.
+*  For People participating in the research process: [ORCID] identifiers.
 *  For [Organization]s including [funder]s, pending a global identifier scheme,
    use the homepage URL of the organization.
 *  For items of type schema:Place: a geonames URL.
@@ -1573,7 +1565,7 @@ schema:Dataset level:
 
 The mandatory DataCite resource type MUST be set to "DataCrate-v0.2".
 
-[See an example data citation](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/metadata/datacite.xml)
+[See an example data citation.](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/metadata/datacite.xml)
 
 ## The *DataCrate Website*
 
@@ -1625,7 +1617,7 @@ To create the web-content in a DataCrate:
    * For *Hosted DataCrates* a prominent link to a downloadable version of the dataset (in addition to the fact that there will be a [distribution] property).
 
 * Function: Entity-to-HTML: A function to generate a web page summarizing 
-   * The properties of the entity. For example, using a two-column table showing the property in the left column and its values in the right column.
+   * The properties of the entity. For example by using a two-column table showing the property in the left column and its values in the right column.
       * Large lists of properties should be made usable for example by generating nested HTML `summary` elements to paginate them.
       * For properties that link to another entity, call Entity-to-HTML
    * For properties that reference an external URI, show the URI as a link. 
@@ -1640,13 +1632,14 @@ To create the web-content in a DataCrate:
 ## Extending DataCrate
 
 To extend DataCrate implementers SHOULD try to use valid schema.org
-properties and classes and MAY use terms form other widely-used and supported
+properties and classes and MAY use terms form other
 vocabularies and ontologies when this is not possible.
 
-The terms (properties and classes) used SHOULD be added to the `@context`. URIs
-in the `@context` SHOULD resolve to a useful human readable page. Where this is
-not possible - for example if the URI resolves to an RDF ontology file a
-human-readable URI SHOULD be provided using SameAs.
+The terms (properties and classes) used SHOULD be added as keys to the
+`@context` in the *DataCrate-flattened JSON-LD*. URIs in the `@context` SHOULD
+resolve to a useful human readable page. Where this is not possible - for
+example if the URI resolves to an RDF ontology file a human-readable URI SHOULD
+be provided using SameAs.
 
 For example. This URI from the [BIBO] ontology
 <"http://purl.org/ontology/bibo/interviewee"> resolves to an ontology file,
@@ -1673,14 +1666,15 @@ When generating the *DataCrate Website* from *DataCrate-flattened JSON-LD*, the 
 target for an explanatory link for the term instead of the URI supplied in the @context.
 
 
-[See an example of the key "interviewee" resolving to a human-readable page](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
+[See an example of the key "interviewee" resolving to a human-readable page.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
 and
 [download the *DataCrate-flattened JSON-LD*](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG.json)
 
 Where there is no RDF ontology available, then implementors SHOULD attempt to
 provide context by creating stable web-accessible URIs to document properties
-and classes (for example, by linking to page describing an XML element or
-attribute from an XML schema), pending the publication of a formal ontology.
+and classes, for example, by linking to page describing an XML element or
+attribute from an XML schema, pending the publication of a formal ontology.
+
 
 
 
@@ -1752,7 +1746,8 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [UpdateAction]: https://schema.org/UpdateAction
 [Action]: https://schema.org/Action
 [IndividualProduct]: https://schema.org/IndividualProduct
-
+[distribution]: https://schema.org/distribution
+[DataDownload]: https://schema.org/DataDownload
 [Exif]: https://en.wikipedia.org/wiki/Exif
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
 [DataCrate JSON-LD Context]: ./context.json
@@ -1770,10 +1765,11 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [hasFile]: https://pcdm.org/2016/04/18/models#hasFile
 [RepositoryCollection]: https://pcdm.org/2016/04/18/models#Collection
 [RepositoryObject]: https://pcdm.org/2016/04/18/models#Object
-[frapo:Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
 [isOutputOf]: https://sparontologies.github.io/frapo/current/frapo.html#d4e526
 [ResearchObject]: https://www.researchobject.org/
 [Flattened Document Form]: https://json-ld.org/spec/latest/json-ld/#flattened-document-form
 [Pairtree]: https://confluence.ucop.edu/display/Curation/PairTree
 [Pairtree specification]: https://confluence.ucop.edu/display/Curation/PairTree?preview=/14254128/16973838/PairtreeSpec.pdf
 [linked data]: https://en.wikipedia.org/wiki/Linked_data
+[ORCID]: https://orcid.org
+[JSON Object]: https://w3c.github.io/json-ld-syntax/#terminology
