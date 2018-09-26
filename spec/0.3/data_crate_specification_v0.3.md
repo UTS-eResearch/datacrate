@@ -59,6 +59,10 @@ The following changes have been made since version 0.1:
 
 ## Introduction & definition of a *DataCrate*
 
+The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
+RECOMMENDED, MAY, and OPTIONAL in this document are to be interpreted as
+described in RFC 2119.
+
 This document specifies a method, known as *DataCrate*, of organizing file-based
 data and digital repository data with associated metadata in both human and
 machine readable formats, based on the [schema.org] [linked data] vocabulary, for
@@ -630,7 +634,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
 
 To describe a directory without listing all the files in it, a DataCrate SHOULD
 have a description of the directory using an entity of ``@type`` [Dataset]. This
-DataCrate JSON-LD, describes the directory 'lots_of_little_files' in an *Working
+DataCrate JSON-LD, describes the directory `lots_of_little_files` in an *Working
 DataCrate*. To make it clear that the files are not listed in `CATALOG.json`
 this example shows and empty list for [hasPart].
 
@@ -709,7 +713,7 @@ property of a [Person].
 ```
 
 
-An [Organization] SHOULD also be used for [Person]'s affiliation. 
+An [Organization] SHOULD also be used for a [Person]'s affiliation. 
 ```
 {
       "@type": "Dataset",
@@ -801,7 +805,7 @@ precision than by using string-literals as values for [affiliation].
 ### Contact point
 
 A DataCrate SHOULD have contact information, using a [contactPoint] property
-with a value of [ContactPoint]. Note that [schema:Dataset] does not (yet) have a
+with a value of [ContactPoint]. Note that [Dataset] does not (yet) have a
 contactPoint property, so strictly this would have to be on a Person or
 Organization which is related to the Dataset via a [creator] or [contributor]
 property. If there is a ContactPoint it MUST have `contactType` of
@@ -857,7 +861,7 @@ even though this is not strictly supported at the moment.
 }
 ```
 
-[See an example of a ContactPoint, which is linked to a Dataset and an Organization via a contactPoint](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
+[See an example of an item of `@type` `ContactPoint`, which is linked to a `Dataset` and to an `Organization` via a `contactPoint` property](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
 
 ### Publications
 
@@ -1206,8 +1210,7 @@ meeting the same specifications.
 An Action SHOULD have a human [agent] who was responsible for authorizing the
 action, and MAY have an [instrument] which associates the action with a
 particular piece of software (for example, the content management system or data
-catalogue through which an update was approved). As with equipment, an
-instrument should be of `@type` IndividualProduct.
+catalogue through which an update was approved) which SHOULD be of `@type` SoftwareApplication.
 
 An Action which has failed MAY record any error message in an [error] property.
 
@@ -1745,6 +1748,10 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [contactType]: https://schema.org/contactType
 [ContactPoint]: https://schema.org/ContactPoint
 [CreateAction]: https://schema.org/CreateAction
+[result]: https://schema.org/result
+[object]: https://schema.org/object
+[UpdateAction]: https://schema.org/UpdateAction
+[Action]: https://schema.org/Action
 [IndividualProduct]: https://schema.org/IndividualProduct
 
 [Exif]: https://en.wikipedia.org/wiki/Exif
@@ -1761,6 +1768,7 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [FRAPO]: https://www.sparontologies.net/ontologies/frapo
 [PCDM]: https://github.com/duraspace/pcdm/wiki
 [pcdm:Collection]: https://pcdm.org/2016/04/18/models#Collection
+[hasFile]: https://pcdm.org/2016/04/18/models#hasFile
 [RepositoryCollection]: https://pcdm.org/2016/04/18/models#Collection
 [RepositoryObject]: https://pcdm.org/2016/04/18/models#Object
 [frapo:Project]: https://sparontologies.github.io/frapo/current/frapo.html#d4e2428
