@@ -1727,6 +1727,8 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [Place]: https://schema.org/Place
 [description]: https://schema.org/description
 [geo]: https://schema.org/geo
+[agent]: https://schema.org/agent
+[instrument]: https://schema.org/instrument
 [sameAs]: https://schema.org/sameAs
 [GeoCoordinates]: https://schema.org/GeoCoordinates
 [email]: https://schema.org/email
