@@ -621,7 +621,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
   "@id": "files/384/square_thumbnail_2ebbe681aa6ec138776343974ce8a3dd.jpg"
 },
 
-
+ 
 ```
 
 [See an example of a thumbnail](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
@@ -795,7 +795,7 @@ with the university via [memberOf].
 Thus *DataCrate Flattened JSON-LD* MAY express chained affiliations with more
 precision than by using string-literals as values for [affiliation].
 
-[See and example of a Person with four affiliations](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
+[See an example of a Person with four affiliations](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
 
 
 ### Contact point
@@ -862,7 +862,7 @@ even though this is not strictly supported at the moment.
 ### Publications
 
 To associate a publication with a dataset the *DataCreate Flattened JSON-LD* MUST include a URL
-(preferably a DOI) as the ID of a publication using the [citation] or
+which SHOULD be a DOI URL, as the ID of a publication using the [citation] or
 property.
 
 For example:
@@ -924,7 +924,7 @@ should be a an [Organization] though it MAY be a string-literal or a URI.
   "name": "University of Technology Sydney"
 },
 ```
-[See and example of an Organization which is linked to the publisher property of a Dataset.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=u/ts/,e/du/,a/u/index.html)
+[See an example of an Organization which is linked to the publisher property of a Dataset.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=u/ts/,e/du/,a/u/index.html)
 
 
 ### Funding and grants
