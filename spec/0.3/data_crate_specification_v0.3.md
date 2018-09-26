@@ -61,7 +61,7 @@ The following changes have been made since version 0.1:
 
 The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
 RECOMMENDED, MAY, and OPTIONAL in this document are to be interpreted as
-described in RFC 2119.
+described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 This document specifies a method, known as *DataCrate*, of organizing file-based
 data and digital repository data with associated metadata in both human and
@@ -98,7 +98,7 @@ About the contents of a DataCrate:
    for ease of processing. This describes the DataCrate and its contents, using
    Schema.org for interoperable metadata and discovery, with any other metadata
    that is considered useful for potential users. In both kinds of *DataCrate*
-   this file is the root.
+   this file is in the root directory.
 
 *  Both kinds of *DataCrate* have a human-readable `CATALOG.html` file which
    describes the files and directories in a dataset. The `CATALOG.html` has
@@ -125,8 +125,9 @@ as possible:
 -  Anyone with a *DataCrate* zip file can unzip it, notice that there is a
    `CATALOG.html` file in the base directory, open that in a web browser, and
    find out about the data; where it came from, who to contact about it, if it
-   has a homepage and so on, which is more usable than simple zipping or bagging
-   of files or using machine readable XML, JSON or bespoke metadata formats.
+   has a homepage and so on. This is intended to be more user friendly than
+   simple zipping or bagging of files or using machine readable XML, JSON or
+   bespoke metadata formats.
 
 -  Repository managers can put *DataCrates* on the web with the `CATALOG.html`
    file giving a detailed 'peek' inside the dataset's contents and context. 
@@ -200,9 +201,6 @@ contains *DataCrate-flattened JSON-LD*.
 *DataCrate-flattened JSON-LD*: a JSON-LD document, using the *DataCrate JSON-LD
 Context* containing DataCrate metadata, which has been flattened according to
 the rules in  [JSON-LD 1.1].
-
-*Anonymous Entity* A piece of contextual information such as a set of [GeoCoordinates]
-or [Event] which does not have a [name] property of its own.
 
 *Root Dataset* A *Data Entity* which is a [Dataset] representing the entire
 contents of the DataCrate. Datasets may be nested but the *Root Dataset* can be
@@ -664,7 +662,7 @@ a directory ([Dataset]) or to a [File].
 {
       "@type": "Dataset",
       "@id": "some_id",
-      "Creator": {"@id": "https://orcid.org/0000-0002-8367-6908"}
+      "creator": {"@id": "https://orcid.org/0000-0002-8367-6908"}
 
 }
 
@@ -1327,7 +1325,7 @@ This example shows how to define a place, using a [geonames] ID:
   "name": "Catalina Park"
 },
 ```
-The place has a [geo] property, referencing an *Anonymous Entity* of [@type] [GeoCoordinates]:
+The place has a [geo] property, referencing an *Context Entity* of [@type] [GeoCoordinates]:
 
 ```
 {
@@ -1745,6 +1743,7 @@ attribute from an XML schema), pending the publication of a formal ontology.
 [ContactPoint]: https://schema.org/ContactPoint
 [CreateAction]: https://schema.org/CreateAction
 [result]: https://schema.org/result
+[event]: https://schema.org/event
 [object]: https://schema.org/object
 [error]: https://schema.org/error
 [UpdateAction]: https://schema.org/UpdateAction
