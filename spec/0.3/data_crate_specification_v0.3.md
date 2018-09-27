@@ -17,42 +17,44 @@ authority rather than the spec (this doc).
 
 ## Changes since version 0.2
 
-[X] Changes to align with Google's Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
+[X] Changes to align with Google's Dataset search, see their 
+    [guidelines](https://developers.google.com/search/docs/data-types/dataset).
 
-[X] Change contact details to match the Google way of doing things; creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+[X] Change contact details to match the Google way of doing things; creator property 
+    pointing to an organisation with a contactPoint property pointing to a person or 
+    a ContactPoint.
 
-[X] Change the way publications are referenced to use citation instead of `related`
+[X] Change the way publications are referenced to use citation instead of `related`.
 
-[X] A distribution *Context Entity*
+[X] A distribution *Context Entity*.
 
-[X] Switched to using multiple-page HTML files instead of a single CATALOG.html (originally index.html)
+[X] Switched to using multiple-page HTML files instead of a single CATALOG.html (originally index.html).
 
 [X] More support for provenance with more extensive advice on how reference equipment and software.
 
-[X] Reverting index.html to  CATALOG.html to avoid collisions with existing data sets (on the insistence of Mike Lake)
+[X] Reverting index.html to  CATALOG.html to avoid collisions with existing
+    data sets (on the insistence of Mike Lake).
 
-[X] Add the Schema.org to the CATALOG.html page as a script
+[X] Add the Schema.org to the CATALOG.html page as a script.
 
-[X] Added a section on modeling curation actions with Action objects
+[X] Added a section on modeling curation actions with Action objects.
 
-[X] Write up the HTML generation algorithm 
-  
-
+[X] Write up the HTML generation algorithm.
 
 
 ## Changes since version 0.1
 
 The following changes have been made since version 0.1:
 
--  Added a new kind of DataCrate, a *Working DataCrate* which is not bagged, for
-   use on working data.
+- Added a new kind of DataCrate, a *Working DataCrate* which is not bagged, for
+  use on working data.
 
--  `CATALOG.html` is now `CATALOG.html` - it remains in the package root
+- `CATALOG.html` is now `CATALOG.html` - it remains in the package root.
 
--  RDFa metadata is no longer required in `CATALOG.html`
+- RDFa metadata is no longer required in `CATALOG.html`.
 
--  The  `datacite.xml` is now in a `/metadata` Directory, this is to align with
-   the [ResearchObject] project. 
+- The `datacite.xml` is now in a `/metadata` Directory, this is to align with
+  the [ResearchObject] project. 
 
 - The spec now references the [SPAR] ontologies for terms which are not available
   in [schema.org].
