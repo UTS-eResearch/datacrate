@@ -61,20 +61,18 @@ additional human and machine readable metadata in JSON-LD.
 
 ### Why Schema.org? Surely there are suitable general purpose metadata formats for Research Data
 
-Well, actually no there aren't any general-purpose linked-data-ready well-supported extensible
-schemas that cover all of the kids of general purpose metadata you might want to
-add to a research data package, and its component files before sending it off
-into the wold.
+Well, actually no there aren't any general-purpose, linked-data-ready, well-supported, extensible
+schemas that cover all of the kinds of general purpose metadata you might want to
+add to a research data package, and its component files, before sending it off
+into the world.
 
 #### RDF-based formats
 
 [DCAT] is close to what we wanted for this project but does not have coverage
-for all the fields we wanted at high level, and does not handle the structure of
-datasets. DCAT also uses a terms from a wide range of vocabularies, making it
-more complicated to use than Schema.org.
-
-It is RDF based, though. There is an effort to
-extend DCAT but it will take some time to complete.
+for all the fields we wanted at a high level, and does not handle the structure of
+datasets. DCAT also uses terms from a wide range of vocabularies, making it
+more complicated to use than Schema.org.  It is RDF based, though. There is 
+an effort to extend DCAT but it will take some time to complete.
 
 [Research Object Bundles] (RO Bundles) are very close in spirit to Data Crates, and there is
 even an attempt to map them on to BagIt. However, RO metadata is very focussed
@@ -84,13 +82,13 @@ data using the [PAV], without addressing a lot of general who-what-where type me
 
 The [PROV] ontology has been used to describe research activities, but its data
 model is too complicated for simple data modelling. It does not allow us to
-express Some entity *created* this file. in [Prov] *activities* create files. It
+express "some entity *created* this file". In [Prov] *activities* create files. It
 is not practical to model every authoring relationship with an intermediate act
 of creation.
 
 #### Non-RDF-based formats
 
-[Datacite] has a lot of metadata that is useful for Data Crates, because it is
+[Datacite] has a lot of metadata that is useful for Data Crates, 
 but it is oriented towards describing things at the dataset level, not the file
 level. It is also focussed on published data which has a DOI (although you can
 enter a null DOI).  There was an RDF version of Datacite but it is out of date.
