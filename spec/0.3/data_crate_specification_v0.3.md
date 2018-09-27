@@ -345,6 +345,7 @@ Example of how to embed *Flattened DataCrate JSON-LD* in `CATALOG.html`.
   {
   "@context": { ...}
   "@graph": [ ...]
+  }
 </script>
 ```
 
