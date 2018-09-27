@@ -996,7 +996,7 @@ be specified to least the precision of a day.
 
 If a *Data Entity* has a license the entity SHOULD have a [license] property
 with a value of [CreativeWork] that describes the license. The ID of the license
-should be its URL (eg a Creative Commons License URL) and a summary of the
+should be its URL (e.g. a Creative Commons License URL) and a summary of the
 license included in the DataCrate. If this is not possible a URL MAY be used as
 the value.
 
@@ -1050,7 +1050,7 @@ is a reference to an [Organization] describing the copyright holder and a
 To specify which equipment was used to create or update a *Data Entity*, the
 *DataCrate* JSON-LD should have a *Context Entity* for each item of equipment
 which SHOULD be of `@type` [IndividualProduct]. The entity SHOULD have a serial
-number, manufacturer that identifies it as completely as possible. In this case
+number and manufacturer that identifies it as completely as possible. In this case
 the equipment is a bespoke machine. The equipment SHOULD be described on a web
 page, and the address of the description SHOULD be used as its `@id`.
 
@@ -1109,7 +1109,7 @@ event.
     },
 ```
 
-[See an example of a data-capture CreateAction with an `Object` and two files as `result`s.](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
+[See an example of a data-capture CreateAction with an `Object` and two `result` files.](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
 
 ### Software 
 
@@ -1190,9 +1190,11 @@ To record an action which changes the DataSet's metadata, or changes its state
 in a publication or other workflow, a [CreateAction] or [UpdateAction] SHOULD be
 associated with a *Data Entity*.
 
-A curation Action MUST have at least one [object] which associates it with either the DataSet or one of its components.
+A curation Action MUST have at least one [object] which associates it with
+either the DataSet or one of its components.
 
-An Action which creates new *Data entities* - for example, the creation of a new metadata file - SHOULD have these as [result]s. 
+An Action which creates new *Data entities*, for example, the creation of a new metadata file, 
+SHOULD have these as [result]s. 
 
 An Action SHOULD have a [name] and MAY have a [description].
 
@@ -1207,10 +1209,11 @@ catalogue through which an update was approved) which SHOULD be of `@type` Softw
 
 An Action which has failed MAY record any error message in an [error] property.
 
-[UpdateAction] SHOULD only be used for actions which affect the DataSet as a whole, such as movement through a workflow.
+[UpdateAction] SHOULD only be used for actions which affect the DataSet as a
+whole, such as movement through a workflow.
 
-To record curation actions which modify a [File] within a DataSet - for example,
-by correcting or enhancing metadata - the old version of the [File] SHOULD be
+To record curation actions which modify a [File] within a DataSet, for example,
+by correcting or enhancing metadata, the old version of the [File] SHOULD be
 retained, and a [CreateAction] added which has the original version as its [object]
 and the new version as its [result].
 
@@ -1480,7 +1483,8 @@ For example, this data is exported from an [Omeka](https://omeka.org) repository
 ## Minimum metadata summary for *Bagged DataCrates*
 
 A *Bagged DataCrate* MUST have a *Root [Dataset]* with:
- *  a [description] property, which describes the whole dataset contained
+
+ *  A [description] property, which describes the whole dataset contained
     in the data (BagIt payload) directory.
 
  *  A creation date in ISO data format for the dataset using
@@ -1507,7 +1511,6 @@ External-Description: ['description']
 Bagging-Date: To be entered by the software tool used to create the DataCrate
 External-Identifier: ['@id'] (if the ID is an http or https URL)
 
-
 Bag-Group-Identifier: N/A
 Bag-Count: N/A
 Internal-Sender-Identifier: N/A
@@ -1523,7 +1526,6 @@ Contact-Email: peter.sefton@uts.edu.au
 Contact-Name: Contact Peter Sefton
 Description: This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.
 Bagging-Date: 2018-09-23T23:48:07.867Z
-
 ```
 
 
@@ -1543,7 +1545,7 @@ identify all entities wherever possible.
 ## Datacite citations
 
 In a *Bagged DataCrate*, if there is sufficient metadata in `CATALOG.json`, it
-SHOULD contain a DataCite citation, datacite.xml in the `/metadata` relative to
+SHOULD contain a DataCite citation, `datacite.xml` in the `/metadata` relative to
 the root of the bag, compliant with the [DataCite Schema v4.0].
 
 To generate DataCite.xml a DataCrate MUST have the following at the
@@ -1572,7 +1574,7 @@ other pages, one per entity, which are stored in /CATALOG_files, and organized
 according to the [Pairtree specification]. [Pairtree] was chosen as it specifies
 how to generate a path from an identifier, and divides up the file-space
 efficiently, which is an advantage in very large DataCrates, where there may be
-thousands of pages in the *DataCrate Website*. The path to additional HTML file
+thousands of pages in the *DataCrate Website*. The path to additional HTML files
 is: `/CATALOG_files/` followed by the `@id` of the file converted to a Pairtree
 path followed by `index.html`.
 
@@ -1583,7 +1585,6 @@ automatically MAY not be listed.
 
 *DataCrate CATALOG.html* must be a static pre-compiled HTML file that will display
 without scripting. It MAY contain extra features enabled by Javascript.
-
 
 The `CATALOG.html` and `index.html` files file SHOULD:
 
@@ -1633,8 +1634,8 @@ vocabularies and ontologies when this is not possible.
 
 The terms (properties and classes) used SHOULD be added as keys to the
 `@context` in the *DataCrate-flattened JSON-LD*. URIs in the `@context` SHOULD
-resolve to a useful human readable page. Where this is not possible - for
-example if the URI resolves to an RDF ontology file a human-readable URI SHOULD
+resolve to a useful human readable page. Where this is not possible, for
+example if the URI resolves to an RDF ontology file, a human-readable URI SHOULD
 be provided using SameAs.
 
 For example. This URI from the [BIBO] ontology
@@ -1661,10 +1662,9 @@ is human-readable:
 When generating the *DataCrate Website* from *DataCrate-flattened JSON-LD*, the code MUST use a SameAs URI as a
 target for an explanatory link for the term instead of the URI supplied in the @context.
 
-
-[See an example of the key "interviewee" resolving to a human-readable page.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
+[See an example of the key "interviewee" resolving to a human-readable page](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
 and
-[download the *DataCrate-flattened JSON-LD*](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG.json)
+[download the *DataCrate-flattened JSON-LD*](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG.json).
 
 Where there is no RDF ontology available, then implementors SHOULD attempt to
 provide context by creating stable web-accessible URIs to document properties
