@@ -32,7 +32,7 @@ authority rather than the spec (this doc).
 
 [X] More support for provenance with more extensive advice on how reference equipment and software.
 
-[X] Reverting index.html to  CATALOG.html to avoid collisions with existing
+[X] Reverting index.html to CATALOG.html to avoid collisions with existing
     data sets (on the insistence of Mike Lake).
 
 [X] Add the Schema.org to the CATALOG.html page as a script.
@@ -53,7 +53,7 @@ The following changes have been made since version 0.1:
 
 - RDFa metadata is no longer required in `CATALOG.html`.
 
-- The `datacite.xml` is now in a `/metadata` Directory, this is to align with
+- The `datacite.xml` is now in a `/metadata` directory, this is to align with
   the [ResearchObject] project. 
 
 - The spec now references the [SPAR] ontologies for terms which are not available
@@ -113,7 +113,7 @@ About the contents of a DataCrate:
 
 
 *  If there is enough metadata, and the dataset has a DOI, a *Bagged DataCrate*
-   may be  distributed as a *Citable DataCrate* which has a DataCite metadata
+   may be distributed as a *Citable DataCrate* which has a DataCite metadata
    file in `/metadata/datacite.xml` and a human-readable citation
    in `CATALOG.html`. Working DataCrates do not have a `datacite.xml` file.
 
@@ -152,9 +152,9 @@ data lifecycle there is a very minimal mandated minimum set of metadata. There
 are no metadata requirements at all for a *Working DataCreate*.
 
 For a *Bagged DataCrate* the mandatory metadata is:
-*  A creation date,
-*  Contact details and
-*  A human-readable description of the data.
+* A creation date,
+* Contact details and
+* A human-readable description of the data.
 
 The requirements for a *Citable DataCrate*, which is a subtype of *Bagged
 DataCrate* with a [DataCite] citation, are described below.
@@ -166,25 +166,24 @@ and research software applications.
 
 ## Examples
 
-
 The following examples are hosted on the web, as static mini-sites with a download link:
 
-*  [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/). A slightly silly simple sample datacrate.
+* [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/). A slightly silly simple sample datacrate.
 
-*  [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/). Cave exploration data.
+* [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/). Cave exploration data.
 
-*  [Facilitated family case conferencing]( https://data.research.uts.edu.au/examples/v0.3/luckett/): Some small data sets from a clinical trial, this example has very detailed affiliation data for the researchers.
+* [Facilitated family case conferencing]( https://data.research.uts.edu.au/examples/v0.3/luckett/): Some small data sets from a clinical trial, this example has very detailed affiliation data for the researchers.
 
-*  [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/). Some MATLAB code that supports a publication.
+* [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/). Some MATLAB code that supports a publication.
 
-*  [Farms to
-   Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/).
-   A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
+* [Farms to
+  Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/).
+  A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
 
-*  [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/) more cave
-   data collected by a drone with a 3d lidar scanner, with video. This contains examples of 
+* [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/) more cave
+  data collected by a drone with a 3d lidar scanner, with video. This contains examples of 
 
-*  [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
+* [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
 * [Curation](https://data.research.uts.edu.au/examples/v0.3/curation/). A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
@@ -203,7 +202,7 @@ contains *DataCrate-flattened JSON-LD*.
 
 *DataCrate-flattened JSON-LD*: a JSON-LD document, using the *DataCrate JSON-LD
 Context* containing DataCrate metadata, which has been flattened according to
-the rules in  [JSON-LD 1.1].
+the rules in [JSON-LD 1.1].
 
 *Root Dataset* A *Data Entity* which is a [Dataset] representing the entire
 contents of the DataCrate. Datasets may be nested but the *Root Dataset* can be
@@ -220,7 +219,7 @@ means the DataCrate is a *Bagged DataCrate*.
 ## Conventions
 
 Throughout this specification, RDF terms are be referred to using the keys
-defined in  [DataCrate JSON-LD Context]. Following [schema.org] practice property
+defined in [DataCrate JSON-LD Context]. Following [schema.org] practice property
 names start with lowercase letters and class names with uppercase.
 
 In `CATALOG.json` RDF terms use their DataCrate JSON-LD names
@@ -235,7 +234,7 @@ without a [BagIt] `/data` directory.
 [Schema.org] is the base metadata standard for DataCrate.
 Schema.org was chosen because it is widely used on the World Wide Web and
 supported by search engines, on the assumption that discovery is likely to be
-maximized if commercial  search engines index the content.  NOTE: As far as we
+maximized if commercial search engines index the content. NOTE: As far as we
 know there is no alternative existing well-maintained linked-data schema for
 research data with the coverage needed for this project - ie a single standard
 for expressing all the examples presented in this spec.
@@ -271,7 +270,6 @@ This specification has guidelines for ways to represent:
 
 * If there is enough metadata, a DataCite citation for the crate so it can be
   made into a *Bagged DataCrate* which is also a *Citable DataCrate*.
-
 
 
 # Structure / DataCrate by example
@@ -335,11 +333,11 @@ DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/b
 -  `CATALOG.json` MUST be a *DataCrate-flattened JSON-LD* document.
 
 -  `CATALOG.html` MUST:
-    -  Be an HTML 5 document containing a human readable summary
+    - Be an HTML 5 document containing a human readable summary
    of the [Dataset] DataCrate contents of `CATALOG.json`
-    -  Describe in natural language only the DataCrate *Data Entity*
-    -  Link to additional HTML files, in a subdirectory: `/CATALOG_files`. `CATALOG.html`
-    -  Contain the *Flattened DataCrate JSON-LD* in a `script` element in the `head` element of the HTML.
+    - Describe in natural language only the DataCrate *Data Entity*
+    - Link to additional HTML files, in a subdirectory: `/CATALOG_files`. `CATALOG.html`
+    - Contain the *Flattened DataCrate JSON-LD* in a `script` element in the `head` element of the HTML.
 
 Example of how to embed *Flattened DataCrate JSON-LD* in `CATALOG.html`.
 
@@ -357,7 +355,7 @@ Example of how to embed *Flattened DataCrate JSON-LD* in `CATALOG.html`.
 ## About `CATALOG.json`
 
 The following *DataCrate-flattened JSON-LD* represents a minimal description of
-a *Working DataCrate* dataset.  The [DataCrate JSON-LD Context] MUST be included inline as below.
+a *Working DataCrate* dataset. The [DataCrate JSON-LD Context] MUST be included inline as below.
 
 Any schema.org context or other linked data MAY be included.
 
@@ -367,14 +365,14 @@ Schema.org elements SHOULD be used as defined in the standard
 Schema.org context. However, this standard does use variant names for some
 elements.
 
-*  [File] is mapped to [schema:MediaObject] which was chosen as a compromise as
-   it has many of the properties that are needed to describe a generic file.
-   Future version of schema.org or a research data extension may define [File].
+* [File] is mapped to [schema:MediaObject] which was chosen as a compromise as
+  it has many of the properties that are needed to describe a generic file.
+  Future version of schema.org or a research data extension may define [File].
 
-*  [Journal] is mapped to [Periodical].
+* [Journal] is mapped to [Periodical].
 
-*  [path] is mapped to [schema:contentURL]. This property is used on some
-   classes which do not strictly (yet) allow it.
+* [path] is mapped to [schema:contentURL]. This property is used on some
+  classes which do not strictly (yet) allow it.
 
 (From now on the `@context` will be omitted from examples.)
 
@@ -412,8 +410,8 @@ For DataCrates which are used in-situ and have not been distributed as a BagIt b
 ```
 {"@context" :
     {
-    "description":  "https://schema.org/description",
-    "Dataset":  "https://schema.org/Dataset"
+    "description": "https://schema.org/description",
+    "Dataset": "https://schema.org/Dataset"
   }
 },
   "@graph": [
@@ -428,10 +426,10 @@ For DataCrates which are used in-situ and have not been distributed as a BagIt b
 ```
 
 DataCrates which are packaged for distribution SHOULD:
-*  Have a DOI as an identifier. 
-*  Use the DOI URL as the `@id`.
-*  Include the DOI without a URL as an [identifier].
-*  Link to a [DataDownload] using the [distribution] property.
+* Have a DOI as an identifier. 
+* Use the DOI URL as the `@id`.
+* Include the DOI without a URL as an [identifier].
+* Link to a [DataDownload] using the [distribution] property.
 
 ```
  {
@@ -487,8 +485,8 @@ For a published DataCrate the `@id` property should be a DOI URL if possible.
 ```
 
 NOTE: As per the BagIt standard, every file in the payload directory of a
-*Bagged DataCrate*  MUST be in the BagIt Manifest.  Describing every file in the
-payload directory is possible with DataCrate, but is not mandatory.  For
+*Bagged DataCrate* MUST be in the BagIt Manifest. Describing every file in the
+payload directory is possible with DataCrate, but is not mandatory. For
 use-cases where it is important to describe all files, future versions of this
 specification MAY allow for profiles, using which it will be possible to specify
 constraints such as "every file must have a [description]".
@@ -553,7 +551,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
     }
   ],
   "description": [
-    "Photo of  Eugenie Stapleton inside her home"
+    "Photo of Eugenie Stapleton inside her home"
   ],
   "license": [
     "Content in the Western Sydney Women's Oral History Project: From farms to freeways collection is licensed under a Creative Commons CC BY 3.0 AU licence (https://creativecommons.org/licenses/by/3.0/au/)."
@@ -581,7 +579,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
     }
   ],
   "name": [
-    "Photo of  Eugenie Stapleton 1"
+    "Photo of Eugenie Stapleton 1"
   ],
   "relatedLink": [
     "<a href=\"https://omeka.uws.edu.au/farmstofreeways/items/show/512\">Audio recording of interview with Eugenie Stapleton</a><br /><a href=\"https://omeka.uws.edu.au/farmstofreeways/items/show/454\">Transcript of interview with Eugenie Stapleton</a> <br /><a href=\"https://omeka.uws.edu.au/farmstofreeways/items/show/384\">Photo of Eugenie Stapleton 2</a><br /><a href=\"https://omeka.uws.edu.au/farmstofreeways/items/show/464\">Letter from Eugenie Stapleton</a>"
@@ -656,7 +654,7 @@ this example shows and empty list for [hasPart].
 ### People
 
 A core principle of Linked data is to use URIs as to identify things such as
-people.  The following is the minimum recommended way of representing a
+people. The following is the minimum recommended way of representing a
 [creator] in a DataCrate. This property MAY be applied in the context of
 a directory ([Dataset]) or to a [File].
 ```
@@ -906,7 +904,7 @@ The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 
 ### Publisher
 
-The root [Dataset] in  *Bagged DataCrate* SHOULD have a [publisher] property. This
+The root [Dataset] in *Bagged DataCrate* SHOULD have a [publisher] property. This
 should be a an [Organization] though it MAY be a string-literal or a URI. 
 
 ```
@@ -1002,7 +1000,7 @@ be specified to least the precision of a day.
 ### Licensing and copyright
 
 If a *Data Entity* has a license the entity SHOULD have a [license] property
-with a value of [CreativeWork] that describes the license.  The ID of the license
+with a value of [CreativeWork] that describes the license. The ID of the license
 should be its URL (eg a Creative Commons License URL) and a summary of the
 license included in the DataCrate. If this is not possible a URL MAY be used as
 the value.
@@ -1311,7 +1309,7 @@ example shows one property of several hundred.
 ### Places
 
 To associate a *Data Entity* with a *Context Entity* representing a *geographical
-location or region*  the entity SHOULD have
+location or region* the entity SHOULD have
 a property of [contentLocation] with a value of type [Place].
 
 This example shows how to define a place, using a [geonames] ID:
@@ -1506,17 +1504,17 @@ The following metadata SHOULD be extracted from the *DataCrate-flattened JSON* i
 the base directory of the bag. The expressions below show how to look-up BagIt metadata. For example, "['contactPoint'] -> ['email']" means find a [contactPoint] property, resolve that to a *Context Entity* and get its [email] property.
 
 ```
-Source-Organization:   ['publisher'] -> ['name']
+Source-Organization: ['publisher'] -> ['name']
 Contact-Name: ['contactPoint'] -> ['name']
 Contact-Phone: ['contactPoint'] -> ['phone']
-Contact-Email:  ['contactPoint'] -> ['email']
+Contact-Email: ['contactPoint'] -> ['email']
 External-Description: ['description']
-Bagging-Date:  To be entered by the software tool used to create the DataCrate
-External-Identifier:  ['@id'] (if the ID is an http or https URL)
+Bagging-Date: To be entered by the software tool used to create the DataCrate
+External-Identifier: ['@id'] (if the ID is an http or https URL)
 
 
 Bag-Group-Identifier: N/A
-Bag-Count:  N/A
+Bag-Count: N/A
 Internal-Sender-Identifier: N/A
 Internal-Sender-Description: N/A
 ```
@@ -1677,12 +1675,6 @@ Where there is no RDF ontology available, then implementors SHOULD attempt to
 provide context by creating stable web-accessible URIs to document properties
 and classes, for example, by linking to page describing an XML element or
 attribute from an XML schema, pending the publication of a formal ontology.
-
-
-
-
-
-
 
 
 [JSON-LD]:(https://json-ld.org/spec/latest/json-ld/)
