@@ -152,9 +152,9 @@ data lifecycle there is a very minimal mandated minimum set of metadata. There
 are no metadata requirements at all for a *Working DataCreate*.
 
 For a *Bagged DataCrate* the mandatory metadata is:
-* A creation date,
-* Contact details and
-* A human-readable description of the data.
+* a creation date,
+* contact details and
+* a human-readable description of the data.
 
 The requirements for a *Citable DataCrate*, which is a subtype of *Bagged
 DataCrate* with a [DataCite] citation, are described below.
@@ -168,24 +168,24 @@ and research software applications.
 
 The following examples are hosted on the web, as static mini-sites with a download link:
 
-* [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/). A slightly silly simple sample datacrate.
+* [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/): A slightly silly, simple sample datacrate.
 
-* [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/). Cave exploration data.
+* [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/): Cave exploration data.
 
 * [Facilitated family case conferencing]( https://data.research.uts.edu.au/examples/v0.3/luckett/): Some small data sets from a clinical trial, this example has very detailed affiliation data for the researchers.
 
-* [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/). Some MATLAB code that supports a publication.
+* [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/): Some MATLAB code that supports a publication.
 
 * [Farms to
-  Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/).
+  Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/):
   A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
 
-* [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/) more cave
-  data collected by a drone with a 3d lidar scanner, with video. This contains examples of 
+* [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/): More cave
+  data collected by a drone with a 3d lidar scanner, with video. 
 
 * [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
-* [Curation](https://data.research.uts.edu.au/examples/v0.3/curation/). A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
+* [Curation](https://data.research.uts.edu.au/examples/v0.3/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
 
 ## Additional Definitions
@@ -200,19 +200,19 @@ or supporting information, represented by a [JSON Object].
 labels for DataCrate metadata. These labels are used in `CATALOG.json` which
 contains *DataCrate-flattened JSON-LD*.
 
-*DataCrate-flattened JSON-LD*: a JSON-LD document, using the *DataCrate JSON-LD
+*DataCrate-flattened JSON-LD*: A JSON-LD document, using the *DataCrate JSON-LD
 Context* containing DataCrate metadata, which has been flattened according to
 the rules in [JSON-LD 1.1].
 
-*Root Dataset* A *Data Entity* which is a [Dataset] representing the entire
+*Root Dataset*: A *Data Entity* which is a [Dataset] representing the entire
 contents of the DataCrate. Datasets may be nested but the *Root Dataset* can be
 located by looking for an Dataset with [path] of "./", which means the DataCrate
 is a *Working DataCrate*, and if that is not found, a path of "data/" which
 means the DataCrate is a *Bagged DataCrate*.
 
-*DataCrate website* A set of linked pages which describe the DataCrate, its
+*DataCrate website*: A set of linked pages which describe the DataCrate, its
 *Data Entities* and *Context Entities*, one entity per page with a home-page at
-`CATALOG.html` that described the *Root Dataset* and sub-pages residing in
+`CATALOG.html` that describes the *Root Dataset* and sub-pages residing in
 `CATALOG_files`.
 
 
@@ -236,7 +236,7 @@ Schema.org was chosen because it is widely used on the World Wide Web and
 supported by search engines, on the assumption that discovery is likely to be
 maximized if commercial search engines index the content. NOTE: As far as we
 know there is no alternative existing well-maintained linked-data schema for
-research data with the coverage needed for this project - ie a single standard
+research data with the coverage needed for this project - i.e. a single standard
 for expressing all the examples presented in this spec.
 
 Future versions of this specification may be based on other metadata standards;
@@ -319,7 +319,6 @@ A *Working DataCrate* has this structure:
 > https://example.com/bagitprofiles/profile-bar-v0.1.json.  Resolving the URI with
 > this specification.
 
-
 The bag-info.txt for version 0.3 of a *Bagged DataCrate* MUST contain the following
 metadata:
 
@@ -334,22 +333,19 @@ DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/b
 
 -  `CATALOG.html` MUST:
     - Be an HTML 5 document containing a human readable summary
-   of the [Dataset] DataCrate contents of `CATALOG.json`
-    - Describe in natural language only the DataCrate *Data Entity*
-    - Link to additional HTML files, in a subdirectory: `/CATALOG_files`. `CATALOG.html`
+      of the [Dataset] DataCrate contents of `CATALOG.json`.
+    - Describe in natural language only the DataCrate *Data Entity*.
+    - Link to additional HTML files, in a subdirectory: `/CATALOG_files`. `CATALOG.html`.
     - Contain the *Flattened DataCrate JSON-LD* in a `script` element in the `head` element of the HTML.
 
 Example of how to embed *Flattened DataCrate JSON-LD* in `CATALOG.html`.
 
 ```
 <script type="application/ld+json">
-   
-    {
+  {
   "@context": { ...}
   "@graph": [ ...]
-
-  </script>
-
+</script>
 ```
 
 ## About `CATALOG.json`
@@ -377,8 +373,8 @@ elements.
 (From now on the `@context` will be omitted from examples.)
 
 The `@context` MUST be provided as a local context in `CATALOG.json`. Terms
-which are not used SHOULD be omitted - the CATALOG MUST map from terms directly
-to URIs to make it easier for programers to deal with DataCrates.
+which are not used SHOULD be omitted. The CATALOG MUST map from terms directly
+to URIs to make it easier for programmers to deal with DataCrates.
 
 For example:
 
@@ -398,69 +394,70 @@ requirement will be relaxed if and when tool support for JSON-LD improves.
 These are not acceptable:
 
 ```
-    { 
-    "@context": {"@id": "https://schema.org/URL",
-    "description": "schema:description",
+{ 
+"@context": {"@id": "https://schema.org/URL",
+"description": "schema:description",
 ```
 
 # *Working DataCrates*
 
-For DataCrates which are used in-situ and have not been distributed as a BagIt bag, the minimal markup is as follows.
+For DataCrates which are used in-situ and have not been distributed as a BagIt bag, 
+the minimal markup is as follows.
 
 ```
-{"@context" :
+{"@context":
     {
-    "description": "https://schema.org/description",
-    "Dataset": "https://schema.org/Dataset"
-  }
+      "description": "https://schema.org/description",
+      "Dataset": "https://schema.org/Dataset"
+    }
 },
   "@graph": [
     {
       "@id": "/",
       "path": "/",
       "@type": "Dataset",
-      "Description": "This datas  et doesn't really exist"
+      "Description": "This data set doesn't really exist"
     }
   ]
 }
 ```
 
 DataCrates which are packaged for distribution SHOULD:
+
 * Have a DOI as an identifier. 
 * Use the DOI URL as the `@id`.
 * Include the DOI without a URL as an [identifier].
 * Link to a [DataDownload] using the [distribution] property.
 
 ```
- {
-      "@id": "https://doi.org/10.4225/59/59672c09f4a4b",
-      "@type": "Dataset",
-      "citation": {
+{
+    "@id": "https://doi.org/10.4225/59/59672c09f4a4b",
+    "@type": "Dataset",
+    "citation": {
         "@id": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0181020"
-      },
-      "path": "data/",
-      "datePublished": "2017",
-      "description": "Palliative care planning for nursing home residents with advanced dementia is often suboptimal. This study compared effects of facilitated case conferencing (FCC) with usual care (UC) on end-of-life care",
+    },
+    "path": "data/",
+    "datePublished": "2017",
+    "description": "Palliative care planning for nursing home residents with advanced dementia is often suboptimal. This study compared effects of facilitated case conferencing (FCC) with usual care (UC) on end-of-life care",
      
-      "identifier": [
+    "identifier": [
         "https://doi.org/10.4225/59/59672c09f4a4b",
         "doi.org/10.4225/59/59672c09f4a4b"
-      ],
-      "name": "Data files associated with the manuscript:Effects of facilitated family case conferencing for advanced dementia: A cluster randomised clinical trial",
-      "distribution": [
+    ],
+    "name": "Data files associated with the manuscript:Effects of facilitated family case conferencing for advanced dementia: A cluster randomised clinical trial",
+    "distribution": [
         {
-          "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip"
+            "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip"
         }
-      ]
-    }
+    ]
+}
 
 {
-      "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
-      "contentUrl": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
-      "@type": "DataDownload",
-      "encodingFormat": "zip"
-    }
-
+    "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
+    "contentUrl": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
+    "@type": "DataDownload",
+    "encodingFormat": "zip"
+}
 ```
 
 If there are files in the payload directory (which is either `/data` for a
@@ -472,7 +469,6 @@ described by a *MediaObject* related to the schema:Dataset with a property
 
 For a published DataCrate the `@id` property should be a DOI URL if possible. 
 
-
 ```
 {
   "@type": "Dataset",
@@ -480,7 +476,6 @@ For a published DataCrate the `@id` property should be a DOI URL if possible.
   "description": "Storm Data is provided by the National Weather Service (NWS) and contain statistics on...",
   "url": "https://catalog.data.gov/dataset/ncdc-storm-events-database",
   "sameAs":"https://gis.ncdc.noaa.gov/geoportal/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510",
-  
 }
 ```
 
