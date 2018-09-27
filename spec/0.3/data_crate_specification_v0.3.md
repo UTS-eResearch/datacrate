@@ -1673,7 +1673,7 @@ and
 Where there is no RDF ontology available, then implementors SHOULD attempt to
 provide context by creating stable web-accessible URIs to document properties
 and classes, for example, by linking to page describing an XML element or
-attribute from an XML schema, pending the publication of a formal ontology.
+attribute from an XML schema pending the publication of a formal ontology.
 
 
 
