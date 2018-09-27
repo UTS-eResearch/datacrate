@@ -3,7 +3,8 @@
 This is a draft work in progress. A version 1.0 release is being planned for early October 2018.
 
 As this spec is still under development, v0.3 will be updated and committed to
-github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.3. We are not using branches, jsut the master.
+github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.3.
+We are not using branches, just the master.
 The version number above will be incremented as major changes occur to v0.3.
 
 Please give feedback via github issues or a pull request.
@@ -16,9 +17,9 @@ authority rather than the spec (this doc).
 
 ## Changes since version 0.2
 
-[X] Changes to align with Googles Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
+[X] Changes to align with Google's Dataset search, see their [guidelines](https://developers.google.com/search/docs/data-types/dataset)
 
-[X] Change contact details to match the Google way of doing things creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
+[X] Change contact details to match the Google way of doing things; creator property pointing to an organisation with a contactPoint property pointing to a person or a ContactPoint
 
 [X] Change the way publications are referenced to use citation instead of `related`
 
