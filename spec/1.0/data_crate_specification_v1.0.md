@@ -1,11 +1,11 @@
-# DataCrate Specification version 0.3.4
+# DataCrate Specification version 1.0.0
 
-This is a draft work in progress. A version 1.0 release is being planned for early October 2018.
+This is a release candidate. The final version 1.0 release is planned for October 2018.
 
-As this spec is still under development, v0.3 will be updated and committed to
-github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/0.3.
+As this spec is still under development, v1.0 will be updated and committed to
+github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/1.0 .
 We are not using branches, just the master.
-The version number above will be incremented as major changes occur to v0.3.
+The version number above will be incremented as major changes occur to v1.0.
 
 Please give feedback via github issues or a pull request.
 
@@ -14,6 +14,13 @@ be some inconsistencies between this spec and the associated files, such as the
 [DataCrate JSON-LD Context]. Where there *is* a discrepancy, the file is the
 authority rather than the spec (this doc).
 
+
+## Changes since version 0.3
+
+[X] Expanded curation actions to give details about recording action statuses
+    and error conditions for failed actions.
+
+[X] Proofreading and link checking.
 
 ## Changes since version 0.2
 
@@ -168,24 +175,24 @@ and research software applications.
 
 The following examples are hosted on the web, as static mini-sites with a download link:
 
-* [Sample](https://data.research.uts.edu.au/examples/v0.3/sample/): A slightly silly, simple sample datacrate.
+* [Sample](https://data.research.uts.edu.au/examples/v1.0/sample/): A slightly silly, simple sample datacrate.
 
-* [Glop Pot](https://data.research.uts.edu.au/examples/v0.3/Glop_Pot/): Cave exploration data.
+* [Glop Pot](https://data.research.uts.edu.au/examples/v1.0/Glop_Pot/): Cave exploration data.
 
-* [Facilitated family case conferencing]( https://data.research.uts.edu.au/examples/v0.3/luckett/): Some small data sets from a clinical trial, this example has very detailed affiliation data for the researchers.
+* [Facilitated family case conferencing]( https://data.research.uts.edu.au/examples/v1.0/luckett/): Some small data sets from a clinical trial, this example has very detailed affiliation data for the researchers.
 
-* [GTM](https://data.research.uts.edu.au/examples/v0.3/GTM/): Some MATLAB code that supports a publication.
+* [GTM](https://data.research.uts.edu.au/examples/v1.0/GTM/): Some MATLAB code that supports a publication.
 
 * [Farms to
-  Freeways](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/):
+  Freeways](https://data.research.uts.edu.au/examples/v1.0/farms_to_freeways/):
   A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
 
-* [Victoria Arch](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch/): More cave
+* [Victoria Arch](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch/): More cave
   data collected by a drone with a 3d lidar scanner, with video. 
 
 * [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
-* [Curation](https://data.research.uts.edu.au/examples/v0.3/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
+* [Curation](https://data.research.uts.edu.au/examples/v1.0/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
 
 ## Additional Definitions
@@ -319,12 +326,12 @@ A *Working DataCrate* has this structure:
 > https://example.com/bagitprofiles/profile-bar-v0.1.json.  Resolving the URI with
 > this specification.
 
-The bag-info.txt for version 0.3 of a *Bagged DataCrate* MUST contain the following
+The bag-info.txt for version 1.0 of a *Bagged DataCrate* MUST contain the following
 metadata:
 
 ```
-BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/1.0/profile-datacrate-v0.3.json
-DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/1.0/data_crate_specification_v0.3.md
+BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/develop/spec/1.0/profile-datacrate-v1.0.json
+DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/1.0/data_crate_specification_v1.0.md
 ```
 
 ## `CATALOG.html` and `CATALOG.json`
@@ -447,14 +454,14 @@ DataCrates which are packaged for distribution SHOULD:
     "name": "Data files associated with the manuscript:Effects of facilitated family case conferencing for advanced dementia: A cluster randomised clinical trial",
     "distribution": [
         {
-            "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip"
+            "@id": "https://data.research.uts.edu.au/examples/v1.0/timluckett.zip"
         }
     ]
 }
 
 {
-    "@id": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
-    "contentUrl": "https://data.research.uts.edu.au/examples/v0.3/timluckett.zip",
+    "@id": "https://data.research.uts.edu.au/examples/v1.0/timluckett.zip",
+    "contentUrl": "https://data.research.uts.edu.au/examples/v1.0/timluckett.zip",
     "@type": "DataDownload",
     "encodingFormat": "zip"
 }
@@ -465,7 +472,7 @@ If there are files in the payload directory (which is either `/data` for a
 described by a *MediaObject* related to the schema:Dataset with a property
 *HasPart*.
 
-[See a DataCrate with a DOI identifier.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/)
+[See a DataCrate with a DOI identifier.](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/)
 
 For a published DataCrate the `@id` property should be a DOI URL if possible. 
 
@@ -621,7 +628,7 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
  
 ```
 
-[See an example of a thumbnail.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
+[See an example of a thumbnail.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
 
 ### Describing a directory but not files
 
@@ -642,7 +649,7 @@ this example shows and empty list for [hasPart].
 
 }
 ```
-[See an example of an HTML page describing a directory of small files.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/lo/ts/_o/f_/li/tt/le/_f/il/es/index.html)
+[See an example of an HTML page describing a directory of small files.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/lo/ts/_o/f_/li/tt/le/_f/il/es/index.html)
 
 ## How to represent various kinds of metadata
 
@@ -792,7 +799,7 @@ with the university via [memberOf].
 Thus *DataCrate Flattened JSON-LD* MAY express chained affiliations with more
 precision than by using string-literals as values for [affiliation].
 
-[See an example of a Person with four affiliations.](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
+[See an example of a Person with four affiliations.](https://data.research.uts.edu.au/examples/v1.0/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/02/-6/75/6-/61/19/index.html)
 
 
 ### Contact point
@@ -854,7 +861,7 @@ even though this is not strictly supported at the moment.
 }
 ```
 
-[See an example of an item of `@type` `ContactPoint`, which is linked to a `Dataset` and to an `Organization` via a `contactPoint` property.](https://data.research.uts.edu.au/examples/v0.3/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
+[See an example of an item of `@type` `ContactPoint`, which is linked to a `Dataset` and to an `Organization` via a `contactPoint` property.](https://data.research.uts.edu.au/examples/v1.0/luckett/CATALOG_files/pairtree_root/ht/tp/+=/=o/rc/id/,o/rg/=0/00/0-/00/01/-6/12/1-/54/09/index.html)
 
 ### Publications
 
@@ -895,7 +902,7 @@ The publication SHOULD be described in the *DataCrate Flattened JSON-LD*.
 }
 ```
 
-[See an example of a journal article.](https://data.research.uts.edu.au/examples/v0.3/GTM/CATALOG_files/pairtree_root/ht/tp/+=/=d/x,/do/i,/or/g=/10/,1/10/9=/TC/YB/,2/01/4,/23/86/28/2/index.html)
+[See an example of a journal article.](https://data.research.uts.edu.au/examples/v1.0/GTM/CATALOG_files/pairtree_root/ht/tp/+=/=d/x,/do/i,/or/g=/10/,1/10/9=/TC/YB/,2/01/4,/23/86/28/2/index.html)
 
 ### Publisher
 
@@ -921,7 +928,7 @@ should be a an [Organization] though it MAY be a string-literal or a URI.
   "name": "University of Technology Sydney"
 },
 ```
-[See an example of an Organization which is linked to the publisher property of a Dataset.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=u/ts/,e/du/,a/u/index.html)
+[See an example of an Organization which is linked to the publisher property of a Dataset.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/ht/tp/+=/=u/ts/,e/du/,a/u/index.html)
 
 
 ### Funding and grants
@@ -977,7 +984,7 @@ SHOULD also reference funders directly, as well as via a chain of references.
 },
 
 ```
-[See an example of a Dataset which has three listed funders](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG.html) in a chained relationship, [for example this Organization is linked as a funder and in turn links to another funder.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/s+/==/gi/th/ub/,c/om/=U/TS/-e/Re/se/ar/ch/=p/ro/je/ct/s=/da/ta/cr/at/e/index.html)
+[See an example of a Dataset which has three listed funders](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG.html) in a chained relationship, [for example this Organization is linked as a funder and in turn links to another funder.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/ht/tp/s+/==/gi/th/ub/,c/om/=U/TS/-e/Re/se/ar/ch/=p/ro/je/ct/s=/da/ta/cr/at/e/index.html)
 
 ### Date of publication
 
@@ -1042,7 +1049,7 @@ is a reference to an [Organization] describing the copyright holder and a
 
 ```
 
-[See this example of a an audio recording with a `copyrightHolder` property (which is different from the `creator` property) and which is linked to a license.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
+[See this example of a an audio recording with a `copyrightHolder` property (which is different from the `creator` property) and which is linked to a license.](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/3_/43/-J/ua/n_/Bi/ca/rr/eg/ui/,f/la/c/index.html)
 
 
 ### Equipment
@@ -1109,7 +1116,7 @@ event.
     },
 ```
 
-[See an example of a data-capture CreateAction with an `Object` and two files as `result`s.](https://data.research.uts.edu.au/examples/v0.3/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
+[See an example of a data-capture CreateAction with an `Object` and two files as `result`s.](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/c0/2/index.html)
 
 ### Software 
 
@@ -1182,7 +1189,7 @@ machine generated for use at scale.
 
 ```
 
-[See an example](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/Ph/ot/o1/index.html) of a [CreateAction], with a result which is a [File] and an [object], which is a place.
+[See an example](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/Ph/ot/o1/index.html) of a [CreateAction], with a result which is a [File] and an [object], which is a place.
 
 ### Curation
 
@@ -1315,7 +1322,7 @@ example shows one property of several hundred.
 
 ```
 
-[See an example of Exif data displayed in HTML.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
+[See an example of Exif data displayed in HTML.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/pi/cs/=2/01/7-/06/-1/1%5E/20/12/,5/6,/14/,j/pg/index.html)
 
 ### Places
 
@@ -1382,7 +1389,7 @@ these. Any directory or file or *Context Entity* may be geo-located. For example
   },
 ```
 
-[See an example of a place in HTML.](https://data.research.uts.edu.au/examples/v0.3/sample/CATALOG_files/pairtree_root/ht/tp/+=/=w/ww/,g/eo/na/me/s,/or/g=/81/52/66/2=/ca/ta/li/na/-p/ar/k,/ht/ml/index.html)
+[See an example of a place in HTML.](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/ht/tp/+=/=w/ww/,g/eo/na/me/s,/or/g=/81/52/66/2=/ca/ta/li/na/-p/ar/k,/ht/ml/index.html)
 
 ### Time
 
@@ -1491,7 +1498,7 @@ For example, this data is exported from an [Omeka](https://omeka.org) repository
    "@id": "./content/166/original_eece70f73bf8979c0bcfb97065948531.pdf"
 },
 ```
-[See an example of a repository exported to a DataCrate.](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/)
+[See an example of a repository exported to a DataCrate.](https://data.research.uts.edu.au/examples/v1.0/farms_to_freeways/)
 
 ## Minimum metadata summary for *Bagged DataCrates*
 
@@ -1533,8 +1540,8 @@ Internal-Sender-Description: N/A
 For example:
 
 ```
-BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.3/profile-datacrate-v0.3.json
-DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/master/spec/0.3/data_crate_specification_v0.3.md
+BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/1.0/profile-datacrate-v1.0.json
+DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/master/spec/1.0/data_crate_specification_v1.0.md
 Contact-Email: peter.sefton@uts.edu.au
 Contact-Name: Contact Peter Sefton
 Description: This is a simple dataset for demonstration purposes it contains just one image and a directory full of useless text files.
@@ -1577,7 +1584,7 @@ schema:Dataset level:
 
 The mandatory DataCite resource type MUST be set to "DataCrate-v0.2".
 
-[See an example data citation.](https://data.research.uts.edu.au/examples/v0.3/farms_to_freeways/metadata/datacite.xml)
+[See an example data citation.](https://data.research.uts.edu.au/examples/v1.0/farms_to_freeways/metadata/datacite.xml)
 
 ## The *DataCrate Website*
 
@@ -1678,14 +1685,14 @@ When generating the *DataCrate Website* from *DataCrate-flattened JSON-LD*, the 
 target for an explanatory link for the term instead of the URI supplied in the @context.
 
 
-[See an example of the key "interviewee" resolving to a human-readable page.](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
+[See an example of the key "interviewee" resolving to a human-readable page.](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG_files/pairtree_root/Po/li/cy/%5E2/0a/nd/%5E2/0I/mp/le/me/nt/at/io/n%5E/20/Re/vi/ew/%5E2/0I/nt/er/vi/ew/s=/In/te/rv/ie/w_/Au/di/o=/In/te/rv/ie/w-/25/_0/9_/20/15/-1/4_/02/-S/im/on/_H/od/so/n,/fl/ac/index.html)
 and
-[download the *DataCrate-flattened JSON-LD*](https://data.research.uts.edu.au/examples/v0.3/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG.json)
+[download the *DataCrate-flattened JSON-LD*](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/CATALOG.json)
 
 Where there is no RDF ontology available, then implementors SHOULD attempt to
 provide context by creating stable web-accessible URIs to document properties
 and classes, for example, by linking to page describing an XML element or
-attribute from an XML schema pending the publication of a formal ontology.
+attribute from an XML schema, pending the publication of a formal ontology.
 
 
 [JSON-LD]:(https://json-ld.org/spec/latest/json-ld/)
