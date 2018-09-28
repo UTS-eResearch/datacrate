@@ -1205,7 +1205,9 @@ action, and MAY have an [instrument] which associates the action with a
 particular piece of software (for example, the content management system or data
 catalogue through which an update was approved) which SHOULD be of `@type` SoftwareApplication.
 
-An Action which has failed MAY record any error message in an [error] property.
+An Action's status MAY be recorded in an [actionStatus] property. The status must be one of the values enumerated by [ActionStatusType]: ActiveActionStatus, CompletedActionStatus, FailedActionStatus or PotentialActionStatus.
+
+An Action which has failed MAY record any error information in an [error] property.
 
 [UpdateAction] SHOULD only be used for actions which affect the DataSet as a whole, such as movement through a workflow.
 
@@ -1220,10 +1222,11 @@ and the new version as its [result].
     "@type": "CreateAction",
     "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
     "name": "DataCrate created",
-    "endTime": "2018-09-10",
+    "endTime": "2018-08-31",
     "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
-    "instrument": { "@id": "https://stash.research.uts.edu.au" }
-}
+    "instrument": { "@id": "https://stash.research.uts.edu.au" },
+    "actionStatus": "CompletedActionStatus"
+},
 
 {
     "@id": "history-02",
@@ -1232,8 +1235,9 @@ and the new version as its [result].
     "name": "DataCrate published",
     "endTime": "2018-09-10",
     "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
-    "instrument": { "@id": "https://stash.research.uts.edu.au" }
-}
+    "instrument": { "@id": "https://stash.research.uts.edu.au" },
+    "actionStatus": "CompletedActionStatus"
+},
 
 { 
     "@id": "history-03",
@@ -1241,11 +1245,24 @@ and the new version as its [result].
     "object": { "@id": "./metadata.xml.v0.1" },
     "result": { "@id": "./metadata.xml" }
     "name": "metadata update",
-    "endTime": "2018-09-10",
+    "endTime": "2018-09-12",
     "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
-    "instrument": { "@id": "https://stash.research.uts.edu.au" }
+    "instrument": { "@id": "https://stash.research.uts.edu.au" },
+    "actionStatus": "CompletedActionStatus"
+},
 
-}
+{
+    "@id": "history-04",
+    "@type": "UpdateAction",
+    "object": { "@id": "https://doi.org/10.5281/zenodo.1009240" }
+    "name": "DataCrate published",
+    "endTime": "2018-09-13",
+    "agent": { "@id": "https://orcid.org/0000-0001-5152-5307" },
+    "instrument": { "@id": "https://stash.research.uts.edu.au" },
+    "actionStatus": "FailedActionStatus",
+    "error": "Record is already published"
+},
+
 
 {
     "@id": "https://stash.research.uts.edu.au",
@@ -1255,7 +1272,6 @@ and the new version as its [result].
     "identifier": "https://stash.research.uts.edu.au"
 }
 ```
-
 
 
 ### Extra metadata such as Exif
