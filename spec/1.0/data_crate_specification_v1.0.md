@@ -134,7 +134,7 @@ The following examples are hosted on the web, as static mini-sites with a downlo
    example contains examples of data-provenance,
    [via the use of schema.org `CreateAction` properties that show that files result from observation-actions on the `object` of study (the cave).](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/r0/3/index.html)
 
-* [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v0.2/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
+* [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
 * [Curation](https://data.research.uts.edu.au/examples/v1.0/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
