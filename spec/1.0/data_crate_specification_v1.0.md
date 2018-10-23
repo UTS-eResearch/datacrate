@@ -331,11 +331,11 @@ For example:
 
 ```
     {
-  "@context": {https://schema.org/URL",
-    "description": "https://schema.org/description",
-    "identifier": "https://schema.org/identifier",
-    "manufacturer": "https://schema.org/manufacturer",
-    "model": "https://schema.org/model",
+  "@context": {http://schema.org/URL",
+    "description": "http://schema.org/description",
+    "identifier": "http://schema.org/identifier",
+    "manufacturer": "http://schema.org/manufacturer",
+    "model": "http://schema.org/model",
 
 ```
 
@@ -346,7 +346,7 @@ These are not acceptable:
 
 ```
 { 
-"@context": {"@id": "https://schema.org/URL",
+"@context": {"@id": "http://schema.org/URL",
 "description": "schema:description",
 ```
 
@@ -358,8 +358,8 @@ the minimal markup is as follows.
 ```
 {"@context":
     {
-      "description": "https://schema.org/description",
-      "Dataset": "https://schema.org/Dataset"
+      "description": "http://schema.org/description",
+      "Dataset": "http://schema.org/Dataset"
     }
 },
   "@graph": [
@@ -1229,7 +1229,7 @@ and the new version as its [result].
 
 Schema.org has an generic extension mechanism for encoding adding arbitrary
 properties and values which are not available as Schema.org properties. An
-example of of this is the Schema.org [recommended way (see example 2)](https://schema.org/ImageObject)
+example of of this is the Schema.org [recommended way (see example 2)](http://schema.org/ImageObject)
 of including [Exif] technical image metadata.
 
 To include EXIF, or other data which can be encoded as property/value pairs, add
@@ -1315,7 +1315,7 @@ And the place is referenced from the [contentLocation] property of the dataset.
   },
 ```
 
-[Place] MAY use any of the [resources available in Schema.org](https://schema.org/geo) to
+[Place] MAY use any of the [resources available in Schema.org](http://schema.org/geo) to
 describe places. Future profiles of DataCrate may mandate the use of a subset of
 these. Any directory or file or *Context Entity* may be geo-located. For example this file:
 
@@ -1646,65 +1646,65 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [DataCite Schema v4.0]: https://schema.datacite.org/meta/kernel-4.0/metadata.xsd
 [BagIt profile]: https://github.com/ruebot/bagit-profiles
 [CURIE]: https://www.w3.org/TR/curie/
-[keyword]: https://schema.org/keyword
-[about]: https://schema.org/about
-[name]: https://schema.org/name
-[creator]: https://schema.org/creator
-[Person]: https://schema.org/Person
-[schema:Collection]: https://schema.org/Collection
-[identifier]: https://schema.org/identifier
-[funder]: https://schema.org/funder
-[relatedItem]: https://schema.org/relatedItem
-[Organization]: https://schema.org/Organization
-[Dataset]: https://schema.org/Dataset
-[File]: https://schema.org/MediaObject
-[path]: https://schema.org/path
-[schema:contentUrl]: https://schema.org/contentUrl
-[schema:MediaObject]: https://schema.org/MediaObject
-[ScholarlyArticle]: https://schema.org/ScholarlyArticle
-[CreativeWork]: https://schema.org/CreativeWork
-[SoftwareApplication]: https://schema.org/SoftwareApplication
-[hasPart]: https://schema.org/hasPart
-[memberOf]: https://schema.org/memberOf
-[funder]: https://schema.org/funder
-[encodingFormat]: https://schema.org/encodingFormat
-[accountablePerson]: https://schema.org/accountablePerson
-[datePublished]: https://schema.org/datePublished
-[license]: https://schema.org/license
-[contact]: https://schema.org/accountablePerson
-[contributor]: https://schema.org/contributor
-[contentLocation]: https://schema.org/contentLocation
-[copyrightHolder]: https://schema.org/copyrightHolder
-[Place]: https://schema.org/Place
-[description]: https://schema.org/description
-[geo]: https://schema.org/geo
-[agent]: https://schema.org/agent
-[instrument]: https://schema.org/instrument
-[sameAs]: https://schema.org/sameAs
-[GeoCoordinates]: https://schema.org/GeoCoordinates
-[email]: https://schema.org/email
-[phone]: https://schema.org/phone
-[affiliation]: https://schema.org/affiliation
+[keyword]: http://schema.org/keyword
+[about]: http://schema.org/about
+[name]: http://schema.org/name
+[creator]: http://schema.org/creator
+[Person]: http://schema.org/Person
+[schema:Collection]: http://schema.org/Collection
+[identifier]: http://schema.org/identifier
+[funder]: http://schema.org/funder
+[relatedItem]: http://schema.org/relatedItem
+[Organization]: http://schema.org/Organization
+[Dataset]: http://schema.org/Dataset
+[File]: http://schema.org/MediaObject
+[path]: http://schema.org/path
+[schema:contentUrl]: http://schema.org/contentUrl
+[schema:MediaObject]: http://schema.org/MediaObject
+[ScholarlyArticle]: http://schema.org/ScholarlyArticle
+[CreativeWork]: http://schema.org/CreativeWork
+[SoftwareApplication]: http://schema.org/SoftwareApplication
+[hasPart]: http://schema.org/hasPart
+[memberOf]: http://schema.org/memberOf
+[funder]: http://schema.org/funder
+[encodingFormat]: http://schema.org/encodingFormat
+[accountablePerson]: http://schema.org/accountablePerson
+[datePublished]: http://schema.org/datePublished
+[license]: http://schema.org/license
+[contact]: http://schema.org/accountablePerson
+[contributor]: http://schema.org/contributor
+[contentLocation]: http://schema.org/contentLocation
+[copyrightHolder]: http://schema.org/copyrightHolder
+[Place]: http://schema.org/Place
+[description]: http://schema.org/description
+[geo]: http://schema.org/geo
+[agent]: http://schema.org/agent
+[instrument]: http://schema.org/instrument
+[sameAs]: http://schema.org/sameAs
+[GeoCoordinates]: http://schema.org/GeoCoordinates
+[email]: http://schema.org/email
+[phone]: http://schema.org/phone
+[affiliation]: http://schema.org/affiliation
 [givenName]: htts://schema.org/givenName
-[familyName]: https://schema.org/familyName
-[publisher]: https://schema.org/publisher
-[translator]: https://schema.org/translator
-[thumbnail]: https://schema.org/thumbnail
-[translationOf]: https://schema.org/translationOf
-[Product]: https://schema.org/Product
-[contactPoint]: https://schema.org/contactPoint
-[contactType]: https://schema.org/contactType
-[ContactPoint]: https://schema.org/ContactPoint
-[CreateAction]: https://schema.org/CreateAction
-[result]: https://schema.org/result
-[event]: https://schema.org/event
-[object]: https://schema.org/object
-[error]: https://schema.org/error
-[UpdateAction]: https://schema.org/UpdateAction
-[Action]: https://schema.org/Action
-[IndividualProduct]: https://schema.org/IndividualProduct
-[distribution]: https://schema.org/distribution
-[DataDownload]: https://schema.org/DataDownload
+[familyName]: http://schema.org/familyName
+[publisher]: http://schema.org/publisher
+[translator]: http://schema.org/translator
+[thumbnail]: http://schema.org/thumbnail
+[translationOf]: http://schema.org/translationOf
+[Product]: http://schema.org/Product
+[contactPoint]: http://schema.org/contactPoint
+[contactType]: http://schema.org/contactType
+[ContactPoint]: http://schema.org/ContactPoint
+[CreateAction]: http://schema.org/CreateAction
+[result]: http://schema.org/result
+[event]: http://schema.org/event
+[object]: http://schema.org/object
+[error]: http://schema.org/error
+[UpdateAction]: http://schema.org/UpdateAction
+[Action]: http://schema.org/Action
+[IndividualProduct]: http://schema.org/IndividualProduct
+[distribution]: http://schema.org/distribution
+[DataDownload]: http://schema.org/DataDownload
 [Exif]: https://en.wikipedia.org/wiki/Exif
 [DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
 [DataCrate JSON-LD Context]: ./context.json
@@ -1712,7 +1712,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [DataCrate JSON-LD frame]: ./frame.json
 [geonames]: https://www.geonames.org
 [RDFa]: https://en.wikipedia.org/wiki/RDFa
-[schema.org]: https://schema.org
+[schema.org]: http://schema.org
 [DCAT]: https://www.w3.org/TR/vocab-dcat/
 [DataCite]: https://data.research.uts.edu.au/public/Victoria_Arch/
 [SPAR]: https://www.sparontologies.net/
