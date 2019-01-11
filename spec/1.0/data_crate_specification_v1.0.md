@@ -1,6 +1,6 @@
 # DataCrate Specification version 1.0.0 rc1
 
-This is a release candidate. The final version 1.0 release is planned for October 2018.
+This is a release candidate. The final version 1.0 release is planned for Q1 2019.
 
 As this spec is still under development, v1.0 will be updated and committed to
 github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/1.0 .
@@ -493,7 +493,6 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
   "interviewee": [
     {
       "@id": "https://omeka.uws.edu.au/farmstofreeways/api/items/595",
-      "label": "Eugenie Stapleton"
     }
   ],
   "description": [
@@ -533,7 +532,6 @@ If [thumbnail]s are incidental to the data set, they need not be referenced by [
   "copyrightHolder": [
     {
       "@id": "https://westernsydney.edu.au",
-      "label": "Western Sydney University"
     }
   ],
   "copyright": [
