@@ -113,7 +113,7 @@ that are appropriate to a range of services such as repositories, registries.
 and research software applications.
 
 
-## Examples
+### Examples
 
 The following examples are hosted on the web, as static mini-sites with a download link:
 
@@ -139,7 +139,7 @@ The following examples are hosted on the web, as static mini-sites with a downlo
 * [Curation](https://data.research.uts.edu.au/examples/v1.0/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
 
-## Additional Definitions
+### Additional Definitions
 
 *Data Entity*: A [Dataset], directory or file, which is represented by a [JSON Object].
 
@@ -223,11 +223,8 @@ This specification has guidelines for ways to represent:
   made into a *Bagged DataCrate* which is also a *Citable DataCrate*.
 
 
-# Structure / DataCrate by example
+## Structure of a DataCrate 
 
-This section describes the DataCrate specification starting from the BagIt
-structure on which it is built, with examples. It contains some normative
-statements (what a DataCrate SHOULD, MUST and MAY have).
 
 The BagIt file-system structure for a *Bagged DataCrate* is as follows.
 
@@ -278,7 +275,7 @@ BagIt-Profile-Identifier: https://raw.githubusercontent.com/UTS-eResearch/datacr
 DataCrate-Specification-Identifier: https://github.com/UTS-eResearch/datacrate/blob/develop/spec/1.0/data_crate_specification_v1.0.md
 ```
 
-## `CATALOG.html` and `CATALOG.json`
+### `CATALOG.html` and `CATALOG.json`
 
 -  `CATALOG.json` MUST be a *DataCrate-flattened JSON-LD* document.
 
@@ -299,7 +296,7 @@ Example of how to embed *Flattened DataCrate JSON-LD* in `CATALOG.html`.
 </script>
 ```
 
-## About `CATALOG.json`
+#### About `CATALOG.json`
 
 The following *DataCrate-flattened JSON-LD* represents a minimal description of
 a *Working DataCrate* dataset. The [DataCrate JSON-LD Context] MUST be included inline as below.
@@ -350,7 +347,7 @@ These are not acceptable:
 "description": "schema:description",
 ```
 
-# *Working DataCrates*
+## *Working DataCrates*
 
 For DataCrates which are used in-situ and have not been distributed as a BagIt bag, 
 the minimal markup is as follows.
@@ -1133,7 +1130,7 @@ machine generated for use at scale.
 
 [See an example](https://data.research.uts.edu.au/examples/v1.0/sample/CATALOG_files/pairtree_root/Ph/ot/o1/index.html) of a [CreateAction], with a result which is a [File] and an [object], which is a place.
 
-### Curation
+### Provenance
 
 To record an action which changes the DataSet's metadata, or changes its state
 in a publication or other workflow, a [CreateAction] or [UpdateAction] SHOULD be
