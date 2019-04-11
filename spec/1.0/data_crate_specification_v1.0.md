@@ -125,16 +125,15 @@ The following examples are hosted on the web, as static mini-sites with a downlo
 
 * [GTM](https://data.research.uts.edu.au/examples/v1.0/GTM/): Some MATLAB code that supports a publication.
 
-* [Farms to
-  Freeways](https://data.research.uts.edu.au/examples/v1.0/farms_to_freeways/):
+* [Farms to Freeways](https://data.research.uts.edu.au/examples/v1.0/farms_to_freeways/):
   A dataset exported from an Omeka Classic repository [using some Python scripts](https://github.com/UTS-eResearch/omeka-datacrate-tools).
 
-* [Victoria Arch](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch/): More cave
+* [Victoria Arch](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch_pub/): More cave
   data collected by a drone with a 3d lidar scanner, with video. This
    example contains examples of data-provenance,
    [via the use of schema.org `CreateAction` properties that show that files result from observation-actions on the `object` of study (the cave).](https://data.research.uts.edu.au/examples/v1.0/Victoria_Arch_pub/CATALOG_files/pairtree_root/Da/ta/Ca/pt/ur/e_/wc/r0/3/index.html)
 
-* [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](https://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
+* [Dataset for IDRC Project: Exploring the opportunities and challenges of implementing open research strategies within development institutions. International Development Research Center](https://data.research.uts.edu.au/examples/v1.0/Data_Package-IDRC_Opportunities_and_Challenges_Open_Research_Strategies/): This dataset was the subject of [a presentation](http://ptsefton.com/2017/10/19/datacrate.htm) at eResearch Australasia 2017. The published version used DataCrate v0.1 the link here is to an updated version of the dataset.
 
 * [Curation](https://data.research.uts.edu.au/examples/v1.0/curation/): A simple dataset to demonstrate how [CreateAction]s can be used to provide a change-history of the DataCrate itself.
 
@@ -143,8 +142,7 @@ The following examples are hosted on the web, as static mini-sites with a downlo
 
 *Data Entity*: A [Dataset], directory or file, which is represented by a [JSON Object].
 
-*Context Entity*: A [Person], [Organization] (including research projects), item of equipment ([IndividualProduct]), [license]
-or any other *thing* or *event* that forms part of the metadata for a DataCrate,
+*Context Entity*: A [Person], [Organization] (including research projects), item of equipment ([IndividualProduct]), [license] or any other *thing* or *event* that forms part of the metadata for a DataCrate,
 or supporting information, represented by a [JSON Object].
 
 *[DataCrate JSON-LD Context]*: A [JSON-LD] context that provides human-readable
@@ -259,7 +257,7 @@ A *Working DataCrate* has this structure:
    |   [payload files]
 ```
 
-[Part 2 of the BagIt profile specification]() says:
+[Part 2 of the BagIt profile specification](https://github.com/bagit-profiles/bagit-profiles/blob/master/README.md) says:
 > Bags complying to a BagIt profile MUST contain the tag BagIt-Profile-Identifier
 > in their bag-info.txt, which value is the URI of the JSON file containing the
 > profile it conform to. This tag MAY be repeated if the bag conforms to multiple
@@ -1599,8 +1597,7 @@ resolve to a useful human readable page. Where this is not possible - for
 example if the URI resolves to an RDF ontology file a human-readable URI SHOULD
 be provided using SameAs.
 
-For example. This URI from the [BIBO] ontology
-<"http://purl.org/ontology/bibo/interviewee"> resolves to an ontology file,
+For example. This URI from the [BIBO] ontology resolves to an ontology file,
 which is not useful for humans, but [this page](http://neologism.ecs.soton.ac.uk/bibo.html#interviewee)
 is human-readable:
 
@@ -1641,7 +1638,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [DataCite Schema v4.0]: https://schema.datacite.org/meta/kernel-4.0/metadata.xsd
 [BagIt profile]: https://github.com/ruebot/bagit-profiles
 [CURIE]: https://www.w3.org/TR/curie/
-[keyword]: http://schema.org/keyword
+[keyword]: http://schema.org/keywords
 [about]: http://schema.org/about
 [name]: http://schema.org/name
 [creator]: http://schema.org/creator
@@ -1653,7 +1650,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [Organization]: http://schema.org/Organization
 [Dataset]: http://schema.org/Dataset
 [File]: http://schema.org/MediaObject
-[path]: http://schema.org/path
+[path]: http://schema.org/contentUrl
 [schema:contentUrl]: http://schema.org/contentUrl
 [schema:MediaObject]: http://schema.org/MediaObject
 [ScholarlyArticle]: http://schema.org/ScholarlyArticle
@@ -1701,7 +1698,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [distribution]: http://schema.org/distribution
 [DataDownload]: http://schema.org/DataDownload
 [Exif]: https://en.wikipedia.org/wiki/Exif
-[DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/0.2/profile-datacrate-v0.2.json
+[DataCrate BagIt Profile]: https://raw.githubusercontent.com/UTS-eResearch/datacrate/master/spec/1.0/profile-datacrate-v1.0.json
 [DataCrate JSON-LD Context]: ./context.json
 [JSON-LD Framing 1.1]: https://json-ld.org/spec/latest/json-ld-framing/
 [DataCrate JSON-LD frame]: ./frame.json
@@ -1709,7 +1706,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [RDFa]: https://en.wikipedia.org/wiki/RDFa
 [schema.org]: http://schema.org
 [DCAT]: https://www.w3.org/TR/vocab-dcat/
-[DataCite]: https://data.research.uts.edu.au/public/Victoria_Arch/
+[DataCite]: https://www.datacite.org/
 [SPAR]: https://www.sparontologies.net/
 [FRAPO]: https://www.sparontologies.net/ontologies/frapo
 [PCDM]: https://github.com/duraspace/pcdm/wiki
@@ -1725,3 +1722,4 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [linked data]: https://en.wikipedia.org/wiki/Linked_data
 [ORCID]: https://orcid.org
 [JSON Object]: https://w3c.github.io/json-ld-syntax/#terminology
+[BIBO]: http://purl.org/ontology/bibo/interviewee
