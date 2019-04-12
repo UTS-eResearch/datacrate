@@ -1,13 +1,21 @@
-# DataCrate Specification version 1.0.0 rc1
-
-This is a release candidate. The final version 1.0 release is planned for Q1 2019.
-
-As this spec is still under development, v1.0 will be updated and committed to
-github here: https://github.com/UTS-eResearch/datacrate/tree/master/spec/1.0 .
-We are not using branches, just the master.
-The version number above will be incremented as major changes occur to v1.0.
+# DataCrate Specification version 1.0.0 2019-04-12
 
 Please give feedback via github issues or a pull request.
+
+This specification, and the JSON that files that accompany it [profile-datacrate-v1.0.json](./profile-datacrate-v1.0.json)
+and [context.json](./context.json) are Copyright 2019 University of Technology Sydney.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. 
 
 ## Introduction & definition of a *DataCrate*
 
@@ -1689,7 +1697,6 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [Product]: http://schema.org/Product
 [contactPoint]: http://schema.org/contactPoint
 [contactType]: http://schema.org/contactType
-[ContactPoint]: http://schema.org/ContactPoint
 [CreateAction]: http://schema.org/CreateAction
 [result]: http://schema.org/result
 [event]: http://schema.org/event
