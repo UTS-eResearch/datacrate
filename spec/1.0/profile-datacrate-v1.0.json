@@ -6,9 +6,7 @@
       "External-Description":"BagIt profile for DataCrate research data packages. ",
       "Version":"1.0"
    },
-
-  Tag-Files-Required: ["CATALOG.html", "CATALOG.json" ],
-
+   "Tag-Files-Required": ["CATALOG.html", "CATALOG.json" ],
    "Accept-BagIt-Version":[
       "0.96",
       "0.97"
