@@ -1685,7 +1685,7 @@ attribute from an XML schema, pending the publication of a formal ontology.
 [email]: http://schema.org/email
 [phone]: http://schema.org/phone
 [affiliation]: http://schema.org/affiliation
-[givenName]: htts://schema.org/givenName
+[givenName]: http://schema.org/givenName
 [familyName]: http://schema.org/familyName
 [publisher]: http://schema.org/publisher
 [translator]: http://schema.org/translator
